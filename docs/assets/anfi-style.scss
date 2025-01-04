@@ -156,3 +156,49 @@ p.indented {
   text-indent: 2em;
   color: #00A2C2; // 005F93; // #007A8C; // #0092A8; // #828594; // #9497A8;
 }
+
+
+// Mobile
+/* mobile query up for screens up to ~992px wide */
+@media screen and (max-width: 991.98px) {
+    /* move text up & center */
+    .entity-contents {
+      order: 2 !important;
+      margin: -1em 0 0 0 !important;
+      padding: 0 0 0 0em !important;
+      text-align: center !important;
+    }
+    
+  
+    /* center subtitle */
+    .subtitle {
+      text-align: center !important;
+    }
+
+    /* social links: block of links */
+    .about-entity .about-links {
+      justify-content: center !important;
+      font-size: 1em !important;
+      flex-direction: row !important; /* prevent line break */
+    }
+    // navigation footer
+    .nav-footer {
+        flex-direction: row;
+    }
+    
+    /* Short intro */
+    .about-contents {
+      padding: 0 0 0 0em !important;
+    }
+
+    /* center Learn More About Me */
+    .about-links.subtitle {
+      justify-content: center !important;
+    }
+
+    /* move image up, adjust padding */
+    .about-image {
+      order: 1 !important;
+      padding: 0 2em 0 2em !important;
+    }
+}
