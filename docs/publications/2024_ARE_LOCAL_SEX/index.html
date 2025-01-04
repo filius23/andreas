@@ -73,39 +73,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  </head><body class="nav-fixed fullcontent">true
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+</head>
 
-
-
-
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -142,7 +113,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns">
 <div id="title-block-header-title" class="quarto-title page-columns page-full page-layout-full featured-image p-4" style="background-image: url(featured.png), url(featured.jpg), url(../featured.jpg);">
 <h1 class="title">Are Local Sex Ratios Associated with Transition into First Cohabiting Union? Evidence from Finnish Register Data</h1>
-<p class="subtitle lead">Andreas Filser, Caroline Uggla Stockholm Research Reports in Demography 2024_22</p>
+<p class="subtitle lead">Stockholm Research Reports in Demography 2024_22</p>
 </div>
 
 
@@ -194,7 +165,6 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="abstract">Abstract</h4>
 <p>Imbalanced local numbers of men and women, i.e.&nbsp;skewed sex ratios, are a widely discussed contextual constraint for union formation. Different theories suggest women should enter unions earlier when men are plentiful but disagree on consequences for men’s union formation. Empirical evidence remains mixed due to a twofold aggregation problem. Firstly, many studies only analyze outcomes at the aggregate level, thereby misrepresenting individual-level processes. Secondly, studies often aggregate too broad age brackets into adult sex ratios (e.g.&nbsp;18-49) to approximate partner pool skews. We circumvent these problems by using individual-level Finnish register data (1994-2015, N = 1,038,236 persons) to analyze whether different sex ratio measures predict the transition into first cohabiting union. The data allow for calculating age-specific sex ratio measures that include only adjacent age groups that are most relevant as potential partners. Results indicate that men and women enter their first union later when sex ratios are more male-skewed. Yet, the association for women is likely due to peculiarities of the capital region. Additionally, individual-level associations contradict results for aggregated outcomes and findings using broad adult sex ratios are not supported by narrow age-specific sex ratio measures. We discuss the implications for the theoretical debate and problems with aggregate data analyses in the sex ratio literature.</p>
 <p><strong><a href="../..\publication">Back to publication list</a></strong></p>
-
 
 
 </section>

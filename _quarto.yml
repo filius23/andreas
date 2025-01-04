@@ -11,7 +11,7 @@ website:
   title: "Andreas Filser"
   site-url: https://afilser.netlify.app/
   description: "Researcher at FDZ-IAB"
-  # favicon: assets/silvia/img/logo_rounded.svg
+  # favicon: 
   page-navigation: true
   back-to-top-navigation: true
  
