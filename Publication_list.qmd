@@ -16,8 +16,8 @@ library(icons)
 ```
 
 
-**[Detailed publication list including abstracts](/publications)**  
-**Finde me on [Google Scholar `r icon_style(icons::academicons("google-scholar"),scale = 1.4, fill = "#D68951")`](https://scholar.google.de/citations?user=vP7topAAAAAJ)**
+[Detailed publication list including abstracts](/publications/publications.html)
+Finde me on [Google Scholar `r icon_style(icons::academicons("google-scholar"),scale = 1.4, fill = "#D68951")`](https://scholar.google.de/citations?user=vP7topAAAAAJ)
 
 
 
