@@ -83,13 +83,7 @@
     .about-entity .about-links {
       justify-content: center !important;
       font-size: 1em !important;
-      flex-direction: row !important;
-    
-  }
-      
-      /*overflow: hidden; 
-      text-overflow: ellipsis;
-      white-space: nowrap; /* prevent line break for link icons*/
+      flex-direction: row !important; /* prevent line break */
     }
     
     /* Short intro */
