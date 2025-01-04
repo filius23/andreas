@@ -42,13 +42,13 @@
 }
 
 /* Learn More About Me 
+*/
 .about-links.subtitle {
   font-size: 1em !important;
   font-family: "Commissioner";
   color: orange;
   justify-content: flex-end !important;
 }
-*/
 
 /* image */
 .about-image {
@@ -68,7 +68,7 @@
     /* move text up & center */
     .entity-contents {
       order: 2 !important;
-      margin: -4em 0 0 0 !important;
+      margin: 0em 0 0 0 !important;
       padding: 0 0 0 0em !important;
       text-align: center !important;
     }

@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://afilser.netlify.app/Publication_list.html</loc>
-    <lastmod>2025-01-03T23:57:33.197Z</lastmod>
+    <loc>https://afilser.netlify.app/publication_list.html</loc>
+    <lastmod>2025-01-04T22:03:33.244Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/publications/2024_ARE_LOCAL_SEX/index.html</loc>
     <lastmod>2025-01-04T10:01:30.434Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2022_UPDATE_IDENTIFYING_MOTHERS/index.html</loc>
-    <lastmod>2022-05-17T13:23:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2022_ADOLESCENT_SCHOOL_INJURIES/index.html</loc>
-    <lastmod>2022-06-07T06:58:10.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2021_DO_LOCAL_SEX/index.html</loc>
-    <lastmod>2022-05-17T20:56:19.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2021_ARE_SKEWED_SEX/index.html</loc>
-    <lastmod>2022-05-17T20:57:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2019_SEX_RATIO_AND/index.html</loc>
-    <lastmod>2022-06-07T06:59:44.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2017_KRANKENKASSEN_IM_REGIONALEN/index.html</loc>
-    <lastmod>2022-06-07T06:57:25.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/index.html</loc>
-    <lastmod>2025-01-03T23:14:45.063Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/about/about.html</loc>
-    <lastmod>2025-01-04T09:56:38.690Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2015_DEMOGRAPHISCHE_MASKULINISIERUNG_UND/index.html</loc>
-    <lastmod>2025-01-03T23:38:27.514Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2018_MEHR_MAeNNER_MEHR/index.html</loc>
-    <lastmod>2022-05-17T09:50:27.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2019_SOCIAL_OUTCOMES_AND/index.html</loc>
-    <lastmod>2022-06-07T06:59:06.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publications/2021_BLEIBT_ALLES_ANDERS/index.html</loc>
-    <lastmod>2022-05-17T09:50:39.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2022_SEX_RATIOS_AND/index.html</loc>
+    <lastmod>2022-06-09T13:44:36.000Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/publications/2021_LONGITUDINAL_CHANGES_IN/index.html</loc>
     <lastmod>2022-06-07T06:58:39.000Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2022_SEX_RATIOS_AND/index.html</loc>
-    <lastmod>2022-06-09T13:44:36.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2021_BLEIBT_ALLES_ANDERS/index.html</loc>
+    <lastmod>2022-05-17T09:50:39.000Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2023_MOTHERS_EMPLOYMENT_IN/index.html</loc>
-    <lastmod>2024-09-16T09:18:56.190Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2019_SOCIAL_OUTCOMES_AND/index.html</loc>
+    <lastmod>2022-06-07T06:59:06.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2018_MEHR_MAeNNER_MEHR/index.html</loc>
+    <lastmod>2022-05-17T09:50:27.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2015_DEMOGRAPHISCHE_MASKULINISIERUNG_UND/index.html</loc>
+    <lastmod>2025-01-03T23:38:27.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/about/about.html</loc>
+    <lastmod>2025-01-04T09:56:38.690Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/index.html</loc>
+    <lastmod>2025-01-03T23:14:45.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2017_KRANKENKASSEN_IM_REGIONALEN/index.html</loc>
+    <lastmod>2022-06-07T06:57:25.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2019_SEX_RATIO_AND/index.html</loc>
+    <lastmod>2022-06-07T06:59:44.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2021_ARE_SKEWED_SEX/index.html</loc>
+    <lastmod>2022-05-17T20:57:46.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2021_DO_LOCAL_SEX/index.html</loc>
+    <lastmod>2022-05-17T20:56:19.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2022_ADOLESCENT_SCHOOL_INJURIES/index.html</loc>
+    <lastmod>2022-06-07T06:58:10.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2022_UPDATE_IDENTIFYING_MOTHERS/index.html</loc>
+    <lastmod>2022-05-17T13:23:13.000Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/publications/publications.html</loc>
     <lastmod>2025-01-04T21:03:03.899Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/publication_list.html</loc>
-    <lastmod>2025-01-04T21:18:41.712Z</lastmod>
   </url>
 </urlset>
