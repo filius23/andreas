@@ -1,0 +1,53 @@
+---
+title: "Dr. Andreas Filser"
+pagetitle: "My page"
+subtitle: "Sociologist &amp; data curator<br>Research Data Centre<br>Institute for Employment Research (FDZ-IAB)"
+image: assets/round3.png
+# image-alt: "Me, smiling on our balcony"
+
+about:
+  template: solana
+  image-width: 28em
+  # id: hero-heading
+  links:
+    - text: "{{< fa brands bluesky >}}"
+      aria-label: "Bluesky"
+      href: https://bsky.app/profile/filsa.bsky.social
+    - text: "{{< fa link >}}"
+      aria-label: "Employer Website (IAB)"
+      href: https://iab.de/mitarbeiter/?id=5370712
+    - text: "{{< ai google-scholar >}}"
+      aria-label: "Google Scholar"
+      href: https://scholar.google.de/citations?user=vP7topAAAAAJ
+    - icon: github
+      aria-label: GitHub
+      href: https://github.com/filius23
+    - text: "{{< ai orcid >}}"
+      href: https://orcid.org/0000-0001-5530-3621
+    - icon: linkedin
+      aria-label: "LinkedIn"
+      href: https://www.linkedin.com/in/andreas-filser-85919450/
+    - text: "{{< ai osf >}}"
+      aria-label: "OSF"
+      href: https://osf.io/m7nec/
+      
+page-layout: full
+
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+
+header-includes: >
+  <link rel="stylesheet" href="assets/index.css">
+resources:
+  - assets/index.css
+---
+
+<br><br>
+
+
+I am a sociologist enjoying conducting quantitative research and procuring data for others. My own research centres around family sociology, including relationship formation and parents in the labour market. I enjoy programming in R and Stata and teaching these skills.
+
+[More about me &rarr;](/about){.about-links .subtitle}
+

@@ -1,0 +1,101 @@
+---
+title: "Andreas Filser"
+subtitle: Sociologist & Data Scientist<br>FDZ-IAB
+image: ../assets/avatar.jpg
+about:
+  template: trestles
+  image-width: 12em
+  image-shape: rounded
+  id: hero-heading
+  links:
+    - text: "{{< fa brands bluesky >}}"
+      aria-label: "Bluesky"
+      href: https://bsky.app/profile/filsa.bsky.social
+    - text: "{{< fa link >}}"
+      aria-label: "Employer Website (IAB)"
+      href: https://iab.de/mitarbeiter/?id=5370712
+    - text: "{{< ai google-scholar >}}"
+      aria-label: "Google Scholar"
+      href: https://scholar.google.de/citations?user=vP7topAAAAAJ
+    - icon: github
+      aria-label: GitHub
+      href: https://github.com/filius23
+    - text: "{{< ai orcid >}}"
+      href: https://orcid.org/0000-0001-5530-3621
+    - icon: linkedin
+      aria-label: "LinkedIn"
+      href: https://www.linkedin.com/in/andreas-filser-85919450/
+    - text: "{{< ai osf >}}"
+      aria-label: "OSF"
+      href: https://osf.io/m7nec/
+
+format: 
+  html: 
+    page-layout: full
+
+header-includes: >
+  <link rel="stylesheet" href="about.css">
+resources:
+  - about.css
+---
+
+::: {#hero-heading}
+<span class="h1">Hello and Willkommen!</span>
+
+I am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx)) in Nuremberg (Germany). 
+  
+My research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers' parental leave.
+  
+I enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent [paper](/publication/2022_update_identifying_mothers/), we updated the identification process of mothers in the labour market data at the IAB. Another [paper]() provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an [R-shiny](https://shiny.posit.co/) dashboard to streamline data applications at the FDZ-IAB.
+  
+Moreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.
+  
+Beyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials [here](/courses).
+
+:::
+
+## About me
+
+::: {.grid}
+
+::: {.g-col-6 #about-me-1}
+
+I enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with {{< fa brands r-project >}}  and Stata.
+
+:::
+
+::: {.g-col-6 #about-me-2}
+
+
+
+{{< fa graduation-cap >}} PhD in Social Sciences (Dr. phil.) <br><p class="indented">University of Oldenburg &#8729; 2022</p>
+{{< fa graduation-cap >}} M.Sc. in Socioeconomics  <br><p class="indented"> Friedrich-Alexander-University Erlangen-Nuremberg &#8729;  2016</p>
+{{< fa graduation-cap >}} B.A. in Sociology & Economics   <br><p class="indented"> University of Konstanz  &#8729;  2012</p>
+
+
+:::
+
+:::
+
+<!-- end grid -->
+
+## 
+
+:::: {.grid}
+
+::: {.g-col-3}
+#### [Publications](../publication){.about-links .subtitle}
+:::
+
+
+::: {.g-col-3}
+#### [Teaching](../Teaching){.about-links .subtitle}
+:::
+
+::: {.g-col-3}
+#### [CV](../CV){.about-links .subtitle}
+::::
+
+::: {.g-col-3}
+#### [Blog (under construction)](../Blog){.about-links .subtitle}
+:::

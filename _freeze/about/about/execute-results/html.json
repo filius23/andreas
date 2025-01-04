@@ -1,0 +1,17 @@
+{
+  "hash": "0f46145d592e4009d2e35a529904cd41",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"About\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this site\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {#hero-heading}\n<div class=\"h1\">Hey, I'm happy you're here</div>\n\nI am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx) ) in Nuremberg (Germany). \n  \n  My research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of father's parental leave.\n  \n  I enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent [paper](/publication/2022_update_identifying_mothers/), we updated the identification process of mothers in the labour market data at the IAB. Another [paper]() provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an [R-shiny](https://shiny.posit.co/) dashboard to streamline data applications at the FDZ-IAB.\n  \n  Moreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.\n  \n  Beyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials [here](/courses).\n\n<div class=\"cvbox\"><i class=\"fas fa-graduation-cap pr2\"></i> PhD in Social Sciences (Dr. phil.) <br><p class=\"indented\">University of Oldenburg &#8729; 2022\n</div>\n<div class=\"cvbox\"><i class=\"fas fa-graduation-cap pr2\"></i> M.Sc. in Socioeconomics  <br><p class=\"indented\"> Friedrich-Alexander-University Erlangen-Nuremberg   &#8729;  2016\n</div>\n<div class=\"cvbox\"><i class=\"fas fa-graduation-cap pr2\"></i> B.A. in Sociology & Economics   <br><p class=\"indented\"> University of Konstanz  &#8729;  2012</div>\n\n\n:::",
+    "supporting": [
+      "about_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
