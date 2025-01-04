@@ -1,3 +1,4 @@
+/*-- scss:defaults --*/
 @font-face {
   font-family: 'Commissioner';
   font-style: normal;
@@ -7,7 +8,7 @@
        url('assets/fonts/commissioner-v20-latin-100.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-100.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-100.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-100.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -18,7 +19,7 @@
        url('assets/fonts/commissioner-v20-latin-200.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-200.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-200.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-200.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -29,7 +30,7 @@
        url('assets/fonts/commissioner-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-300.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-300.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-300.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -40,7 +41,7 @@
        url('assets/fonts/commissioner-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-regular.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-regular.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -51,7 +52,7 @@
        url('assets/fonts/commissioner-v20-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-500.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-500.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-500.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -62,7 +63,7 @@
        url('assets/fonts/commissioner-v20-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-600.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-600.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-600.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -73,7 +74,7 @@
        url('assets/fonts/commissioner-v20-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-700.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-700.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-700.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -84,7 +85,7 @@
        url('assets/fonts/commissioner-v20-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-800.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-800.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-800.svg#\1') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Commissioner';
@@ -95,5 +96,5 @@
        url('assets/fonts/commissioner-v20-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-900.woff') format('woff'), /* Modern Browsers */
        url('assets/fonts/commissioner-v20-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('assets/fonts/commissioner-v20-latin-900.svg#\1') format('svg'); /* Legacy iOS */
+       /*url('assets/fonts/commissioner-v20-latin-900.svg#\1') format('svg'); /* Legacy iOS */
 }

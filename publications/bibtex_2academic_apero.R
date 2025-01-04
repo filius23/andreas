@@ -317,11 +317,11 @@ bibtex_2academic <- function(bibfile,
 
 # Run the function
 
-my_bibfile <- "content/publication/eigene.bib"
-out_fold   <- "content/publication"
+my_bibfile <- "publications/eigene.bib"
+out_fold   <- "publications"
 bibfile  = my_bibfile;outfold   = out_fold;abstract  = TRUE;overwrite = F
 
-bibtex_2academic(bibfile  = my_bibfile,
+bibtex_2academic(bibfile   = my_bibfile,
                  outfold   = out_fold,
                  abstract  = TRUE,
                  overwrite = F)

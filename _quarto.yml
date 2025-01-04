@@ -58,8 +58,8 @@ format:
     theme: 
       - cosmo
       - assets/css/fraunces.css
-      # - assets/css/commissioner.css
-      - anfi-style.scss
+      - assets/css/commissioner.css
+      - assets/anfi-style.scss
     code-link: true
     pagetitle: "{{< meta title >}}"
     lightbox: true
