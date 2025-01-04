@@ -2,8 +2,8 @@ project:
   type: website
   output-dir: docs
   resources:
-    - "styles.css"
-    - "anfi-style.scss"
+    - "assets/styles.css"
+    - "assets/anfi-style.scss"
     - "assets/css/fraunces.css"
     - "assets/css/commissioner.css"
 
