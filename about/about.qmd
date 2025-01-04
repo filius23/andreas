@@ -84,18 +84,18 @@ I enjoy all things data - from teaching undergraduate and PhD-level statistics a
 :::: {.grid}
 
 ::: {.g-col-3}
-#### [Publications](../publication){.about-links .subtitle}
+#### [Publications](../publications){.about-links .subtitle}
 :::
 
 
 ::: {.g-col-3}
-#### [Teaching](../Teaching){.about-links .subtitle}
+#### [Teaching](../teaching){.about-links .subtitle}
 :::
 
 ::: {.g-col-3}
-#### [CV](../CV){.about-links .subtitle}
+#### [CV](../cv){.about-links .subtitle}
 ::::
 
 ::: {.g-col-3}
-#### [Blog (under construction)](../Blog){.about-links .subtitle}
+#### [Blog (under construction)](../blog){.about-links .subtitle}
 :::
