@@ -157,6 +157,8 @@ p.indented {
   color: #00A2C2; // 005F93; // #007A8C; // #0092A8; // #828594; // #9497A8;
 }
 
+
+// Mobile
 /* mobile query up for screens up to ~992px wide */
 @media screen and (max-width: 991.98px) {
     /* move text up & center */
@@ -166,7 +168,8 @@ p.indented {
       padding: 0 0 0 0em !important;
       text-align: center !important;
     }
-
+    
+  
     /* center subtitle */
     .subtitle {
       text-align: center !important;
@@ -177,6 +180,10 @@ p.indented {
       justify-content: center !important;
       font-size: 1em !important;
       flex-direction: row !important; /* prevent line break */
+    }
+    // navigation footer
+    .nav-footer {
+        flex-direction: row;
     }
     
     /* Short intro */
