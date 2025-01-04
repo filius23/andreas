@@ -16,8 +16,8 @@ library(icons)
 ```
 
 
-[Detailed publication list including abstracts](/publications/publications.html)
-Finde me on [Google Scholar `r icon_style(icons::academicons("google-scholar"),scale = 1.4, fill = "#D68951")`](https://scholar.google.de/citations?user=vP7topAAAAAJ)
+[Click here ](/publications/publications.html) for publications including abstracts
+or find me on [Google Scholar `r icon_style(icons::academicons("google-scholar"),scale = 1.4, fill = "#D68951")`](https://scholar.google.de/citations?user=vP7topAAAAAJ)
 
 
 
@@ -28,10 +28,7 @@ source("./publications/bibtex_2publist.R")
 ```
 
 ```{r,results='asis',echo=F}
-  bibtex_2rmd(bibfile  = my_bibfile,
-                 outfold   = out_fold,
-                 abstract  = TRUE,
-                 overwrite = F) %>% 
+  bibtex_2list(bibfile  = "publications/eigene.bib") %>% 
   str_replace_all(.,"Ã¶","ö") %>% 
   str_replace_all(.,"Ã¤","ä") %>% 
   str_replace_all(.,"Ã¼","ü") %>% 
@@ -42,8 +39,9 @@ source("./publications/bibtex_2publist.R")
   tab_options(column_labels.hidden = TRUE) %>% 
   fmt_markdown() %>% 
   tab_style(style = list(
-      cell_text(color = "#1C558C")),
-      locations = cells_body()
-      )
+    cell_text(color = "#1C558C")),
+    locations = cells_body()
+      ) %>% 
+  tab_options(table.background.color = "#fcfefa")
 ```
 
