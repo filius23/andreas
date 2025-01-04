@@ -1,0 +1,166 @@
+/*-- scss:defaults --*/
+
+// Fonts
+
+$font-family-sans-serif:  "Commissioner" !default;
+$font-family-serif:       "Fraunces" !default;
+$font-size-base:          1.1rem !default;
+
+
+// Colors
+$spc-blue: #012052;
+$black:    #404040FF;
+$white:    #fcfefa;
+// $white: #F4F4F4;
+
+// col palette
+$spc-bg: #FFFFFE; // background
+$spc-bg-dark: #fcfefa; //#FFFDE4; // #00FDFF; // #00284D; // #020D53; //1D1638; // sidebar color
+$spc-primary: #174B75;  // 467598
+$spc-primary-light: #1C558C; // #003A86; 
+$spc-secondary: #D68951; // E09956; // dark orange
+$spc-secondary-light: #936c10; // 
+
+//** Body
+// $body-color:  #fce  //** $gray-800 !default;
+$body-color: #4D4D4DFF; //** #404040FF;
+
+//** Global textual link color.
+$link-color:          darken($spc-primary-light, 0%) !default;  //**  #E2402E 
+$link-decoration:     none;
+
+//** Link hover color set via `darken()` function.
+$link-hover-color:      lighten($link-color, 15%) !default;
+$link-hover-decoration: underline;
+
+
+
+// Typography
+h1.title {
+  font-size: 4rem;
+  color:  #1C558C;
+  font-family: "Fraunces";
+  font-weight: 100;
+  line-height: 1.1em !important;
+}
+
+
+
+
+// Nav bar
+// header
+// Navbar icons
+$navbar-fg:             $spc-secondary;
+$navbar-bg:             $white; //, 2%); // !default;  //**  #E2402E ;
+
+.navbar-title { //** top left repetition
+  color: $spc-primary;
+  letter-spacing: .1em;
+  font-weight: 200;
+  font-family: "Commissioner";
+  &:hover {
+    border-bottom: 1px solid $spc-secondary !important;
+  }
+}
+
+// links
+.navbar-nav .nav-link {
+    color: $spc-secondary !important;
+    letter-spacing: .1em; 
+    border-bottom: 0px hidden $spc-secondary;    
+    margin: 0px 10px 0px 10px; 
+    padding: 2px 2px 4px 2px !important;
+    font-family: "Commissioner";
+
+    &:hover {
+      border-bottom: 1px solid $spc-secondary-light !important;
+      //**padding: 2px 2px 2px 2px !important;
+    }
+}
+
+.li.a.dropdown-item {
+  color: $spc-primary-light
+}
+
+.dropdown-text {
+  color: "#FFFFFF";
+}
+
+
+
+
+
+
+
+
+
+// Footer 
+// Footer text
+$footer-fg:             $spc-primary;
+$footer-bg:             $white;
+// Social footer
+.nav-footer-center i {
+  color: $spc-primary !important;
+  
+  &:hover {
+    //**color: $spc-primary-light !important;
+    color: $spc-secondary-light !important;
+  }
+}
+.nav-footer-left {
+  font-family: "Commissioner";
+  &:hover {
+    color: $spc-primary-light !important;
+  }
+}
+.nav-footer-right {
+  font-family: "Commissioner";
+  &:hover {
+    color: $spc-primary-light !important;
+  }
+}
+
+
+// ** code
+$code-block-bg: #2B2423;
+
+
+/* Learn More About Me */
+.about-links.subtitle {
+  font-size: 1em !important;
+  font-family: "Commissioner";
+  color: $spc-secondary;
+  justify-content: flex-end !important;
+}
+
+
+a.sidebar-item-text.sidebar-link {
+    color: $spc-secondary;
+}
+
+.navbar li.dropdown-header {
+  text-transform: none;
+}
+
+.quarto-listing-category {
+    font-family: "Fraunces";
+}
+
+.quarto-listing-category-title {
+    font-family: "Fraunces";
+}
+
+// Box for CV icons
+div.cvbox {
+  padding: 0em;
+  margin: 0em 0;
+  background-color: transparent;
+  border: solid 0px #000000;
+  text-indent: 2em, hanging;
+}
+p.indented {
+  margin: 0;
+  //text-indent: 33px;
+  text-indent: 2em;
+  color: #00A2C2; // 005F93; // #007A8C; // #0092A8; // #828594; // #9497A8;
+}
