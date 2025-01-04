@@ -1,0 +1,44 @@
+---
+author: "Dana Müller, Andreas Filser, Corinna Frodermann"
+title: 'Update: Identifying Mothers in Administrative Data'
+date: '2022-01-15'
+publishDate: '2022-01-15'
+publication_types: 
+- "4"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://doi.org/10.5164/IAB.FDZM.2201.en.v1'
+ - icon: laptop-code
+   icon_pack: fas
+   name: Stata Code
+   url:  'https://doi.org/10.5164/IAB.FDZM.2201.en.v1'
+   
+tags:
+- Bundesagentur Für Arbeit
+- Bundesrepublik Deutschland
+- Daten
+- Datenanalyse
+- Erwerbsunterbrechung
+- Kinderzahl
+- Mütter
+publication: '*FDZ-Methodenreport*(2022-01)'
+excerpt: "Dana Müller, Andreas Filser, Corinna Frodermann<br> FDZ-Methodenreport 2022-01"
+subtitle: 'Dana Müller, Andreas Filser, Corinna Frodermann  FDZ-Methodenreport 2022-01'
+image_preview: 
+selected: false
+projects: []
+url_preprint: ""
+url_dataset: 
+url_project: 
+url_slides: 
+url_video: 
+url_poster: 
+math: true
+highlight: true
+---
+#### Abstract
+Administrative data of the Federal Employment Agency provide an important data base for labour market research. However, the Federal Employment Agency's tasks define what kind of information is recorded. Therefore, some information is missing that is relevant for various research purposes. One example is information on childbirth, which can be important when analysing female employment biographies. It is still mainly mothers who interrupt their employment to care for their children. These employment interruptions could have different effects on the career of mothers, e.g. wage reductions, reduced career opportunities or an increase in part-time employment. The FDZ-Methodenreport 13/2017 (Müller/Strauch 2017) presented one way to identify family-related employment breaks using indirect identifiers in the administrative data. With this FDZ-Methodenreport, we updated the identification strategy and adapted it to new dataset versions. We use official statistics on births to validate our identification strategy. We make our program code available as an appendix for the research community. Users can adapt when necessary.
+ 
+**[Back to publication list](/publication)**

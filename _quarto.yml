@@ -1,0 +1,67 @@
+project:
+  type: website
+  resources:
+    - "styles.css"
+    - "anfi-style.scss"
+    - "assets/css/fraunces.css"
+    - "assets/css/commissioner.css"
+
+website:
+  title: "Andreas Filser"
+  site-url: https://afilser.netlify.app/
+  description: "Researcher at FDZ-IAB"
+  # favicon: assets/silvia/img/logo_rounded.svg
+  page-navigation: true
+  back-to-top-navigation: true
+ 
+  navbar:
+    tools:
+    - icon: github
+      href: https://github.com/filius23
+    right:
+      - text: About
+        aria-label: "About Me"
+        href: about/about.qmd
+      # - text: Talks
+      #   aria-label: "Invited Talks"
+      #   href: talk/index.qmd  
+      - text: Publications
+        aria-label: "Publications"
+        href: publications/publications.qmd
+      # - text: Projects
+      #   aria-label: "Project Portfolio"
+      #   href: project/index.qmd
+  
+  page-footer:  
+    left: >-
+     &#169; 2025 Andreas Filser &#8729; Made with [Quarto](https://quarto.org) and [{{< fa brands r-project >}}](https://cran.r-project.org/)
+    center: |
+      <a class="link-dark me-1" href="https://bsky.app/profile/filsa.bsky.social" title="Bluesky" target="_blank" rel="noopener">{{< fa brands bluesky >}}</a>
+      <a class="link-dark me-1" href="https://iab.de/mitarbeiter/?id=5370712" title="Employer Website (IAB)" target="_blank" rel="noopener">{{< fa link >}}</a>
+      <a class="link-dark me-1" href="https://scholar.google.de/citations?user=vP7topAAAAAJ" title="Google Scholar" target="_blank"rel="noopener">{{< ai google-scholar >}}</a>
+      <a class="link-dark me-1" href="https://github.com/filius23" title="github" target="_blank" rel="noopener">{{< fa brands github >}}</a>
+      <a class="link-dark me-1" href="https://orcid.org/0000-0001-5530-3621" title="orcid" target="_blank" rel="noopener">{{< ai orcid >}}</a>
+      <a class="link-dark me-1" href="https://www.linkedin.com/in/andreas-filser-85919450/" title="LinkedIn" target="_blank" rel="noopener">{{< fa brands linkedin >}}</a>
+      <a class="link-dark me-1" href="https://osf.io/m7nec/" title="OSF" target="_blank" rel="noopener">{{< ai osf >}}</a>
+
+    right: 
+      - text: "Contact"
+        aria-label: "Contact"
+        href: "contact.qmd"
+      - text: "License"
+        aria-label: "License"
+        href: license.qmd
+
+format: 
+  html:
+    theme: 
+      - cosmo
+      - assets/css/fraunces.css
+      # - assets/css/commissioner.css
+      - anfi-style.scss
+    code-link: true
+    pagetitle: "{{< meta title >}}"
+    lightbox: true
+
+execute: 
+  freeze: auto
