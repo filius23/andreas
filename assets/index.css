@@ -33,6 +33,7 @@
   justify-content: flex-end !important;
   column-gap: 0em !important;
   font-size: 1.7em !important;
+  white-space: nowrap;
 }
 
 /* social links: individual links */
@@ -68,7 +69,7 @@
     /* move text up & center */
     .entity-contents {
       order: 2 !important;
-      margin: -4em 0 0 0 !important;
+      margin: -1em 0 0 0 !important;
       padding: 0 0 0 0em !important;
       text-align: center !important;
     }
@@ -82,9 +83,10 @@
     .about-entity .about-links {
       justify-content: center !important;
       font-size: 1em !important;
+      flex-direction: row !important; /* prevent line break */
     }
-
-    /* blurb */
+    
+    /* Short intro */
     .about-contents {
       padding: 0 0 0 0em !important;
     }
