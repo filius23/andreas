@@ -149,8 +149,8 @@ bibtex_2rmd <- function(bibfile,
 }
 
 # Run the function
-my_bibfile <- "D:/uolCloud/webseite/andreasfilser/content/publication/eigene.bib"
-out_fold   <- "content/publication"
+my_bibfile <- "D:/uolCloud/webseite/andreas/publications/eigene.bib"
+out_fold   <- "content/publications"
 bibfile  = my_bibfile;outfold   = out_fold;abstract  = TRUE;overwrite = F
 
 bibtex_2rmd(bibfile  = my_bibfile,

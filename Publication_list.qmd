@@ -12,7 +12,7 @@ library(kableExtra)
 library(gt)
 library(fontawesome)
 library(icons)
-# source("content/publication/bibtex_2publist.R")
+# source("publications/bibtex_2publist.R")
 ```
 
 
@@ -23,7 +23,7 @@ library(icons)
 
 
 ```{r,echo=F,warning=FALSE,message=F}
-# rstudioapi::navigateToFile("./publication/bibtex_2publist.R") 
+# rstudioapi::navigateToFile("./publications/bibtex_2publist.R") 
 source("./publications/bibtex_2publist.R") 
 ```
 
