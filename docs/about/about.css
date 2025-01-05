@@ -9,25 +9,25 @@
 }
 
 /* social links: block of links */
-  .about-entity .about-links {
-    justify-content: center !important;
-    column-gap: 0em !important;
-    font-size: 1.2em !important;
-  }
+.about-entity .about-links {
+  justify-content: center !important;
+  column-gap: 0em !important;
+  font-size: 1.2em !important;
+}
 
 /* social links: individual links */
-  .about-entity .about-link {
-    padding: 0.25em 0.25em !important;
-    border: none !important;  
-  }
+.about-entity .about-link {
+  padding: 0.25em 0.25em !important;
+  border: none !important;  
+}
 
 /* about area */
-  .about-entity {
-    background-color: var(--spc-bg-dark);
-    padding: 3em 0em 3em 0em !important;
-    margin: 0em 2em 0em 2em;
-    border-radius: 5px;
-  }
+.about-entity {
+  background-color: var(--spc-bg-dark);
+  padding: 3em 0em 3em 0em !important;
+  margin: 0em 2em 0em 2em;
+  border-radius: 5px;
+}
 
 /* mobile query up for screens up to ~992px wide */
 @media screen and (max-width: 991.98px) {
@@ -58,14 +58,8 @@
     flex-wrap: wrap;
   }
 
-  /* wrap lately section */
-  #lately .grid {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   /* listings */
-  #blog, #talks, #publications, #projects {
+  #publications, #cv, #teaching, #blog {
     flex-basis: 100% !important;
   }
 

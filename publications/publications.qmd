@@ -1,7 +1,7 @@
 ---
 title: "Publications" 
 description: |
-  This a list of my scholarly publications<br>You can find a full condensed publications list [here](/publication_list.html) and find my profile on [Google Scholar {{< ai google-scholar >}}](https://scholar.google.de/citations?user=vP7topAAAAAJ).
+  This a list of my scholarly publications<br>You can find a full condensed publications list [here](/publications/publication_list.html) and find my profile on [Google Scholar {{< ai google-scholar >}}](https://scholar.google.de/citations?user=vP7topAAAAAJ).
 listing: 
   contents: 
     - "**/index.qmd"

@@ -40,7 +40,7 @@ resources:
 ---
 
 ::: {#hero-heading}
-<span class="h1">Hello and Willkommen!</span>
+<span class="h1">Hello and Willkommen! 👋</span>
 
 I am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx)) in Nuremberg (Germany). 
   
