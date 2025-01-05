@@ -11,3 +11,7 @@ listing:
   image-height: 100%
 page-layout: full
 ---
+
+
+[Table export using in Stata's esttab](/courses/Stata_BIBB/index.html)
+
