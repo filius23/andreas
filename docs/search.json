@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "Dr. Andreas Filser",
     "section": "",
-    "text": "I am a sociologist enjoying conducting quantitative research and procuring data for others. My own research centres around family sociology, including relationship formation and parents in the labour market. I enjoy programming in R and Stata and teaching these skills.\nMore about me →\n\n\n Back to top"
+    "text": "I am a sociologist enjoying conducting quantitative research and procuring data for others. My own research centres around family sociology, including relationship formation and parents in the labour market. I enjoy programming in R and Stata and teaching these skills.\nMore about me →"
   },
   {
     "objectID": "publications/2017_KRANKENKASSEN_IM_REGIONALEN/index.html",
@@ -124,5 +124,26 @@
     "title": "Exporting Tables using Stata and esttab",
     "section": "",
     "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote - BIBB\n\n\n\nSlides\nGitHub Pages\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "Andreas Filser",
+    "section": "",
+    "text": "Hello and Willkommen! 👋\nI am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research (FDZ-IAB) in Nuremberg (Germany).\nMy research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers’ parental leave.\nI enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent paper, we updated the identification process of mothers in the labour market data at the IAB. Another paper provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an R-shiny dashboard to streamline data applications at the FDZ-IAB.\nMoreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.\nBeyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials here."
+  },
+  {
+    "objectID": "about/index.html#about-me",
+    "href": "about/index.html#about-me",
+    "title": "Andreas Filser",
+    "section": "About me",
+    "text": "About me\n\n\nI enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with  and Stata.\n\n\n PhD in Social Sciences (Dr. phil.) \n\nUniversity of Oldenburg ∙ 2022\n\n M.Sc. in Socioeconomics \n\nFriedrich-Alexander-University Erlangen-Nuremberg ∙ 2016\n\n B.A. in Sociology & Economics \n\nUniversity of Konstanz ∙ 2012"
+  },
+  {
+    "objectID": "about/index.html#section",
+    "href": "about/index.html#section",
+    "title": "Andreas Filser",
+    "section": "",
+    "text": "Publications\n\n\nTeaching\n\n\nCV\n\n\nBlog (under construction)"
   }
 ]
