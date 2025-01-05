@@ -13,7 +13,7 @@ website:
   description: "Researcher at FDZ-IAB"
   # favicon: 
   page-navigation: true
-  back-to-top-navigation: true
+  #back-to-top-navigation: true
  
   navbar:
     tools:
@@ -22,7 +22,7 @@ website:
     right:
       - text: About
         aria-label: "About Me"
-        href: about/about.qmd
+        href: about/index.qmd
       - text: Courses
         aria-label: "Courses"
         href: courses/index.qmd
