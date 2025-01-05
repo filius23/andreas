@@ -56,41 +56,6 @@
     "text": "← Back to publication list\n\n\n\n Back to top"
   },
   {
-    "objectID": "courses/Stata_BIBB/index.html",
-    "href": "courses/Stata_BIBB/index.html",
-    "title": "Exporting Tables using Stata and esttab",
-    "section": "",
-    "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote\n\n\n\nEvent\nR-Ladies Rome\n\n\n\nRepository\nGitHub\n\n\n\nSlides\n[GitHub Pages](https://filius23.github.io/StataBIBB_tables2022\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "about/about.html",
-    "href": "about/about.html",
-    "title": "Andreas Filser",
-    "section": "",
-    "text": "Hello and Willkommen! 👋\nI am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research (FDZ-IAB) in Nuremberg (Germany).\nMy research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers’ parental leave.\nI enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent paper, we updated the identification process of mothers in the labour market data at the IAB. Another paper provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an R-shiny dashboard to streamline data applications at the FDZ-IAB.\nMoreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.\nBeyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials here."
-  },
-  {
-    "objectID": "about/about.html#about-me",
-    "href": "about/about.html#about-me",
-    "title": "Andreas Filser",
-    "section": "About me",
-    "text": "About me\n\n\nI enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with  and Stata.\n\n\n PhD in Social Sciences (Dr. phil.) \n\nUniversity of Oldenburg ∙ 2022\n\n M.Sc. in Socioeconomics \n\nFriedrich-Alexander-University Erlangen-Nuremberg ∙ 2016\n\n B.A. in Sociology & Economics \n\nUniversity of Konstanz ∙ 2012"
-  },
-  {
-    "objectID": "about/about.html#section",
-    "href": "about/about.html#section",
-    "title": "Andreas Filser",
-    "section": "",
-    "text": "Publications\n\n\nTeaching\n\n\nCV\n\n\nBlog (under construction)"
-  },
-  {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Courses",
-    "section": "",
-    "text": "No matching items\n\n Back to top"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Dr. Andreas Filser",
@@ -145,5 +110,19 @@
     "title": "Publications",
     "section": "",
     "text": "Are Local Sex Ratios Associated with Transition into First Cohabiting Union? Evidence from Finnish Register Data\n\n\nStockholm Research Reports in Demography 2024_22\n\n\n\n\n\nMay 15, 2024\n\n\nAndreas Filser, Caroline Uggla\n\n\n\n\n\n\n\nSex Ratios and Union Formation in the Historical Population of the St. Lawrence Valley\n\n\nAndreas Filser, Kai P. Willführ PLOS ONE 17(6)\n\n\n\n\n\nJun 9, 2022\n\n\nAndreas Filser, Kai P Willfuehr\n\n\n\n\n\n\n\nAdolescent School Injuries and Classroom Sex Compositions in German Secondary Schools\n\n\nAndreas Filser, Sven Stadtmüller, Robert Lipp, Richard Preetz BMC Public Health 22(1)\n\n\n\n\n\nJan 15, 2022\n\n\nAndreas Filser, Sven Stadtmüller, Robert Lipp, Richard Preetz\n\n\n\n\n\n\n\nUpdate: Identifying Mothers in Administrative Data\n\n\nDana Müller, Andreas Filser, Corinna Frodermann FDZ-Methodenreport 2022-01\n\n\n\n\n\nJan 15, 2022\n\n\nDana Müller, Andreas Filser, Corinna Frodermann\n\n\n\n\n\n\n\nBleibt Alles Anders?! Zur Akzeptanz Hybrider Lehr- Und Lernformate Während Der COVID-19-Pandemie\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus In Miriam Barnat, Elke Bosse & Birgit Szczyrba: Forschungsimpulse Für Die Hochschulentwicklung Im Kontext Hybrider Lehre. (pp.49–60). Cologne Open Science\n\n\n\n\n\nOct 15, 2021\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus\n\n\n\n\n\n\n\nLongitudinal Changes in Life Satisfaction and Mental Health in Emerging Adulthood During the COVID-19 Pandemic. Risk and Protective Factors\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus Emerging Adulthood 9(5), 602–617\n\n\n\n\n\nOct 15, 2021\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus\n\n\n\n\n\n\n\nDo Local Sex Ratios Approximate Subjective Partner Markets? Evidence from the German Family Panel\n\n\nAndreas Filser & Richard Preetz Human Nature 32(2), 406-433\n\n\n\n\n\nJun 15, 2021\n\n\nAndreas Filser & Richard Preetz\n\n\n\n\n\n\n\nAre Skewed Sex Ratios Associated with Violent Crime? A Longitudinal Analysis Using Swedish Register Data\n\n\nAndreas Filser, Kieron Barclay, Amber Beckley, Caroline Uggla, Sebastian Schnettler Evolution and Human Behavior 42(3), 212–222\n\n\n\n\n\nMay 15, 2021\n\n\nAndreas Filser, Kieron Barclay, Amber Beckley, Caroline Uggla, Sebastian Schnettler\n\n\n\n\n\n\n\nSocial Outcomes And Sex Ratio\n\n\nSebastian Schnettler, Andreas Filser In Todd K. Shackelford & Viviana A. Weekes-Shackelford: Encyclopedia of Evolutionary Psychological Science. Springer\n\n\n\n\n\nNov 15, 2019\n\n\nSebastian Schnettler, Andreas Filser\n\n\n\n\n\n\n\nSex Ratio and Men’s Long-Term Mating\n\n\nAndreas Filser, Sebastian Schnettler In Todd K. Shackelford & Viviana A. Weekes-Shackelford: Encyclopedia of Evolutionary Psychological Science. Springer\n\n\n\n\n\nAug 15, 2019\n\n\nAndreas Filser, Sebastian Schnettler\n\n\n\n\n\n\n\nMehr Männer, Mehr Gewalt? Eine Präzisierung Möglicher Kausalmechanismen\n\n\nAndreas Filser, Sebastian Schnettler In Clemens Schwender, Sascha Schwarz & Anke Huckauf: Geschlecht Und Verhalten Aus Evolutionärer Perspektive. (pp.63–75). Pabst-Science Publishers\n\n\n\n\n\nJan 15, 2018\n\n\nAndreas Filser, Sebastian Schnettler\n\n\n\n\n\n\n\nKrankenkassen im regionalen Vergleich\n\n\nAmelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni In Thomas Adolph, Oliver Everling & Marco Metzler: Krankenversicherung im Rating. (pp.97–121). Springer Gabler\n\n\n\n\n\nFeb 15, 2017\n\n\nAmelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni\n\n\n\n\n\n\n\nDemographische Maskulinisierung und Gewalt\n\n\nSebastian Schnettler & Andreas Filser In: Gerald Hartung & Matthias Herrgen: Interdisziplinäre Anthropologie. pp.130-142. Springer VS\n\n\n\n\n\nMar 15, 2015\n\n\nSebastian Schnettler & Andreas Filser\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n Back to top"
+  },
+  {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Courses",
+    "section": "",
+    "text": "Table export using in Stata’s esttab\n\n\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "courses/Stata_BIBB/index.html",
+    "href": "courses/Stata_BIBB/index.html",
+    "title": "Exporting Tables using Stata and esttab",
+    "section": "",
+    "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote - BIBB\n\n\n\nSlides\nGitHub Pages\n\n\n\n\n\n\n\n Back to top"
   }
 ]
