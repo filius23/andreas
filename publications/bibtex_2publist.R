@@ -103,11 +103,11 @@ bibtex_2list <- function(bibfile) {
         #                    "{authors} ({year}). [{title}]({link}). {journal}, ({volume}){number}, {pages}.\n\n"
         #                    )
         templat1 <- case_when(
-          x$pubtype %in% 6 ~                  "[{title}]({link}) <br> &nbsp; {authors} ({year}) In {editor}: {booktitle}. {pages}, {publisher}.\n\n",
-          x$pubtype %in% 0 ~                  "[{title}]({link}) <br> &nbsp; {authors} ({year}) {journal} [working paper].\n\n",   # add [working paper] to title for preprints
-          is.na(x$number) & is.na(x$volume) ~ "[{title}]({link}) <br> &nbsp; {authors} ({year}) {journal}, {pages}.\n\n",
-          is.na(x$number) | is.na(x$volume) ~ "[{title}]({link}) <br> &nbsp; {authors} ({year}) {journal}, {vol_num}, {pages}.\n\n",
-          TRUE ~                              "[{title}]({link}) <br> &nbsp; {authors} ({year}) {journal}, ({volume}){number}, {pages}.\n\n"
+          x$pubtype %in% 6 ~                  "[{title}]({link}). {authors}. ({year}) In {editor}: {booktitle}. {pages}, {publisher}.\n\n",
+          x$pubtype %in% 0 ~                  "[{title}]({link}). {authors}. ({year}) {journal} [working paper].\n\n",   # add [working paper] to title for preprints
+          is.na(x$number) & is.na(x$volume) ~ "[{title}]({link}). {authors}. ({year}) {journal}, {pages}.\n\n",
+          is.na(x$number) | is.na(x$volume) ~ "[{title}]({link}). {authors}. ({year}) {journal}, {vol_num}, {pages}.\n\n",
+          TRUE ~                              "[{title}]({link}). {authors}. ({year}) {journal}, ({volume}){number}, {pages}.\n\n"
                            )
         
         glue::glue_data(x, templat1)
@@ -118,11 +118,9 @@ bibtex_2list <- function(bibfile) {
 }
 
 # Run the function
-
-
-bibtex_2list(bibfile  = "publications/eigene.bib") %>% 
-  str_replace_all(.,"Ã¶","ö") %>% 
-  str_replace_all(.,"Ã¤","ä") %>% 
-  str_replace_all(.,"Ã¼","ü") %>% 
-  str_replace_all(.,"â€™","'") #%>% 
+# bibtex_2list(bibfile  = "./publications/eigene.bib") %>% 
+#   str_replace_all(.,"Ã¶","ö") %>% 
+#   str_replace_all(.,"Ã¤","ä") %>% 
+#   str_replace_all(.,"Ã¼","ü") %>% 
+#   str_replace_all(.,"â€™","'") #%>% 
   #kableExtra::kable(.,format = "markdown")

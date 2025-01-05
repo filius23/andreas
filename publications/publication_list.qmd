@@ -1,0 +1,52 @@
+---
+title: 'Publication list'
+# date: "2024-09-18" 
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+
+header-includes: >
+  <link rel="stylesheet" href="pub_list.css">
+
+resources:
+  - pub_list.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(kableExtra)
+library(gt)
+library(fontawesome)
+library(icons)
+# source("publications/bibtex_2publist.R")
+```
+
+
+[Click here ](/publications/publications.html) for publications including abstracts
+or find me on [Google Scholar `r icon_style(icons::academicons("google-scholar"),scale = 1.4, fill = "#D68951")`](https://scholar.google.de/citations?user=vP7topAAAAAJ)
+
+
+
+
+```{r loadimportfun,echo=F,warning=FALSE,message=F}
+# rstudioapi::navigateToFile("./publications/bibtex_2publist.R") 
+source("bibtex_2publist.R") 
+```
+
+```{r creategt,results='asis',echo=F}
+  bibtex_2list(bibfile  = "eigene.bib") %>% 
+  str_replace_all(.,"Ã¶","ö") %>% 
+  str_replace_all(.,"Ã¤","ä") %>% 
+  str_replace_all(.,"Ã¼","ü") %>% 
+  str_replace_all(.,"â€™","'") %>% 
+  enframe() %>% 
+  select(-1) %>% 
+  gt() %>% 
+  tab_options(column_labels.hidden = TRUE) %>% 
+  fmt_markdown() %>% 
+  tab_style(style = list(
+    cell_text(color = "#1C558C")),
+    locations = cells_body()
+      ) %>% 
+  tab_options(table.background.color = "#fcfefa")
+```
+

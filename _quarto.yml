@@ -23,19 +23,19 @@ website:
       - text: About
         aria-label: "About Me"
         href: about/about.qmd
-      # - text: Talks
-      #   aria-label: "Invited Talks"
-      #   href: talk/index.qmd  
+      - text: Courses
+        aria-label: "Courses"
+        href: courses/index.qmd
       - text: Publications
         aria-label: "Publications"
         href: publications/publications.qmd
-      # - text: Projects
-      #   aria-label: "Project Portfolio"
-      #   href: project/index.qmd
+      - text: CV
+        aria-label: "CV"
+        href: cv/Andreas_Filser_cv.pdf
   
   page-footer:  
     left: >-
-     &#169; 2025 Andreas Filser &#8729; Made with [Quarto](https://quarto.org) and [{{< fa brands r-project >}}](https://cran.r-project.org/)
+     &#169; 2025 Andreas Filser &#8729; Made with [Quarto](https://quarto.org), [{{< fa brands r-project >}}](https://cran.r-project.org/) and {{< fa heart >}}
     center: |
       <a class="link-dark me-1" href="https://bsky.app/profile/filsa.bsky.social" title="Bluesky" target="_blank" rel="noopener">{{< fa brands bluesky >}}</a>
       <a class="link-dark me-1" href="https://iab.de/mitarbeiter/?id=5370712" title="Employer Website (IAB)" target="_blank" rel="noopener">{{< fa link >}}</a>

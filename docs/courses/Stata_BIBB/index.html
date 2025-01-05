@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Amelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni">
-<meta name="dcterms.date" content="2017-02-15">
 
-<title>Krankenkassen im regionalen Vergleich – Andreas Filser</title>
+<title>Exporting Tables using Stata and esttab – Andreas Filser</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,42 +71,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  </head><body class="nav-fixed fullcontent">true
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+</head>
 
-
-
-
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -147,65 +116,74 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns">
-<div id="title-block-header-title" class="quarto-title page-columns page-full page-layout-full featured-image p-4" style="background-image: url(featured.png), url(featured.jpg), url(../featured.jpg);">
-<h1 class="title">Krankenkassen im regionalen Vergleich</h1>
-<p class="subtitle lead">Amelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni In Thomas Adolph, Oliver Everling &amp; Marco Metzler: Krankenversicherung im Rating. (pp.97–121). Springer Gabler</p>
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exporting Tables using Stata and esttab</h1>
+<p class="subtitle lead">Tabellenexport mit Stata (In German)</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Amelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 15, 2017</p>
-    </div>
-  </div>
   
     
   </div>
   
 
 
-<div class="mt-4 d-flex flex-row flex-wrap gap-1 justify-content-left justify-content-sm-start" role="group" aria-label="Links">
-<a href="http://link.springer.com/chapter/10.1007/978-3-8349-4753-6_6" class="btn btn-secondary text-capitalize"><i class="bi bi-file-pdf me-1"></i> PDF</a>
-<a href="https://doi.org/10.1007/978-3-8349-4753-6_6" class="btn btn-secondary text-capitalize"><i class="bi bi-doi me-1"></i> Publication</a>
-</div>
-
-</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-<!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
-<!-- 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title"> 
--->
-<!-- <header id="title-block-header" class="quarto-title-block default page-columns"> -->
-<!-- <div class="quarto-title page-columns page-full featured-image p-4" style="background-image: url(featured.png), url(featured.jpg), url(../featured.jpg);"> -->
+</header>
 
 
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Abstract</td>
+<td>Using Stata to create Word and Latex tables</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Date</td>
+<td>21 October 2022</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Time</td>
+<td>08:30 AM CET</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Location</td>
+<td>Remote</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Event</td>
+<td><a href="https://bibb.de/"><strong>R-Ladies Rome</strong></a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Repository</td>
+<td><a href="https://github.com/filius23/StataBIBB_tables2022"><strong>GitHub</strong></a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Slides</td>
+<td>[<strong>GitHub Pages</strong>](https://filius23.github.io/StataBIBB_tables2022</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-<section id="abstract" class="level4">
-<h4 class="anchored" data-anchor-id="abstract">Abstract</h4>
-<p>(Abstract not available)</p>
-<p><strong><a href="../..\publication">Back to publication list</a></strong></p>
 
-
-
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
