@@ -5,7 +5,7 @@ This is the repo for [my personal website](https://afilser.netlify.app/) - welco
 
 I keep this repository public so that everyone can learn how to create their own site. This is how I did it. 
 Special thanks to [Alison Hill](https://www.apreshill.com) for creating this Hugo Apéro theme and to [Silvia Canelón](https://www.silviacanelon.com) and [Shazia Ruybal-Pesántez](https://shaziaruybal.com/) for publicly providing the code for their pages.
-Your site deserves its own unique style. 
+Please avoid simply duplicating my site - your site deserves its own unique style. You can find excellent documentation on how to create and customize your own quarto site at [www.quarto.org](https://quarto.org/docs/websites/website-about.html)
 
 My website was made using the [Quarto](https://pkgs.rstudio.com/blogdown/index.html) R package and the [Hugo Apéro theme](https://hugo-apero-docs.netlify.app/).
 
