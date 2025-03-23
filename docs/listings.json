@@ -1,7 +1,9 @@
 [
   {
     "listing": "/courses/index.html",
-    "items": []
+    "items": [
+      "/courses/Stata_BIBB/index.html"
+    ]
   },
   {
     "listing": "/publications/publications.html",

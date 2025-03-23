@@ -3,3 +3,20 @@
   date: 2023-10-21
   image: ./courses/Stata_BIBB/thumbnail.png
   path: ./Stata_BIBB/index.md
+- title: "Test"
+  subtitle: "A real test"
+  author: "AnFi"
+  date: 2020-08-31
+  image: /02-xaringan/featured.png
+  path:  /02-xaringan/index.html
+  categories:
+    - xaringan
+- title: "flipbook"
+  subtitle: "A real test 2"
+  author: "AnFi"
+  date: 2020-08-31
+  image: /ggplot_flipbook/featured.gif
+  path:  /ggplot_flipbook/ggplot2_intro.html
+  categories:
+    - xaringan
+  

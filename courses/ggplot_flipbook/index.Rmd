@@ -1,0 +1,128 @@
+---
+title: "ggplot2"
+subtitle: "Ein Überblick"
+author: "Andreas Filser"
+date: "Frühjahr 2025"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [ninjutsu,xaringan-themer.css]
+    nature:
+      ratio: 16:9
+      highlightLines: true
+      highlightStyle: tomorrow-night-bright
+      countIncrementalSlides: false
+    self_contained: true
+---
+```{r setup1, include = FALSE}
+knitr::opts_chunk$set(comment = "##", dpi = 500,
+                      fig.width  = 5.5, 
+                      fig.height = 5.5,
+                      message = FALSE, warning = FALSE, comment = "", cache = T)
+library(gapminder)
+library(xaringanthemer)
+library(kableExtra)
+library(xaringanExtra)
+library(tidyverse)
+library(patchwork)
+library(ggeffects)
+library(flipbookr)
+library(modelsummary)
+library(flextable, exclude = c("as_image","footnote","compose"))
+```
+
+```{r xaringan-themer, include=FALSE}
+# Colors for theming
+bg_color   <- "#141438" # code background
+highlight  <- "#ececf8" # highlight in code
+highlight2 <- "#E0E0E0" # highlight other text
+text_color1 <- "#51646B" # standard text color
+heading_color <- "#dc322f" # style_solarized default 
+bold_color    <- "#d33682" # style_solarized default
+# bold_color    <- "#4B6F9C" # "#42628A" # less red/purple "#404985" #
+link_col      <- "#b58900" 
+# update chunk_reveal function to avoid setting color every time
+chunk_reveal <- purrr::partial(flipbookr::chunk_reveal, widths = c(1,1), color=bg_color)
+
+source("css_themer_2025.R")
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa-regular fa-clipboard\"></i>",
+    success_text = paste0("<i class=\"fa fa-check\" style=\"color:",highlight,"\"></i>"),
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+
+```
+```{css more_css_settings, echo=F}
+.remark-code{line-height: 1.5; font-size: 90%} /*font size for manual panels*/
+code, pre {
+  font-weight: 500;  /* Set font weight to normal */
+} 
+.blade1 {
+  font-size: "80%"; /* 80% of the parent's font size */
+}
+```
+
+```{r allbus16_setup, include=F}
+# setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+a16_ft <- readr::read_delim("ZA5250_v2-0-0.csv",delim = ";") %>% 
+  filter(work == 1, age <= 64, educ %in%  1:5) %>% 
+  mutate(across(everything(),~ifelse(.x<0,NA,.)),
+         across(c(educ,sex,eastwest,gkpol),~factor(.x)),
+         sex = factor(sex, levels = c(1,2), labels = c("m","w")) ) %>% 
+  filter(complete.cases(sex, age , educ , eastwest , gkpol))
+```
+
+# Datenvisualisierung - warum und wozu?
+
+
+**(1.) Deskription: **  
++ Überblick zu den verwendeten Daten  
++ Sind nur junge oder alte Menschen in meinem Datensatz?  
++ Wie häufig kommt das analysierte Ereignis vor?  
+
+**(2.) Zusammenfassung der Ergebnisse:**
++ Schöner als Tabellen (bei guter Umsetzung)   
++ Schneller verständlich als Tabellen (dito)
+
+
+
+
+
+***
+> Diese Präsentation basiert teilweise auf dem [`{flipbookr}`](https://evamaerey.github.io/flipbookr/index.html)-Paket von [Gina Reynolds](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html#1) und den *Data Visualization* Kursen von [Danielle Navarro](https://djnavarro.github.io/satrdayjoburg/) und [Charles Lanfear](https://clanfear.github.io/R_Visualization_Workshop/).
+
+---
+# Vorbemerkungen
+
++ Zuhören, später selbst machen  
+
++ Prinzip verstehen, nicht Befehle auswendig lernen
+  + Googlen!
+  + das [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) bietet eine umfangreiche Sammlung an Beispielplots inkl. dazugehöriger Syntax 
+  + das [ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) gibt eine Übersicht zu den wichtigsten Funktionen und Befehlen
+  + Mehr Links am Ende 
+
+---
+# ggplot2
+
+Das Paket [**ggplot2**](https://ggplot2.tidyverse.org/) basiert auf der Idee der "layered grammar of graphics". Die zu erstellende Darstellung wird in verschiedene Parameter unterteilt:
+
+* **data**: welche Daten sollen verwendet werden? 
+
+* **aes**thetics: welche Variablen sollen dargestellt werden?
+  
+* **geom**etrische Objekte: Punkte, Säulen, Linien, ...?
+
+* **Koordinatensystem**: numerisch, Prozent, logarithmisch, Koordianten?
+
+* **lab**els: Beschriftungen und Überschriften
+
+* **Theme**: Farbschema, Schriftgröße
+
+* ggf. Skalen
+
+
+

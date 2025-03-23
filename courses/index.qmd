@@ -3,7 +3,8 @@ title: "Courses"
 subtitle: "I specialize in teaching applied statistics and programming using R and Stata, in both German and English. Here, I'll compile a selection of educational materials I've created over the years. If you're looking for a dedicated instructor, feel free to reach out – I'd be happy to collaborate with you!"
 listing:
   contents:
-    - "_metadata.yml"
+    - "metadata.yml"
+    - "/02-xaringan/metadata.yml"
   type: grid
   date-format: "DD MMMM YYYY"
   fields: [date, subtitle, image]
