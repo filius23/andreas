@@ -1,17 +1,23 @@
 ---
 title: "Courses"
-subtitle: "I specialize in teaching applied statistics and programming using R and Stata, in both German and English. Here, I'll compile a selection of educational materials I've created over the years. If you're looking for a dedicated instructor, feel free to reach out – I'd be happy to collaborate with you!"
+subtitle: "I specialize in teaching applied statistics and programming using R and Stata for social scientists at the undergraduate, masters, and doctoral level - both in German and in English. <br> <br> In this gallery, I'm compiling a selection of educational materials I've created over the years. If you're looking for a dedicated instructor, feel free to reach out – I'd be happy to collaborate with you!"
 listing:
   contents:
-    - "_metadata.yml"
-  type: grid
+    - "metadata.yml"
+  type: default #grid
   date-format: "DD MMMM YYYY"
-  fields: [date, subtitle, image]
+  fields: [title, subtitle, image, description]
   sort: "date desc"
   image-height: 100%
 page-layout: full
 ---
 
 
-[Table export using in Stata's esttab](/courses/Stata_BIBB/index.html)
+<!-- [Table export using in Stata's esttab](/courses/Stata_BIBB/index.html) -->
 
+<!-- 
+https://openscapes.org/blog 
+https://github.com/Openscapes/website-new/tree/main
+
+https://silviacanelon.com/blog/2023-09-29-hello-quarto/#partials
+-->

@@ -1,0 +1,761 @@
+---
+title: "ggplot2"
+subtitle: "Ein Überblick"
+author: "Andreas Filser"
+date: "Frühjahr 2025"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [ninjutsu,xaringan-themer.css]
+    nature:
+      ratio: 16:9
+      highlightLines: true
+      highlightStyle: tomorrow-night-bright
+      countIncrementalSlides: true
+    self_contained: true      
+---
+```{r setup1, include = FALSE}
+knitr::opts_chunk$set(comment = "##", dpi = 500,
+                      fig.width  = 5.5, 
+                      fig.height = 5.5,
+                      message = FALSE, warning = FALSE, comment = "", cache = T)
+library(gapminder)
+library(xaringanthemer)
+library(kableExtra)
+library(xaringanExtra)
+library(tidyverse)
+library(patchwork)
+library(ggeffects)
+library(flipbookr)
+library(modelsummary)
+library(flextable, exclude = c("as_image","footnote","compose"))
+```
+
+```{r xaringan-themer, include=FALSE}
+# Colors for theming
+bg_color   <- "#141438" # code background
+highlight  <- "#ececf8" # highlight in code
+highlight2 <- "#E0E0E0" # highlight other text
+text_color1 <- "#51646B" # standard text color
+heading_color <- "#dc322f" # style_solarized default 
+bold_color    <- "#d33682" # style_solarized default
+# bold_color    <- "#4B6F9C" # "#42628A" # less red/purple "#404985" #
+link_col      <- "#b58900" 
+# update chunk_reveal function to avoid setting color every time
+chunk_reveal <- purrr::partial(flipbookr::chunk_reveal, widths = c(1,1), color=bg_color)
+
+source("css_themer_2025.R")
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa-regular fa-clipboard\"></i>",
+    success_text = paste0("<i class=\"fa fa-check\" style=\"color:",highlight,"\"></i>"),
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+
+```
+```{css more_css_settings, echo=F}
+.remark-code{line-height: 1.5; font-size: 90%} /*font size for manual panels*/
+code, pre {
+  font-weight: 500;  /* Set font weight to normal */
+} 
+.blade1 {
+  font-size: "80%"; /* 80% of the parent's font size */
+}
+```
+
+
+```{r weihnachtsbaum_import, include=F}
+christmas_trees_file <- "christmas_trees.xlsx"
+if(!file.exists(christmas_trees_file)) {
+  download.file("https://github.com/EvaMaeRey/ggplot_flipbook/raw/refs/heads/master/raw_data/Christmas%20tree%20sales.xlsx",
+                mode = "wb",
+                destfile = christmas_trees_file)
+}
+
+christmas_trees <- 
+  readxl::read_xlsx(christmas_trees_file) %>% 
+    rename(
+      anz_baeume = `Number of trees sold`,
+      baumart = `Type of tree`,
+      jahr = Year)
+rm(christmas_trees_file)
+```
+
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_1,fig.show="hide"}
+ggplot(data = christmas_trees) 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_1", "png")`)
+]
+
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_2,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr)  #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_2", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_3,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume)  #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_3", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_4,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point()  #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_4", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_5,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_5", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_6,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_6", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_7,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_7", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_8,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_8", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_9,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
+  labs(y = "Anzahl verkaufte Bäume (in Mio)") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_9", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_10,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
+  labs(y = "Anzahl verkaufte Bäume (in Mio)") +
+  labs(x = "Jahr") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_10", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_11,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
+  labs(y = "Anzahl verkaufte Bäume (in Mio)") +
+  labs(x = "Jahr") +
+  labs(color = "") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_11", "png")`)
+]
+
+---
+# Weihnachtsbäume
+
+.panel1-manual[
+```{r christmas1_12,fig.show="hide"}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
+  labs(y = "Anzahl verkaufte Bäume (in Mio)") +
+  labs(x = "Jahr") +
+  labs(color = "") +
+  theme_minimal()  ##<
+```
+] 
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas1_12", "png")`)
+]
+
+---
+# Linien statt Punkte
+
+.panel1-manual[
+```{r christmas3s,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, color=baumart)) +
+  geom_line() +  #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal()
+```
+
+Wir können durch Veränderung des `geom_...` schnell von einem Punkt- zu einem Liniendiagramm wechseln. Wir tauschen einfach `geom_point` durch `geom_line` aus.
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas2", "png")`)
+]
+
+---
+# Linien **und** Punkte
+
+.panel1-manual[
+```{r,christmas_pointline,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point() + #<<
+  geom_line() + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline", "png")`)
+]
+---
+# Weitere Optionen
+
+<!-- .blade1[Für `geom_line`und `geom_point` gibt es eine Vielzahl an Anpassungsmöglichkeiten] -->
+
+.panel1-manual[
+```{r christmas_pointline_opts,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(shape = 17, size = 3) + #<<
+  geom_line(linetype = "dashed", size = .25) + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+Eine Übersicht zu allen `shape`s und `linetype`s findet sich bspw. [hier](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/)
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_opts", "png")`)
+]
+
+---
+# Weitere Optionen in `aes`thetics 
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart, 
+           size = anz_baeume)) + #<< 
+  geom_point(shape = 17) +
+  geom_line() + 
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+Die Größe der Punkte & Linien entspricht der Verkaufszahl.
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes", "png")`)
+]
+
+---
+# Legendentitel für `size` 
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart, 
+           size = anz_baeume)) + 
+  geom_point(shape = 17) +
+  geom_line() + 
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + #<<
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes2", "png")`)
+]
+
+---
+# `size` für nur ein geom_...
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes3,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume),shape = 17) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + 
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes3", "png")`)
+]
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes4,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + 
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes4", "png")`)
+]
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes5,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) +
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       shape = "Baumart", #<<
+       size = "Absatz (in Mio)") +  
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes5", "png")`)
+]
+
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes6,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  scale_shape_manual(values = c(16,18)) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       shape = "", #<<
+       size = "Absatz (in Mio)") +  
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes6", "png")`)
+]
+
+
+---
+# Säulendiagramme
+
+.blade1[`geom_col` erstellt Säulendiagramme]
+.panel1-manual[
+```{r christmas_col,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) +
+  geom_col() + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal()  
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col", "png")`)
+]
+
+---
+# fill und color
+
+.blade1[`fill` ist für die Flächenfarben verantwortlich, zB die Farbe der Säulen]
+
+.panel1-manual[
+```{r christmas_colfill,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart,
+           fill = baumart)) + #<<
+  geom_col() +
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_colfill", "png")`)
+]
+
+
+
+---
+# scale_...
+
+.blade1[`scale_fill_manual` steuert die Werte für die Flächenfarben]
+
+.panel1-manual[
+```{r christmas_col_scale,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col() +
+  scale_fill_manual(values = c("red", "green4")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_scale", "png")`)
+]
+
+
+---
+# Säulen nebeneinander
+
+.blade1[Auch für `geom_col()` gibt es Anpassungsmöglichkeiten]
+
+.panel1-manual[
+```{r christmas_col_dodge,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) + #<<
+  scale_fill_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+.panel2-manual[ ![](`r knitr::fig_chunk("christmas_col_dodge", "png")`)
+]
+---
+# Legendenbildung
+
+.smaller[`breaks` steuert die Zuordnung von Farben und Ausprägungen, `legend.position` in `theme` platziert die Legende.]
+
+.panel1-manual[
+```{r legend1,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("red", "green4"),
+                    breaks = c("Fake tree", "Real tree")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(legend.position="bottom")
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("legend1", "png")`)
+]
+---
+# Legendenbildung
+
+.blade1[Auch die Beschriftung kann geändert werden]
+.panel1-manual[
+```{r legend2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("red", "green4"),
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(legend.position="top")
+```
+.smaller[Mehr zur Formatierung der Legende [hier](http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29)]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("legend2", "png")`)
+]
+
+---
+# Color Brewer
+
+.panel1-manual[
+```{r christmas_col_brewer,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent") + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+.smaller[Der Übersichtlichkeit wurde hier `color` weggelassen, es gibt natürlich auch `scale_color_brewer()`]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer", "png")`)
+]
+---
+# Color Brewer
+
+
+.panel1-manual[
+```{r christmas_col_brewer_col,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Paired") + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer_col", "png")`)
+]
+---
+# Color Brewer
+
+.panel1-manual[
+```{r christmas_col_brewer2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"), #<<
+                    labels = c("künstl.", "echt")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+.smaller[`breaks` und `labels` funktionieren auch in `scale_color_brewer()`]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer2", "png")`)
+]
