@@ -83,24 +83,28 @@ christmas_trees <-
 rm(christmas_trees_file)
 ```
 
----
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_1,fig.show="hide"}
 ggplot(data = christmas_trees) 
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_1", "png")`)
 ]
 
+
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_2,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr)  #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_2", "png")`)
@@ -109,11 +113,13 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_3,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
   aes(y = anz_baeume)  #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_3", "png")`)
@@ -122,12 +128,14 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_4,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
   aes(y = anz_baeume) +
   geom_point()  #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_4", "png")`)
@@ -136,6 +144,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_5,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -143,6 +152,7 @@ ggplot(data = christmas_trees) +
   geom_point() +
   aes(color = baumart) #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_5", "png")`)
@@ -151,6 +161,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_6,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -159,6 +170,7 @@ ggplot(data = christmas_trees) +
   aes(color = baumart) +
   scale_color_manual(values=c("red","green4")) #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_6", "png")`)
@@ -167,6 +179,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_7,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -176,6 +189,7 @@ ggplot(data = christmas_trees) +
   scale_color_manual(values=c("red","green4")) +
   labs(title="Wie echt sind deine Blätter?") #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_7", "png")`)
@@ -184,6 +198,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_8,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -194,6 +209,7 @@ ggplot(data = christmas_trees) +
   labs(title="Wie echt sind deine Blätter?") +
   labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_8", "png")`)
@@ -202,6 +218,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_9,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -213,6 +230,7 @@ ggplot(data = christmas_trees) +
   labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
   labs(y = "Anzahl verkaufte Bäume (in Mio)") #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_9", "png")`)
@@ -221,6 +239,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_10,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -233,6 +252,7 @@ ggplot(data = christmas_trees) +
   labs(y = "Anzahl verkaufte Bäume (in Mio)") +
   labs(x = "Jahr") #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_10", "png")`)
@@ -241,6 +261,7 @@ ggplot(data = christmas_trees) +
 ---
 # Weihnachtsbäume
 
+.panel1-manual[
 ```{r christmas1_11,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -254,12 +275,16 @@ ggplot(data = christmas_trees) +
   labs(x = "Jahr") +
   labs(color = "") #<<
 ```
+]
 
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_11", "png")`)
 ]
 
 ---
+# Weihnachtsbäume
+
+.panel1-manual[
 ```{r christmas1_12,fig.show="hide"}
 ggplot(data = christmas_trees) +
   aes(x = jahr) +
@@ -274,6 +299,8 @@ ggplot(data = christmas_trees) +
   labs(color = "") +
   theme_minimal()  ##<
 ```
+] 
+
 .panel2-manual[
 ![](`r knitr::fig_chunk("christmas1_12", "png")`)
 ]
@@ -661,17 +688,6 @@ ggplot(data = christmas_trees,
 .panel2-manual[
 ![](`r knitr::fig_chunk("legend2", "png")`)
 ]
----
-# Farben
-
-Selbstverständlich gibt es nicht nur `red` und `green4` als Farbauswahl. Farben können auf verschiedene Arten ausgewählt werden:
-
-+ verbal - siehe Liste [hier](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)  
-+ mit sog. [Hex-Codes](https://www.color-hex.com/) - einfach zB. "#FF0000" anstelle von "red" einsetzen 
-+ Farbpaletten mit eigenen `scale_fill` bzw. `scale_color` Funktionen
-  + [ColorBrewer](http://colorbrewer2.org) - bereits in `ggplot2` integriert
-  + [scico](https://github.com/thomasp85/scico)
-  + ein letztes Beispiel...
 
 ---
 # Color Brewer

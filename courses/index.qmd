@@ -6,7 +6,7 @@ listing:
     - "metadata.yml"
   type: default #grid
   date-format: "DD MMMM YYYY"
-  fields: [title, subtitle, image]
+  fields: [title, subtitle, image, description]
   sort: "date desc"
   image-height: 100%
 page-layout: full
