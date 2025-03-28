@@ -1,22 +1,20 @@
-- title: "Exporting Tables using Stata and esttab"
+- title: "Exporting Tables using Stata and `esttab`"
   subtitle: "Tabellenexport mit Stata (In German)"
   date: 2023-10-21
-  image: ./courses/Stata_BIBB/thumbnail.png
-  path: ./Stata_BIBB/index.md
-- title: "Test"
-  subtitle: "A real test"
-  author: "AnFi"
-  date: 2020-08-31
-  image: /02-xaringan/featured.png
-  path:  /02-xaringan/index.html
+  image: ./Stata_BIBB/thumbnail.png
+  path: https://filius23.github.io/StataBIBB_tables2022
+# - title: "Test"
+#   subtitle: "A real test"
+#   author: "AnFi"
+#   image: ./02-xaringan/featured.gif
+#   path:  ./02-xaringan/index.html
+#   categories:
+#     - xaringan
+- title: "ggplot2 - Einführung"
+  subtitle: "A flipbook-based ggplot2 intro (German)"
+  date: 2025-03-25
+  image: ./ggplot_flipbook/featured.gif
+  path:  ./ggplot_flipbook/index.html
   categories:
     - xaringan
-- title: "flipbook"
-  subtitle: "A real test 2"
-  author: "AnFi"
-  date: 2020-08-31
-  image: /ggplot_flipbook/featured.gif
-  path:  /ggplot_flipbook/ggplot2_intro.html
-  categories:
-    - xaringan
-  
+

@@ -1,0 +1,2503 @@
+---
+title: "ggplot2"
+subtitle: "Ein Überblick"
+author: "Andreas Filser"
+date: "Frühjahr 2025"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [ninjutsu,xaringan-themer.css]
+    nature:
+      ratio: 16:9
+      highlightLines: true
+      highlightStyle: tomorrow-night-bright
+      countIncrementalSlides: false
+    self_contained: true      
+---
+```{r setup1, include = FALSE}
+knitr::opts_chunk$set(comment = "##", dpi = 500,
+                      fig.width  = 5.5, 
+                      fig.height = 5.5,
+                      message = FALSE, warning = FALSE, comment = "", cache = T)
+library(gapminder)
+library(xaringanthemer)
+library(kableExtra)
+library(xaringanExtra)
+library(tidyverse)
+library(patchwork)
+library(ggeffects)
+library(flipbookr)
+library(modelsummary)
+library(flextable, exclude = c("as_image","footnote","compose"))
+```
+
+```{r xaringan-themer, include=FALSE}
+# Colors for theming
+bg_color   <- "#141438" # code background
+highlight  <- "#ececf8" # highlight in code
+highlight2 <- "#E0E0E0" # highlight other text
+text_color1 <- "#51646B" # standard text color
+heading_color <- "#dc322f" # style_solarized default 
+bold_color    <- "#d33682" # style_solarized default
+# bold_color    <- "#4B6F9C" # "#42628A" # less red/purple "#404985" #
+link_col      <- "#b58900" 
+# update chunk_reveal function to avoid setting color every time
+chunk_reveal <- purrr::partial(flipbookr::chunk_reveal, widths = c(1,1), color=bg_color)
+
+source("css_themer_2025.R")
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa-regular fa-clipboard\"></i>",
+    success_text = paste0("<i class=\"fa fa-check\" style=\"color:",highlight,"\"></i>"),
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+
+```
+```{css more_css_settings, echo=F}
+.remark-code{line-height: 1.5; font-size: 90%} /*font size for manual panels*/
+code, pre {
+  font-weight: 500;  /* Set font weight to normal */
+} 
+.blade1 {
+  font-size: "80%"; /* 80% of the parent's font size */
+}
+```
+
+```{r allbus16_setup, include=F}
+a16_ft <- readr::read_delim("ZA5250_v2-0-0.csv",delim = ";") %>% 
+  filter(work == 1, age <= 64, educ %in%  1:5) %>% 
+  mutate(across(everything(),~ifelse(.x<0,NA,.)),
+         across(c(educ,sex,eastwest,gkpol),~factor(.x)),
+         sex = factor(sex, levels = c(1,2), labels = c("m","w")) ) %>% 
+  filter(complete.cases(sex, age , educ , eastwest , gkpol))
+```
+
+# Datenvisualisierung - warum und wozu?
+
+
+**(1.) Deskription: **  
++ Überblick zu den verwendeten Daten  
++ Sind nur junge oder alte Menschen in meinem Datensatz?  
++ Wie häufig kommt das analysierte Ereignis vor?  
+
+**(2.) Zusammenfassung der Ergebnisse:**
++ Schöner als Tabellen (bei guter Umsetzung)   
++ Schneller verständlich als Tabellen (dito)
+
+
+
+
+
+***
+> Diese Präsentation basiert teilweise auf dem [`{flipbookr}`](https://evamaerey.github.io/flipbookr/index.html)-Paket von [Gina Reynolds](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html#1) und den *Data Visualization* Kursen von [Danielle Navarro](https://djnavarro.github.io/satrdayjoburg/) und [Charles Lanfear](https://clanfear.github.io/R_Visualization_Workshop/).
+
+> 
+
+---
+# Vorbemerkungen
+
++ Zuhören, später selbst machen  
+
++ Prinzip verstehen, nicht Befehle auswendig lernen
+  + Googlen!
+  + das [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) bietet eine umfangreiche Sammlung an Beispielplots inkl. dazugehöriger Syntax 
+  + das [ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) gibt eine Übersicht zu den wichtigsten Funktionen und Befehlen
+  + Mehr Links am Ende 
+
+---
+# ggplot2
+
+Das Paket [**ggplot2**](https://ggplot2.tidyverse.org/) basiert auf der Idee der "layered grammar of graphics". Die zu erstellende Darstellung wird in verschiedene Parameter unterteilt:
+
+* **data**: welche Daten sollen verwendet werden? 
+
+* **aes**thetics: welche Variablen sollen dargestellt werden?
+  
+* **geom**etrische Objekte: Punkte, Säulen, Linien, ...?
+
+* **Koordinatensystem**: numerisch, Prozent, logarithmisch, Koordianten?
+
+* **lab**els: Beschriftungen und Überschriften
+
+* **Theme**: Farbschema, Schriftgröße
+
+* ggf. Skalen
+
+
+
+
+---
+# ggplot2
+
+Wie alle Pakete in R müssen wir das `ggplot2` einmal installieren und bei jedem Neustart einer R Session mit `library()` laden:
+```{r, eval=F}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+---
+# Struktur von ggplot2
+Ein Standardbefehl für `ggplot2` sieht in etwa so aus:
+
+```{r, eval = F}
+ggplot(data = datensatz, aes(x = var1, y = var2, color = var3)) +
+  geom_point() +
+  labs(title= "Titel", subtitle = "Untertitel") +
+  theme_minimal()
+```
+
+Zur besseren Verdeutlichung entzerre ich diese Befehle hier:
+
+```{r, eval = F}
+ggplot(data = datensatz) +
+  aes(x = var1) 
+  labs(x = "x-Achsenbeschriftung") +
+  aes(y = var2) +
+  labs(y = "y-Achsenbeschriftung") +
+  geom_point() +
+  labs(title= "Titel") +
+  labs(subtitle = "Untertitel") +
+  aes(color = var3) +
+  labs(color = "Titel für die Legende") +
+  theme_minimal()
+```
+
+---
+# Ein erstes Beispiel: Weihnachtsbäume
+
+In den USA werden Weihnachtsbäume aus Plastik immer beliebter.
+
+```{r weihnachtsbaum_import, include=F}
+christmas_trees_file <- "christmas_trees.xlsx"
+if(!file.exists(christmas_trees_file)) {
+  download.file("https://github.com/EvaMaeRey/ggplot_flipbook/raw/refs/heads/master/raw_data/Christmas%20tree%20sales.xlsx",
+                mode = "wb",
+                destfile = christmas_trees_file)
+}
+
+christmas_trees <- 
+  readxl::read_xlsx(christmas_trees_file) %>% 
+    rename(
+      anz_baeume = `Number of trees sold`,
+      baumart = `Type of tree`,
+      jahr = Year)
+rm(christmas_trees_file)
+```
+
+Die zugrunde liegenden Daten sind im long-shape - d.h. pro Jahr haben wir zwei Zeilen mit Angaben der Verkaufszahlen. Einmal für die echten Bäumen und einmal für die aus Plastik. Ein kleiner Blick auf das Datenset:
+```{r,eval=F}
+head(christmas_trees,n= 4)
+```
+
+```{r, echo = F}
+knitr::kable( christmas_trees  %>%  slice(., 1:4), format = "html")
+```
+
+---
+```{r christmas, eval=F, echo=F}
+ggplot(data = christmas_trees) +
+  aes(x = jahr) +
+  aes(y = anz_baeume) +
+  geom_point() +
+  aes(color = baumart) +
+  scale_color_manual(values=c("red","green4")) +
+  labs(title="Wie echt sind deine Blätter?") +
+  labs(subtitle="Verkaufte Weihnachtsbäume in USA | Quelle: Statista") +
+  labs(y = "Anzahl verkaufte Bäume (in Mio)") +
+  labs(x = "Jahr") +
+  labs(color = "") +
+  theme_minimal()  
+```
+`r chunk_reveal("christmas",title = "#Ein erstes Beispiel: Weihnachtsbäume")`
+
+---
+# Noch einmal mit kompakter Syntax
+.panel1-manual[
+```{r christmas2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, color = baumart)) +
+  geom_point() +
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas2", "png")`)
+]
+
+---
+# Linien statt Punkte
+
+.panel1-manual[
+```{r christmas3s,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, color=baumart)) +
+  geom_line() +  #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal()
+```
+
+Wir können durch Veränderung des `geom_...` schnell von einem Punkt- zu einem Liniendiagramm wechseln. Wir tauschen einfach `geom_point` durch `geom_line` aus.
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas2", "png")`)
+]
+
+---
+# Linien **und** Punkte
+
+.panel1-manual[
+```{r,christmas_pointline,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point() + #<<
+  geom_line() + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline", "png")`)
+]
+---
+# Weitere Optionen
+
+<!-- .blade1[Für `geom_line`und `geom_point` gibt es eine Vielzahl an Anpassungsmöglichkeiten] -->
+
+.panel1-manual[
+```{r christmas_pointline_opts,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(shape = 17, size = 3) + #<<
+  geom_line(linetype = "dashed", size = .25) + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+Eine Übersicht zu allen `shape`s und `linetype`s findet sich bspw. [hier](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/)
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_opts", "png")`)
+]
+
+---
+# Weitere Optionen in `aes`thetics 
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart, 
+           size = anz_baeume)) + #<< 
+  geom_point(shape = 17) +
+  geom_line() + 
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+Die Größe der Punkte & Linien entspricht der Verkaufszahl.
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes", "png")`)
+]
+
+---
+# Legendentitel für `size` 
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart, 
+           size = anz_baeume)) + 
+  geom_point(shape = 17) +
+  geom_line() + 
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + #<<
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes2", "png")`)
+]
+
+---
+# `size` für nur ein geom_...
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes3,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume),shape = 17) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + 
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes3", "png")`)
+]
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes4,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       size = "Absatz (in Mio)") + 
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes4", "png")`)
+]
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes5,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) +
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       shape = "Baumart", #<<
+       size = "Absatz (in Mio)") +  
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes5", "png")`)
+]
+
+
+---
+# Anpassungen durch Variablen definieren
+
+.panel1-manual[
+```{r christmas_pointline_sizeaes6,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) + 
+  geom_point(aes(size = anz_baeume, shape = baumart)) + #<<
+  geom_line() +   
+  scale_color_manual(values = c("red", "green4")) +
+  scale_shape_manual(values = c(16,18)) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "",
+       shape = "", #<<
+       size = "Absatz (in Mio)") +  
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_pointline_sizeaes6", "png")`)
+]
+
+
+---
+# Säulendiagramme
+
+.blade1[`geom_col` erstellt Säulendiagramme]
+.panel1-manual[
+```{r christmas_col,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart)) +
+  geom_col() + #<<
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal()  
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col", "png")`)
+]
+
+---
+# fill und color
+
+.blade1[`fill` ist für die Flächenfarben verantwortlich, zB die Farbe der Säulen]
+
+.panel1-manual[
+```{r christmas_colfill,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           color = baumart,
+           fill = baumart)) + #<<
+  geom_col() +
+  scale_color_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       color = "") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_colfill", "png")`)
+]
+
+
+
+---
+# scale_...
+
+.blade1[`scale_fill_manual` steuert die Werte für die Flächenfarben]
+
+.panel1-manual[
+```{r christmas_col_scale,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col() +
+  scale_fill_manual(values = c("red", "green4")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_scale", "png")`)
+]
+
+
+---
+# Säulen nebeneinander
+
+.blade1[Auch für `geom_col()` gibt es Anpassungsmöglichkeiten]
+
+.panel1-manual[
+```{r christmas_col_dodge,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) + #<<
+  scale_fill_manual(values = c("red", "green4")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+.panel2-manual[ ![](`r knitr::fig_chunk("christmas_col_dodge", "png")`)
+]
+---
+# Legendenbildung
+
+.smaller[`breaks` steuert die Zuordnung von Farben und Ausprägungen, `legend.position` in `theme` platziert die Legende.]
+
+.panel1-manual[
+```{r legend1,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("red", "green4"),
+                    breaks = c("Fake tree", "Real tree")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(legend.position="bottom")
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("legend1", "png")`)
+]
+---
+# Legendenbildung
+
+.blade1[Auch die Beschriftung kann geändert werden]
+.panel1-manual[
+```{r legend2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("red", "green4"),
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(legend.position="top")
+```
+.smaller[Mehr zur Formatierung der Legende [hier](http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29)]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("legend2", "png")`)
+]
+---
+# Farben
+
+Selbstverständlich gibt es nicht nur `red` und `green4` als Farbauswahl. Farben können auf verschiedene Arten ausgewählt werden:
+
++ verbal - siehe Liste [hier](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)  
++ mit sog. [Hex-Codes](https://www.color-hex.com/) - einfach zB. "#FF0000" anstelle von "red" einsetzen 
++ Farbpaletten mit eigenen `scale_fill` bzw. `scale_color` Funktionen
+  + [ColorBrewer](http://colorbrewer2.org) - bereits in `ggplot2` integriert
+  + [scico](https://github.com/thomasp85/scico)
+  + ein letztes Beispiel...
+
+---
+# Color Brewer
+
+.panel1-manual[
+```{r christmas_col_brewer,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent") + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+.smaller[Der Übersichtlichkeit wurde hier `color` weggelassen, es gibt natürlich auch `scale_color_brewer()`]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer", "png")`)
+]
+---
+# Color Brewer
+
+
+.panel1-manual[
+```{r christmas_col_brewer_col,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Paired") + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer_col", "png")`)
+]
+---
+# Color Brewer
+
+.panel1-manual[
+```{r christmas_col_brewer2,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"), #<<
+                    labels = c("künstl.", "echt")) + #<<
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal()
+```
+.smaller[`breaks` und `labels` funktionieren auch in `scale_color_brewer()`]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("christmas_col_brewer2", "png")`)
+]
+
+---
+# Themes
+
+.panel1-manual[
+```{r theme_highlight,fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume,
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"), 
+                    labels = c("künstl.", "echt")) + 
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_classic() #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("theme_highlight", "png")`)
+]
+
+---
+# Themes
+```{r, echo = F, fig.height=4.5, fig.width=9}
+p1 <-   ggplot(data = christmas_trees, 
+               aes(x=jahr,y=anz_baeume, 
+                   color = baumart)) +
+  geom_point() +
+  labs(title = "",
+       subtitle = " ",
+       y = "",
+       x = "",
+       fill = "")   +
+  guides(col=F) + 
+  theme(axis.title.y = element_text(size = rel(.5)),
+        plot.title = element_text(hjust = .5),
+        plot.subtitle = element_text(hjust = .5,face = "italic"))
+library(patchwork)
+  p1 + theme_grey()    + ggtitle("theme_grey()", subtitle = "Standard")  +
+  p1 + theme_minimal() + ggtitle("theme_minimal()")  +
+  p1 + theme_bw()      + ggtitle("theme_bw()")   +
+  p1 + theme_classic() + ggtitle("theme_classic()") + 
+  p1 + theme_light()   + ggtitle("theme_light()") +
+  p1 + theme_dark()   + ggtitle("theme_dark()") + 
+  plot_layout(ncol = 3)
+ 
+```
+
+---
+# Themes II aus [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+```{r, echo = F, fig.height=4.5, fig.width=9}
+library(ggthemes)
+p1 + theme_wsj()         + ggtitle("theme_wsj()")  + theme(plot.title = element_text(size = rel(.75))) +
+  p1 + theme_solarized() + ggtitle("theme_solarized()")   +
+  p1 + theme_gdocs()     + ggtitle("theme_gdocs()") +
+  p1 + theme_economist() + ggtitle("theme_economist()") +
+  p1 + theme_calc()      + ggtitle("theme_calc()") +
+  p1 + theme_tufte()     + ggtitle("theme_tufte()") +
+  plot_layout(ncol = 3)
+
+```
+
+---
+# Textgröße
+
+.smaller[Der Text ist immer zu klein für Präsentationen]
+
+.panel1-manual[
+```{r textsize0, fig.show="hide",fig.height = 4.5, out.width = "70%" }
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() 
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize0", "png")`)
+]
+
+
+
+---
+# Textgröße
+
+.smaller[Der Text ist immer zu klein für Präsentationen]
+.panel1-manual[
+```{r textsize1, fig.show="hide",fig.height = 4.5, out.width = "70%" }
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = rel(2))) #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize1", "png")`)
+
+]
+
+
+---
+# Textgröße
+
+.panel1-manual[
+```{r textsize2, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = rel(2)), #<<
+        axis.title.y = element_text(size = rel(.5))) #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize2", "png")`)
+]
+
+
+---
+ 
+
+# Textgröße
+
+.panel1-manual[
+```{r textsize3, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = rel(2)), 
+        axis.title.y = element_text(size = rel(.5)),
+        axis.text.y =  element_text(size = rel(2))) #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize3", "png")`)
+]
+
+
+---
+ 
+
+# Weitere Textoptionen
+
+
+.panel1-manual[
+```{r textsize4, fig.show="hide"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = rel(2)), 
+        axis.title.y = element_text(size = rel(.5)),
+        axis.text.x =  element_text(face = "bold",angle = 45), #<<
+        axis.text.y =  element_text(size = rel(2), family = "mono", color = "#dc322f"), #<<
+        plot.title = element_text(size = rel(2), family = "serif", color = "#5d7187"), #<<
+        plot.subtitle = element_text(size = rel(.9), family = "serif", face = "italic")) #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize4", "png")`)
+.blade1[Mehr Infos [hier](http://www.cookbook-r.com/Graphs/Fonts/)]
+]
+
+---
+ 
+
+# Weitere Textoptionen
+
+.panel1-manual[
+```{r textsize5, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal() + #<<
+  theme(axis.text =  element_text(color = "#dc322f"), 
+        plot.title = element_text(size = rel(2), color = "#5d7187"),
+        plot.subtitle = element_text(face = "italic"))
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize5", "png")`)
+]
+
+---
+# Weitere Textoptionen
+
+.panel1-manual[
+```{r textsize5b, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal(base_size = 14) + #<<
+  theme(axis.text =  element_text(color = "#dc322f"), 
+        plot.title = element_text(size = rel(2), color = "#5d7187"),
+        plot.subtitle = element_text(face = "italic"))
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize5b", "png")`)
+]
+
+
+---
+# Weitere Textoptionen
+.panel1-manual[
+```{r textsize6, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal(base_size = 14, base_family = "serif") + #<<
+  theme(axis.text =  element_text(color = "#dc322f"), 
+        plot.title = element_text(size = rel(2), color = "#5d7187"),
+        plot.subtitle = element_text(face = "italic"))
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize6", "png")`)
+]
+
+
+---
+# Weitere Textoptionen
+
+.panel1-manual[
+```{r textsize7, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = christmas_trees, 
+       aes(x=jahr,y=anz_baeume, 
+           fill = baumart)) +
+  geom_col(position=position_dodge()) +
+  scale_fill_brewer(palette = "Accent",
+                    breaks = c("Fake tree", "Real tree"),
+                    labels = c("künstl.", "echt")) +
+  labs(title = "Wie echt sind deine Blätter?",
+       subtitle = "Verkaufte Weihnachtsbäume in USA | Quelle: Statista",
+       y = "Anzahl verkaufte Bäume (in Mio)",
+       x = "Jahr",
+       fill = "") +
+  theme_minimal(base_size = 8, base_family = "mono") + #<<
+  theme(axis.text =  element_text(color = "#dc322f"), 
+        plot.title = element_text(size = rel(2), color = "#5d7187"),
+        plot.subtitle = element_text(face = "italic"))
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("textsize7", "png")`)
+]
+
+---
+# Übungsdaten
+
+Wir werden mit Daten aus dem [Gapminder](http://www.gapminder.org) Projekt arbeiten. Ein Auszug aus diesen Daten kann direkt in R mit dem Paket `gapminder` von Jenny Bryan verwendet werden. Der Datensatz enthält die Lebenserwartung `lifeExp`, Bevölkerungszahlen `pop` und BIP pro Person `gdpPercap` für 142 Länder zwischen 1952 und 2007:
+
+```{r, echo = F}
+gdf <- gapminder::gapminder
+knitr::kable(gdf  %>% sample_n(2), format = "html")
+```
+
+
+---
+# Übung 1
+
+.panel1-manual[
+```{r aufg1,echo = F}
+gdf <- gapminder::gapminder
+df1 <- filter(gdf,grepl("Uga",country) | grepl("Can",country))
+ggplot(df1, aes(x = year, y = pop/10000000, color = country)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  labs(y = "Bevölkerung (Mio)", x = "Jahr", 
+       color = "") +
+  scale_color_colorblind() +
+  theme(legend.position="top")
+```
+]
+.panel3-manual[
+#### Visualisieren Sie den Verlauf der Lebenserwartung, Bevölkerungszahl oder des BIP pro Kopf über die Zeit!
++ Installieren Sie das Paket `install.packages("gapminder")`
+
++ Mit `gdf <- gapminder::gapminder` können Sie die Daten aufrufen und unter `gdf` ablegen (der Name ist natürlich frei wählbar)
+
++ Wählen Sie zwei oder mehr Länder aus und legen Sie diese in einem neuen `data.frame` ab
+   zB. filtern nach _Uga_nda oder _Can_ada mit `{dplyr}`: 
+```{r üb1exp2, eval=FALSE}
+df1 <- gdf %>% filter(grepl("Uga|Can",country))
+```
+
+  
++ `country` ist als `factor` definiert, was zu Problemen führt bei der Darstellung: `df1$country <- as.character(df1$country)`  
+```{r üb1exp3, eval=FALSE}
+df1$country <- as.character(df1$country)
+```
+### Wenn etwas unklar ist, nicht funktioniert usw. **fragen!** <br> Viel Spaß! `r emoji::emoji("woman_technologist")` `r emoji::emoji("man_technologist")`
+]
+
+
+---
+# Wenn Farben & Formen nicht reichen
+
+Manchmal haben wir auch Daten, für einfach nur verschiedene Farben oder Shapes nicht hilfreich sind. Ein Beispiel ist dieser Datensatz, der die Inhaftungszahlen in den USA nach Bevölkerungsgruppen und Urbanität aufschlüsselt:
+
+```{r incarceration_setup1, echo=F, message =F , warning=F}
+file <- "prison_summary.csv"
+url <- "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-22/prison_summary.csv"
+
+# download data from internet and save
+if (!file.exists(file)) { download.file(url = url, destfile = file) }
+
+# read in downloaded data
+df <- readr::read_csv(file)
+df2 <- df %>% 
+  filter(!(pop_category %in% c("Female", "Male", "Total", "Other"))) 
+```
+```{r, echo  = F}
+knitr::kable(head(df2, 5), format = "html")
+```
+Die Daten gibt es [hier](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) und so können sie direkt mit R heruntergeladen werden:
+.smaller[.smaller[
+```{r, eval=F}
+prison_file <- "Pfad/in/den/gewünschten/Ordner/prison_summary.csv" # Dateiname
+url <- "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-22/prison_summary.csv" # Datenquelle (URL)
+# Daten herunterladen und speichern
+if (!file.exists(file)) { download.file(url = url,mode = "wb", destfile = prison_file) }
+df2 <- readr::read_csv(prison_file) %>% # einlesen
+  filter(!(pop_category %in% c("Female", "Male", "Total", "Other")))  # filtern
+
+```
+]]
+
+
+
+
+---
+# Wenn Farben & Formen nicht reichen
+
+.blade1[Das ist so ein bisschen.... *viel*]
+.panel1-manual[
+```{r incarceration_plot1, fig.show="hide"}
+ggplot(data = df2) + 
+aes(x = year, y = rate_per_100000,
+    color = pop_category,
+    shape = urbanicity)  +
+  geom_line() +
+  geom_point() +
+  labs(title = "Hinhaftierung nach Ethnie and Urbanität",
+       subtitle = "USA, 1983-2015",
+       caption = "Quelle: Vera Institute of Justice",
+       x = "", y = "Incarcerated per 100000") +
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("incarceration_plot1", "png")`)
+]
+---
+# facet_grid()
+
+.panel1-manual[
+```{r incarceration_plot2, fig.show="hide"}
+ggplot(data = df2) + 
+aes(x = year, y = rate_per_100000) +
+  facet_grid(urbanicity~pop_category) + #<<
+  geom_line() +
+  labs(title = "Hinhaftierung nach Ethnie and Urbanität",
+       subtitle = "USA, 1983-2015",
+       caption = "Quelle: Vera Institute of Justice",
+       x = "", y = "Incarcerated per 100000") +
+  theme_minimal() 
+```
+.blade1[`geom_point` ist dann eher unübersichtlich, daher nur jeweils eine Linie]
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("incarceration_plot2", "png")`)
+]
+---
+# facet_grid()
+
+.panel1-manual[
+```{r incarceration_plot3, fig.show="hide"}
+ggplot(data = df2) + 
+aes(x = year, y = rate_per_100000) +
+  facet_grid(urbanicity~pop_category) + 
+  geom_line() +
+  labs(title = "Hinhaftierung nach Ethnie and Urbanität",
+       subtitle = "USA, 1983-2015",
+       caption = "Quelle: Vera Institute of Justice",
+       x = "", y = "Incarcerated per 100000") +
+  theme_minimal()  +
+  theme(
+    strip.text.y = element_text(angle = 0), #<<
+    strip.text.x = element_text(family = "serif") #<<
+  )
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("incarceration_plot3", "png")`)
+]
+---
+# facet_grid()
+
+.panel1-manual[
+```{r incarceration_plot4, fig.show="hide"}
+ggplot(data = df2) + 
+aes(x = year, y = rate_per_100000,
+    color = urbanicity) + #<<
+  facet_grid(.~pop_category) +  #<<
+  geom_line() +
+  labs(title = "Hinhaftierung nach Ethnie and Urbanität",
+       subtitle = "USA, 1983-2015",
+       caption = "Quelle: Vera Institute of Justice",
+       x = "", y = "Incarcerated per 100000") +
+  theme_minimal()  +
+  theme(
+    strip.text.y = element_text(angle = 0)
+    )
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("incarceration_plot4", "png")`)
+]
+
+---
+# Zwei-Schrittlösung für Individualdaten
+
+In der Regel haben wir den Sozialwissenschaften aber Individualdaten, bspw. wenn wir ein Säulendiagramm aus den Familienstands- und Geschlechtsangaben aus dem [Allbus 2016](https://www.gesis.org/allbus) erstellen. 
+.smaller[
+```{r bsp1, message=FALSE, warning=FALSE}
+a16_ft <- readr::read_delim("ZA5250_v2-0-0.csv",delim = ";") %>% 
+  filter(work == 1, age <= 64, educ %in%  1:5) %>% 
+  mutate(across(everything(),~ifelse(.x<0,NA,.)),
+         across(c(educ,sex,eastwest,gkpol),~factor(.x)),
+         sex = factor(sex, levels = c(1,2), labels = c("m","w")) ) %>% 
+  filter(complete.cases(sex, age , educ , eastwest , gkpol))
+```
+]
+
+So sehen die Ausgangsdaten aus:
+```{r, echo = F}
+a16_sel <- select(a16_ft, respid, sex, mstat) %>% head(.)
+knitr::kable(head(a16_sel, 5), format = "html")
+```
+---
+# Schritt 1: Häufigkeitstabelle
+
+.panel1-manual[
+<br> 
+```{r allbus_table0, eval=F}
+xtabs(~sex+mstat, data = a16_ft)
+```
+<br><br>
+```{r allbus_table0b, eval=F}
+kt <- xtabs(~sex+mstat, data = a16_ft) 
+tab_df <- data.frame( kt )
+head(tab_df)
+```
+]
+
+.panel2-manual[
+```{r allbus_table1, echo=F}
+xtabs(~sex+mstat, data = a16_ft)
+```
+<br><br>
+```{r allbus_table1b, echo=F}
+tab_df <- xtabs(~sex+mstat, data = a16_ft) %>% data.frame()
+knitr::kable(head(tab_df), format = "html")
+```
+]
+---
+# Schritt 2: Säulendiagramm 
+
+.panel1-manual[
+```{r colplt1, fig.show="hide"}
+ggplot(data = tab_df) + #<<
+  aes(x = mstat, y = Freq, fill = sex ) + 
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("navajowhite","navy"), 
+                    breaks = c("m","w"), 
+                    labels = c("Männer", "Frauen")) +
+  theme_minimal()  +
+  labs(title = "Familienstand",
+       subtitle = "Absolute Häufigkeiten nach Geschlecht",
+       caption = "Quelle: Allbus 2016", 
+       x = "Familienstand",
+       y = "Absolute Häufigkeit",
+       fill = "Geschlecht" ) 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("colplt1", "png")`)
+]
+
+---
+# Prozente statt absolute Häufigkeiten
+
+...das geht genauso auch für Zeilenprozente (& Spaltenprozente)
+
+.panel1-manual[
+```{r proptab, eval=F}
+xtabs(~sex+mstat, data = a16_ft) %>% 
+  prop.table(., margin = 1) %>% 
+  round(.,3)
+```
+<br>
+```{r proptab_dt}
+tab_df2 <- xtabs(~sex+mstat, data = a16_ft) %>% 
+  prop.table(., margin = 1) %>% 
+  round(.,3) %>% 
+  data.frame()
+```
+]
+.panel2-manual[
+```{r proptab2, echo=F}
+xtabs(~sex+mstat, data = a16_ft) %>% 
+  prop.table(., margin = 1) %>% 
+  round(.,3)
+```
+<br>
+```{r proptab_dt2, echo=F}
+knitr::kable(head(tab_df2), format = "html")
+```
+]
+---
+# Säulendiagramm mit Zeilenprozenten
+
+.panel1-manual[
+```{r colpct1, fig.show="hide"}
+ggplot(data = tab_df2) + 
+  aes(x = mstat, y = Freq, fill = sex ) + 
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("#F7B449","#132157"), 
+                    breaks = c("m","w"), 
+                    labels = c("Männer", "Frauen")) +
+  theme_minimal()  +
+  labs(title = "Familienstand",
+       subtitle = "Anteile pro Geschlecht",
+       caption = "Quelle: Allbus 2016", 
+       x = "Familienstand",
+       y = "Relative Häufigkeit",
+       fill = "Geschlecht" ) 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("colpct1", "png")`)
+]
+---
+# Achsenformat anpassen: numerische Werte
+.panel1-manual[
+```{r colpct1_axis, fig.show="hide"}
+# install.packages("scales") #<<
+ggplot(data = tab_df2) + 
+  aes(x = mstat, y = Freq, fill = sex ) + 
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("#F7B449","#132157"), 
+                    breaks = c("m","w"), 
+                    labels = c("Männer", "Frauen")) +
+  theme_minimal()  +
+  labs(title = "Familienstand",
+       subtitle = "Anteile pro Geschlecht",
+       caption = "Quelle: Allbus 2016", 
+       x = "Familienstand",
+       y = "Relative Häufigkeit",
+       fill = "Geschlecht" ) +
+  scale_y_continuous(labels=scales::percent) #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("colpct1_axis", "png")`)
+]
+
+---
+# Achsenformat anpassen: kategoriale Werte
+
+.panel1-manual[
+```{r colpct1_axiskat, fig.show="hide"}
+ggplot(data = tab_df2) + 
+  aes(x = mstat, y = Freq, fill = sex ) + 
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("#F7B449","#132157"), 
+                    breaks = c("m","w"), labels = c("Männer", "Frauen")) +
+  theme_minimal()  +
+  labs(title = "Familienstand",
+       subtitle = "Anteile pro Geschlecht",
+       caption = "Quelle: Allbus 2016", 
+       x = "Familienstand",
+       y = "Relative Häufigkeit",
+       fill = "Geschlecht" ) +
+  scale_y_continuous(labels=scales::percent) +
+  scale_x_discrete(  
+    breaks = c(1:6,9), #<<
+    labels = c("verh. zus.","verh. get.", #<<
+               "verw.", "gesch.","ledig", #<<
+               "lp. zus.","lp. get.")) #<<
+
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("colpct1_axiskat", "png")`)
+]
+
+---
+# Achsenformat anpassen: Umbrüche mit `\n`
+.panel1-manual[
+```{r colpct1_axiskatbreak, fig.show="hide"}
+ggplot(data = tab_df2) + 
+  aes(x = mstat, y = Freq, fill = sex ) + 
+  geom_col(position=position_dodge()) +
+  scale_fill_manual(values = c("#F7B449","#132157"), 
+                    breaks = c("m","w"), labels = c("Männer", "Frauen")) +
+  theme_minimal()  +
+  labs(title = "Familienstand",
+       subtitle = "Anteile pro Geschlecht",
+       caption = "Quelle: Allbus 2016", 
+       x = "Familienstand",
+       y = "Relative Häufigkeit",
+       fill = "Geschlecht" ) +
+  scale_y_continuous(labels=scales::percent) +
+  scale_x_discrete(  
+    breaks = c(1:6,9), #<<
+    labels = c("verh.\nzus.","verh.\nget.", #<<
+               "verw.", "gesch.","ledig", #<<
+               "lebensp.\nzus.","lebensp.\nget.")) #<<
+
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("colpct1_axiskatbreak", "png")`)
+]
+
+
+---
+# Achsenformat 
+
++ `scale_ _continuous` vs.  `scale_ _discrete`
++ Numerische Achsen können auch transformiert, zB. logarithmisiert werden 
++ Mehr [hier](http://www.cookbook-r.com/Graphs/Axes_%28ggplot2%29)
+
+
+---
+# Export/Speichern von ggplots
+
+Für den Export von ggplots können `ggsave()` verwenden, es wird automatisch der letzte aufgerufene Plot gespeichert. Allerdings empfiehlt es sich, den plot als Objekt zu speichern und diesen dann in  `ggsave()` explizit aufzurufen. 
+
+.smaller[
+```{r ggsave,eval=F}
+plot1 <- ggplot(data = ...) + geom_...
+
+ggsave(plot = plot1,
+       filename = "C:/Users/Filser/Dokumente/plot1.png")
+```
+]
+
++ Die Größe der exportierten Datei kann mit `height = 3, width = 5, units = "cm"` auf 3x5cm gesetzt werden. 
++ Der Hintergrund kann mit der Option `bg = "transparent"` auf Transparent gesetzt werden (hilfreich für Integration in PowerPoint)
++ Mit `dpi = ` kann die Auflösung der Grafiken verändert werden
+
+.smaller[
+```{r ggsave2,eval=F}
+ggsave(plot = plot1,
+       height = 3, width = 5, units = "cm",
+       dpi = 600,
+       filename = "C:/Users/Filser/Dokumente/plot1.png")
+```
+[Mehr zum evtl. Problemen mit Größen-Settings mit ggsave()](https://www.christophenicault.com/post/understand_size_dimension_ggplot2/)
+]
+---
+# Weitere Optionen
+
++ `ylim()` und `xlim()` kontrollieren die x- und y-Achsenspannweite, zB. setzt `+ ylim(c(0,35))` die y-Achse auf 0-35. *Achtung!* alle Werte außerhalb werden dann komplett ignoriert!  
++ in `+ theme()` können unzählige weiterer Optionen festgelegt werden, `theme()` ist ein zusätzliches Layer und sollte möglichst *nach* `theme_minimal()` usw. angehängt werden.  Eine nützliche Option ist `+theme(aspect.ratio = 1)` um das Seitenverhältnis auf 1:1 zu setzen   
+<!-- + [Schriftgröße]()  -->
+<!-- + [Schriftstil]() -->
+
+---
+
+# Übungsaufgaben 2
+
+Lesen Sie den kumulierten Allbus-Datensatz ein (siehe StudIP)
++ Erstellen Sie ein Säulendiagramm für `gkpol` (Größenklassen für die Wohngemeinde)  
++ Beschriften Sie die Achsen, verändern Sie die Position der Legende  
++ Verwenden Sie Farben aus dem [colorbrewer](http://colorbrewer2.org/)  
+
+
+---
+# Teil 2: Koeffizientenplots 
+
+
+---
+# Gender Pay Gap
+
+.panel1-manual[
+```{r m2fit, eval = F}
+m1 <- lm(inc ~ sex                         , data = a16_ft)
+m2 <- lm(inc ~ sex + age                   , data = a16_ft)
+m3 <- lm(inc ~ sex + age + educ + eastwest,  data = a16_ft)
+
+modelsummary::modelsummary(models = list("m1"=m1,
+                                         "m2"=m2,
+                                         "m3"=m3),
+                           output = "kableExtra", 
+                           stars=T,gof_omit = "Adj|IC|Log|F|RMSE")
+```
+]
+.panel2-manual[
+```{r modsum2, echo=F, results = 'asis'}
+m1 <- lm(inc ~ sex, data = a16_ft)
+m2 <- lm(inc ~ sex + age , data = a16_ft)
+m3 <- lm(inc ~ sex + age + educ + eastwest , data = a16_ft)
+         #  + gkpol
+
+
+modelsummary::modelsummary(models = list("m1"=m1,
+                                         "m2"=m2,
+                                         "m3"=m3),
+                           output = "flextable",
+                           stars = T,
+                           gof_omit = "Adj|IC|Log|F|RMSE") %>% 
+  flextable::fontsize(size = 7,part = "all") %>%
+  flextable::font(fontname = "Fira Mono",part = "all") %>% 
+  flextable::line_spacing(space = 1) %>% 
+  flextable::padding(padding.top =0,padding.bottom = 0,part = "all") %>% 
+  flextable::theme_zebra( odd_header = prismatic::clr_lighten(text_color1,.8),
+                          odd_body   = prismatic::clr_lighten(link_col,.8)) %>% 
+  flextable::hline(i = ~lead(m1) == 1391,border = officer::fp_border(width = 1.5,color = "grey50"))
+  
+
+# modelsummary::modelsummary(models = list("m1"=m1,
+#                                          "m2"=m2,
+#                                          "m3"=m3),
+#                            output = "kableExtra", 
+#                            stars = T, 
+#                            gof_omit = "Adj|IC|Log|F|RMSE") %>% 
+#   kable_styling(font_size = 10)
+```
+]
+
+---
+# Koeffizientenplot
+
+```{r coefplt_sneak, out.width="50%", out.height="50%", fig.align="center", echo=F, dpi = 500}
+df_m3 <- broom::tidy(m3, conf.int = 95)
+lab_vec <- c(
+  "(Intercept)"= "Intercept",
+  "sexw"       = "Frau",
+  "age"        = "Alter",
+  "educ2"      = "Hauptschule",
+  "educ3"      = "Mittlere Reife",
+  "educ4"      = "Fachabi",
+  "educ5"      = "Abi",
+  "eastwest2"  = "neue Länder"
+  # ,
+  # "gkpol2"     = "Einw. 2k - < 5k",
+  # "gkpol3"     = "Einw: 5k - <20k",
+  # "gkpol4"     = "Einw: 20k - <50k",
+  # "gkpol5"     = "Einw: 50k - <100k",
+  # "gkpol6"     = "Einw: 100k - <500k",
+  # "gkpol7"     = "Einw: >500k"
+)
+
+ggplot(data = df_m3, 
+       aes(y = term, x = estimate)) +
+  geom_vline(aes(xintercept = 0),linetype = 2) +
+  geom_point(size = 2) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Paired") +
+  guides(color = F)  +
+  labs(y = "" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Modell m4") +
+  scale_y_discrete(labels = lab_vec,limits=rev)
+```
+
+---
+# Modelloutput vorbereiten
+
+.blade1[Klassischer Modell-Output mit `summary()`:]
+
+.smaller[
+```{r,eval = F}
+summary(m3)
+```
+]
+
+.smaller[.smaller[
+```{r,echo=F}
+summary( m3 )
+```
+]]
+
+---
+# Modelloutput vorbereiten
+
+.blade1[`tidy` aus dem Paket `broom` wandelt Modelloutputs in data.frames um:]
+
+
+.smaller[
+```{r, eval = F}
+install.packages("broom")
+```
+
+```{r, eval = F}
+m3 <- lm(inc ~ sex + age + educ + eastwest , 
+         data = a16_ft)
+library(broom)
+tidy(m3) 
+```
+]
+.smaller[
+```{r, echo=F}
+tidysum <-  head(broom::tidy(m3),n=8) %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.)
+knitr::kable(tidysum, format = "html")
+```
+] 
+
+
+---
+# Modelloutput vorbereiten
+
+.blade1[Mit `conf.int` bekommen wir zusätzlich die Konfidenzintervalle ausgegeben:]
+
+
+.smaller[
+```{r, eval = F}
+install.packages("broom")
+```
+
+```{r, eval = F}
+library(broom)
+tidy(m3, 
+     conf.int = 95) #<<
+```
+]
+.smaller[
+```{r, echo=F}
+library(broom)
+tidysum <-  head(broom::tidy(m3, conf.int = 95),n=8) %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.)
+knitr::kable(tidysum, format = "html") 
+    # kableExtra::column_spec(6:7, bold = T)
+```
+
+] 
+
+---
+# Modelloutput vorbereiten
+
+.blade1[Den Output aus `tidy()` legen wir als `data.frame` ab:]
+
+
+```{r dfstore}
+df_coef <- tidy(m3, conf.int = 95)
+```
+
+.blade1[Diesen `data.frame` verwenden wir dann für einen **ggplot**:]
+
+```{r ggplotex, eval=F}
+ggplot(data = df_coef, 
+       aes(y = term, x = estimate)) 
+```
+
+---
+```{r coefplotreveal, eval=F, echo=F}
+ggplot(data = df_coef, 
+       aes(y = term, x = estimate)) +
+  geom_vline(aes(xintercept = 0),linetype = 2) +
+  geom_point(size = 2) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Paired") +
+  guides(color = 'none')  +
+  labs(y = "" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommen",
+       subtitle = "Vollzeitbeschäftige",
+       caption= "Quelle: Allbus 2016" ) 
+```
+`r chunk_reveal("coefplotreveal",title = "#Koeffzientenplot")`
+
+---
+#Koeffzientenplot
+
+.panel1-manual[
+```{r coefplot_label, fig.show="hide"}
+ggplot(data = df_coef, 
+       aes(y = term, x = estimate)) +
+  geom_vline(aes(xintercept = 0),linetype = 2) +
+  geom_point(size = 2) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Paired") +
+  guides(color = 'none')  +
+  labs(y = "" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommen",
+       subtitle = "Vollzeitbeschäftige",
+       caption= "Quelle: Allbus 2016" ) +
+   scale_y_discrete(limits = rev(factor(df_coef$term)), #<<
+                   labels = c("neue Länder", #<<
+                              "Abi","Fachabi","Mittlere Reife", #<<
+                              "Hauptschule", #<<
+                              "Alter","Frau", #<<
+                              "Intercept") ) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("coefplot_label", "png")`)
+]
+
+---
+# Koeffzientenplot labeln mit Vector
+
+.panel1-manual[
+```{r coefplot_label3, fig.show="hide"}
+lab_vec <- c(                     
+  "(Intercept)"= "Intercept",                 
+  "sexw"       = "Frau",                  
+  "age"        = "Alter",                  
+  "educ2"      = "Hauptschule",                  
+  "educ3"      = "Mittlere Reife",                  
+  "educ4"      = "Fachabi",                  
+  "educ5"      = "Abi",                  
+  "eastwest2"  = "neue Länder"                  
+)     
+
+ggplot(data = df_coef, 
+       aes(y = term, x = estimate)) +
+  geom_vline(aes(xintercept = 0),linetype = 2) +
+  geom_point(size = 2) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Paired") +
+  guides(color = 'none')  +
+  labs(y = "" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommen",
+       subtitle = "Vollzeitbeschäftige",
+       caption= "Quelle: Allbus 2016" ) +
+  scale_y_discrete(labels  = lab_vec , limits = rev(names(lab_vec))  ) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("coefplot_label3", "png")`)
+]
+
+---
+# Koeffzientenplot labeln mit Vector
+
+.panel1-manual[
+```{r coefplot_label4, fig.show="hide"}
+lab_vec2 <- c(                     
+                           #<<                 
+  "sexw"       = "Frau",                  
+  "age"        = "Alter",                  
+  "educ2"      = "Hauptschule",                  
+  "educ3"      = "Mittlere Reife",                  
+  "educ4"      = "Fachabi",                  
+  "educ5"      = "Abi",                  
+  "eastwest2"  = "neue Länder"                  
+)     
+
+ggplot(data = df_coef, 
+       aes(y = term, x = estimate)) +
+  geom_vline(aes(xintercept = 0),linetype = 2) +
+  geom_point(size = 2) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Paired") +
+  guides(color = 'none')  +
+  labs(y = "" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommen",
+       subtitle = "Vollzeitbeschäftige",
+       caption= "Quelle: Allbus 2016" ) +
+  scale_y_discrete(labels  = lab_vec2 , limits = rev(names(lab_vec2))  ) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("coefplot_label4", "png")`)
+]
+
+---
+# Modellvergleich
+
+.blade1[Häufig interessiert uns nur eine Variable: <br> .smallish[Wie verändert sich der Gender Pay Gap nach Kontrolle für verschiedene Variablen?]]
+
+
+.panel1-manual[
++ Modell 1
+```{r,eval = F}
+m1 <- lm(inc ~ sex , data = a16_ft)
+m1_df <- tidy(m1,conf.int=95) %>% 
+  filter(term == "sexw")
+```
+
++ Modell 2
+```{r,eval = F}
+m2 <- lm(inc ~ sex + age + I(age^2), data = a16_ft)
+m2_df <- tidy(m2,conf.int=95) %>% 
+  filter(term == "sexw")
+```
++ Modell 3
+```{r,eval = F}
+m3 <- lm(inc ~ sex + age + I(age^2) + educ + eastwest + gkpol, data = a16_ft)
+m3_df <- tidy(m3,conf.int=95) %>% 
+  filter(term == "sexw")
+```
+]
+
+.panel2-manual[
+```{r,echo=F}
+m1_df <- tidy(m1,conf.int=95)
+m1_df %>% filter(term == "sexw") %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.) %>% head()
+```
+<br>
+<br>
+<br>
+<br>
+```{r,echo=F}
+m2_df <- tidy(m2,conf.int=95)
+m2_df %>% filter(term == "sexw") %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.) %>% head()
+```
+<br>
+<br>
+
+<br>
+```{r,echo=F}
+m3_df <- tidy(m3,conf.int=95)
+m3_df %>% filter(term == "sexw") %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.) %>% head()
+```
+]
+
+
+---
+# Modellvergleich
+
+.blade1[.smallish[Mit `bind_rows` können wir die ausgewählten Zeilen zu einem neuen `data.frame` zusammenfügen. Mit `.id` können wir eine ID-Variable für die Modelle setzen]]
+.small[
+```{r, echo = T}
+sex_coef <-  bind_rows(m1_df %>% filter(term == "sexw"),  
+                       m2_df %>% filter(term == "sexw"),
+                       m3_df %>% filter(term == "sexw"),
+                       .id = "model") #<<
+```
+```{r, eval=F}
+sex_coef
+```
+```{r,echo=F}
+data.frame(sex_coef) %>%  mutate(across(where(is.numeric),~round(.,2)))
+```
+]
+
+**Diesen `data.frame` können wir jetzt wieder (gg-)ploten**
+
+---
+# Modellvergleich
+
+.panel1-manual[
+```{r modelvergl, fig.show="hide",fig.height = 4.5, out.width = "70%"}
+ggplot(data = sex_coef) +
+  aes(y = model)+ 
+  aes(x = estimate) + 
+  geom_point(size = 2.78) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .2)  +
+  theme_minimal() +
+  labs(y = "Kontrollvariablen" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommensunterschied Frauen vs. Männer") +
+  labs(subtitle = "Vollzeitbeschäftige") +
+  labs(caption= "Quelle: Allbus 2016" ) 
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("modelvergl", "png")`)
+]
+
+---
+# Modellvergleich
+
+.panel1-manual[
+```{r modelvergl2, fig.show="hide", fig.height = 4.5, out.width = "70%"}
+ggplot(data = sex_coef) +
+  aes(y = model)+ 
+  aes(x = estimate) + 
+  geom_point(size = 2.78) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  labs(y = "Kontrollvariablen" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommensunterschied Frauen vs. Männer") +
+  labs(subtitle = "Vollzeitbeschäftige") +
+  labs(caption= "Quelle: Allbus 2016" )  +
+  scale_y_discrete(breaks = c(1:3), #<<
+                   labels = c("keine", #<<
+                              "Alter", #<<
+                              "Alter, Bildung, Ost/West")) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("modelvergl2", "png")`)
+
+]
+
+---
+# Modellvergleich
+
+.panel1-manual[
+```{r modelvergl3, fig.show="hide", fig.height = 4.5, out.width = "70%"}
+ggplot(data = sex_coef) +
+  aes(y = model)+ 
+  aes(x = estimate) + 
+  geom_point(size = 2.78) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  labs(y = "Kontrollvariablen" ) +
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommensunterschied Frauen vs. Männer") +
+  labs(subtitle = "Vollzeitbeschäftige") +
+  labs(caption= "Quelle: Allbus 2016" )  +
+  scale_y_discrete(breaks = c(1:3), 
+                   labels = c("keine", 
+                              "Alter", 
+                              "Alter, \nBildung, \nOst/West")) #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("modelvergl3", "png")`)
+]
+---
+# Modellvergleich
+
+.panel1-manual[
+```{r modelvergl4, fig.show="hide", fig.height = 4.5, out.width = "70%"}
+ggplot(data = sex_coef) +
+  aes(y = model)+ 
+  aes(x = estimate) + 
+  geom_point(size = 2.78) + 
+  geom_errorbarh(aes(xmin=conf.low, xmax = conf.high)) +
+  aes(height = .25)  +
+  theme_minimal() +
+  labs(y = "Kontroll-\nvariablen" ) + #<<
+  labs(x = expression(hat(beta)) ) +
+  labs(title = "Einkommensunterschied Frauen vs. Männer") +
+  labs(subtitle = "Vollzeitbeschäftige") +
+  labs(caption= "Quelle: Allbus 2016" ) +
+  scale_y_discrete(breaks = c(1:3), 
+                   labels = c("keine", 
+                              "Alter", 
+                              "Alter, \nBildung, \nOst/West")) +
+  theme(axis.title.y =  element_text(angle = 0,vjust = 1))#<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("modelvergl4", "png")`)
+]
+
+---
+
+# Quadratische und Interaktionsterme
+
+.smaller[
+```{r}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+m5 <- lm(inc ~ sex * age + I(age^2) , data = a16_ft)
+```
+]
+
+.smaller[
+```{r, echo = T, eval = F }
+tidy(m4,conf.int=95)
+```
+.center[
+```{r, echo = F, eval = T }
+data.frame(tidy(m4,conf.int=95))%>% mutate(across(where(is.numeric),~round(.,3)) )
+```
+]
+```{r,echo=T, eval = F }
+tidy(m5,conf.int=95)
+```
+.center[
+```{r, echo = F, eval = T }
+data.frame(tidy(m5,conf.int=95)) %>% mutate(across(where(is.numeric),~round(.,3)) )
+```
+]
+]
+
+---
+
+# Koeffizientenplot
+
+
+.blade1[Manchmal sind Koeffizientenplots an sich aber wenig informativ]
+.smaller[
+```{r}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+m5 <- lm(inc ~ sex * age + I(age^2) , data = a16_ft)
+```
+]
+
+.smaller[
+```{r, echo = F, out.height="30%", out.width="60%" }
+m4_df <- broom::tidy(m4,conf.int=95)
+p4 <- ggplot(data = m4_df, 
+       aes(x = term, y = estimate)) +
+  geom_point(size = 2) + 
+  geom_errorbar(aes(ymin=conf.low, ymax = conf.high)) +
+  aes(width = .2)  +
+  theme_minimal() +
+  geom_hline(aes(yintercept = 0),linetype = 2) +
+  labs(x = "" ) +
+  labs(y = expression(hat(beta)) ) +
+  labs(title = "m4") +
+  coord_flip() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Dark2") +
+  guides(color = F)+
+  scale_x_discrete(limits = rev(factor(m4_df$term)),
+                   labels = rev(c("Intercept", "Frau",
+                              "Alter", "Alter²")) )
+```
+```{r, echo = F, fig.align="center", fig.width=10, fig.height=4 }
+m5_df <- broom::tidy(m5,conf.int=95)
+p5 <- ggplot(data = m5_df, 
+       aes(x = term, y = estimate)) +
+  geom_point(size = 2) + 
+  geom_errorbar(aes(ymin=conf.low, ymax = conf.high)) +
+  aes(width = .2)  +
+  theme_minimal() +
+  geom_hline(aes(yintercept = 0),linetype = 2) +
+  labs(x = "" ) +
+  labs(y = expression(hat(beta)) ) +
+  labs(title = "m5") +
+  coord_flip() +
+  aes(color = sub("\\d$", "", term)  ) +
+  scale_color_brewer(palette = "Dark2") +
+  guides(color = F)+
+  scale_x_discrete(limits = rev(factor(m5_df$term)),
+                   labels = rev(c("Intercept", "Frau",
+                                  "Alter", "Alter²",
+                                  "Alter*Frau")) )
+library(patchwork)
+p4 + p5 + plot_layout(ncol = 2)
+```
+]
+
+---
+
+# Vorhergesagte Werte mit [**ggeffects**](https://strengejacke.github.io/ggeffects/index.html)
+
+.smaller[
+[`ggpredict()`](https://strengejacke.github.io/ggeffects/reference/ggpredict.html) aus [`{ggeffects}`](https://strengejacke.github.io/ggeffects/index.html) liefert vorhergesagte Werte.]
+.smaller[
+```{r, eval = F}
+install.packages("ggeffects")
+library(ggeffects)
+```
+]
+.smaller[
+.smaller[
+`ggpredict()` berechnet die vorhergesagten Werte der abhängigen Variable für bestimmte Werte der fokalen unabh. Variable einer *typischen* Beobachtung in den Daten - dafür werden die anderen unabh. Variablen je nach Variablentyp auf das arith. Mittel (numeric), das Referenz-Level (factor) oder den Modus (character) gesetzt [(mehr hier)](https://strengejacke.github.io/ggeffects/index.html).
+Dieses Vorgehen hat auch Nachteile, [`{marginaleffects}`](https://marginaleffects.com/chapters/predictions.html#interesting-grid) bietet umfangreiche Alternativen - auch hier ist das Resultat ein data.frame, der dann geplottet werden kann.
+]
+]
+.smaller[
+```{r}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+lm_4 <- ggpredict(m4, terms = c("age[20,30,40,50,60]","sex"))
+```
+```{r,eval =F}
+lm_4
+```
+
+]
+.smaller[
+```{r, echo=F}
+ggpredict_df <-  head(lm_4,n=6) %>% mutate(across(where(is.numeric),~round(.,3)) ) %>%  data.frame(.)
+knitr::kable(ggpredict_df, format = "html") %>% 
+     kableExtra::column_spec(c(1,2,6), bold = T)
+```
+]
+
+---
+
+
+# Quadratischer Term
+.panel1-manual[
+```{r quadeffect,fig.show="hide"}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+lm_4 <- ggpredict(m4, terms = c("age[20,30,40,50,60]","sex"))
+ggplot(lm_4) +
+  aes(x=x, y=predicted, colour = group) +  #<<
+  aes(ymin= conf.low, ymax = conf.high) +  #<<
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35) + #<<
+  theme_minimal() 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("quadeffect", "png")`)
+]
+
+
+---
+
+
+# Quadratischer Term
+.panel1-manual[
+```{r quadeffect2, fig.show="hide"}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+lm_4 <- ggpredict(m4, terms = c("age[20,30,40,50,60]","sex"))
+ggplot(lm_4) +
+  aes(x=x, y=predicted, colour = group) +  
+  aes(ymin= conf.low, ymax = conf.high) +  
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35) + 
+  theme_minimal()  +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter", #<<
+       y = "vorhergesagte Werte", #<<
+       x = "Alter", #<<
+       color = "Geschlecht") #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("quadeffect2", "png")`)
+]
+
+---
+
+
+# Quadratischer Term
+.panel1-manual[
+```{r quadeffect_col, fig.show="hide"}
+m4 <- lm(inc ~ sex + age + I(age^2) , data = a16_ft)
+lm_4 <- ggpredict(m4, terms = c("age[20,30,40,50,60]","sex"))
+ggplot(lm_4) +
+  aes(x=x, y=predicted, colour = group) +  
+  aes(ymin= conf.low, ymax = conf.high) +  
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35) + 
+  theme_minimal()  +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter", #<<
+       y = "vorhergesagte Werte", #<<
+       x = "Alter", #<<
+       color = "Geschlecht") +  #<<
+  scale_color_brewer(palette = "Accent") #<<
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("quadeffect_col", "png")`)
+]
+
+---
+
+
+# Interaktionsterm
+.panel1-manual[
+```{r inter1, fig.show="hide"}
+m5 <- lm(inc ~ sex * age + I(age^2) , data = a16_ft) #<<
+lm_5 <- ggpredict(m5, terms = c("age[20,30,40,50,60]","sex"))
+ggplot(lm_5) +
+  aes(x=x, y=predicted, colour = group) +  
+  aes(ymin= conf.low, ymax = conf.high) +  
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35) + 
+  theme_minimal()  +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("inter1", "png")`)
+]
+
+---
+
+
+# Interaktionsterm
+.panel1-manual[
+```{r inter2, fig.show="hide"}
+m5 <- lm(inc ~ sex * age + I(age^2)  , data = a16_ft)
+lm_5 <- ggpredict(m5, terms = c("age[20,25,30,35,40,45,50,55,60]","sex")) #<<
+ggplot(lm_5) +
+  aes(x=x, y=predicted, colour = group) +  
+  aes(ymin= conf.low, ymax = conf.high) +  
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35) + 
+  theme_minimal()  +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") 
+```
+]
+.panel2-manual[
+![](`r knitr::fig_chunk("inter2", "png")`)
+]
+
+---
+
+
+# Interaktionsterm
+
+.blade1[.smallish[Natürlich können wir auch hier Kontrollvariablen aufnehmen - zB. `eastwest`. Diese können wir dann als `facets` im Plot verwenden]]
+```{r}
+m6 <- lm(inc ~ sex * age + I(age^2) + eastwest , data = a16_ft)
+lm_6 <- ggpredict(m6, terms = c("age[20,25,30,35,40,45,50,55,60]","sex","eastwest"))
+```
+
+```{r,eval=FALSE}
+lm_6
+```
+
+
+```{r, echo=F}
+data.frame(lm_6)  %>% 
+    head(n=6) %>% mutate(across(where(is.numeric),~round(.,3)) ) %>% 
+    flextable() %>% 
+    flextable::fontsize(size = 9,part = "all") %>%
+    flextable::font(fontname = "Fira Mono",part = "all") %>% 
+    flextable::line_spacing(space = 1) %>% 
+    flextable::theme_zebra( odd_header = prismatic::clr_lighten(text_color1,.8),
+                            odd_body   = NA) %>% 
+    flextable::padding(padding.top =0,padding.bottom = 0,padding.left = 2,padding.right = 2,part = "all") %>% 
+    flextable::color(j=7,color = bold_color,part = "all") %>% 
+    flextable::bold(j=7) 
+```
+
+---
+# Interaktionsterm
+
+.panel1-manual[
+```{r inter3, fig.show="hide"}
+m6 <- lm(inc ~ sex * age + I(age^2) + eastwest , data = a16_ft)
+lm_6 <- ggpredict(m6, terms = c("age[20,25,30,35,40,45,50,55,60]","sex",
+                                "eastwest")) #<<
+ggplot(lm_6) +
+  aes(x=x, y=predicted, colour = group) + 
+  aes(ymin= conf.low, ymax = conf.high) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35)+
+  facet_wrap(~facet) + #<<
+  theme_minimal() +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter & Ost/West", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("inter3", "png")`)
+]
+---
+# Interaktionsterm
+
+.panel1-manual[
+```{r inter3b, fig.show="hide"}
+m6 <- lm(inc ~ sex * age + I(age^2) + eastwest , data = a16_ft)
+lm_6 <- ggpredict(m6, terms = c("age[20,25,30,35,40,45,50,55,60]","sex",
+                                "eastwest")) #<<
+ggplot(lm_6) +
+  aes(x=x, y=predicted, colour = group) + 
+  aes(ymin= conf.low, ymax = conf.high) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35)+
+  facet_wrap(~facet, labeller = labeller(facet = c("1"="West","2"="Ost"))) + #<<
+  theme_minimal() +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter & Ost/West", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") 
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("inter3b", "png")`)
+]
+
+---
+# Interaktionsterm
+
+.panel1-manual[
+```{r inter4, fig.show="hide"}
+m6 <- lm(inc ~ sex * age + I(age^2) + eastwest , data = a16_ft)
+lm_6 <- ggpredict(m6, terms = c("age[20,25,30,35,40,45,50,55,60]","sex",
+                                "eastwest")) 
+ggplot(lm_6) +
+  aes(x=x, y=predicted, 
+      colour = interaction(facet,group)) + #<<
+  aes(ymin= conf.low, ymax = conf.high) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35)+
+  theme_minimal() +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter & Ost/West", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") +
+   scale_color_ordinal() #<<
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("inter4", "png")`)
+]
+
+---
+# Interaktionsterm
+
+.panel1-manual[
+```{r inter5, fig.show="hide"}
+m6 <- lm(inc ~ sex * age + I(age^2) + eastwest , data = a16_ft)
+lm_6 <- ggpredict(m6, terms = c("age[20,25,30,35,40,45,50,55,60]","sex",
+                                "eastwest")) 
+ggplot(lm_6) +
+  aes(x=x, y=predicted, 
+      colour = interaction(facet,group)) + 
+  aes(ymin= conf.low, ymax = conf.high) +
+  geom_line() +
+  geom_point() +
+  geom_errorbar(width = .35)+
+  theme_minimal() +
+  scale_y_continuous(label = scales::label_currency(suffix = "€",prefix = "",big.mark = "")) +
+  labs(title = "Einkommen für Frauen und Männer nach Alter & Ost/West", 
+       y = "vorhergesagte Werte", 
+       x = "Alter", 
+       color = "Geschlecht") +
+  scale_color_ordinal(
+    breaks = c("1.m","2.m","1.w","2.w"),          #<<
+    labels = c("Männer - West", "Männer - Ost", #<<
+               "Frauen - West","Frauen - Ost") #<<
+    )  
+```
+]
+
+.panel2-manual[
+![](`r knitr::fig_chunk("inter5", "png")`)
+]
+
+---
+# Abschließende Bemerkungen
+
+.smaller[
++ alle Befehle & Strategien funktionieren am besten, wenn kategoriale Variablen **vorab** als `factor` definiert wurden
++ dabei können entweder die existierenden Ausprägungen (Zahlencodes) behalten oder diese mit labels überschrieben werden
++ zB für `sex`:
+```{r, eval = F}
+a16_ft$sex <- factor(a16_ft$sex, levels = c(1,2), labels = c("m","w") )
+```
+  Hier werden also 1 und 2 mit `m` und `w` überschrieben
+
++ Die Strategie für logistische `glm` oder Cox-Regressionsmodelle `coxph` entspricht dem Vorgehen bei OLS-Regressionsmodellen 
++ Für Koeffizientenplots ist jedoch jeweils zu beachten, ob logit-Koeffizienten, Odds/Hazard Ratios oder average marginal effects dargestellt werden sollen
+
++ Mehr zu `ggeffects` gibt es zB. [hier](https://cran.r-project.org/web/packages/ggeffects/vignettes/marginaleffects.html) 
++ Alternativ können die marginal effects/adjusted predictions auch mit dem Paket [`{marginaleffects}`](https://marginaleffects.com/) berechnet werden - auch hier ist das Resultat ein data.frame, der dann geplottet werden kann
+]
+  
+---
+# Übungsaufgaben 3
+
+.smaller[
++ Laden Sie den kumulierten Allbus-Datensatz (siehe Hinweise am Ende)
++ Filtern Sie die in Vollzeit erwerbstätigen Befragten aus 2014:
+```{r, eval=F}
+a14_ft <- ak %>% filter(year == 2014, work == 1)
+```
++ Berechnen Sie Regressionsmodelle mit `inc` als abhängiger Variable, indem Sie Modell für Modell folgende unab. Variablen einfügen:
+  + `sex` (Geschlecht der Befragten)
+  + `age` (Alter der Befragten)
+  + `hs18` (Körpergröße der Befragten)
+  + `educ` (Bildungsabschluss) 
+  + `gkpol` (Wohnortgröße)
++ Definieren Sie die kategorialen Variablen (`sex`, `educ`, `gkpol`) als `factor`! 
++ Erstellen Sie Koeffizientenplots für die Modelle!
++ Wie verändert sich der Koeffizient für das Geschlecht mit zusätzlichen Kontrollvariablen? Erstellen Sie eine entsprechende Darstellung!
+  
+.smallish[...Fortsetzung nächste Seite]
+]
+
+---
+
+# Übungsaufgaben 3 (Fortsetzung)
+
+.smaller[
++ Erstellen Sie folgendes Regressionsmodell:
+```{r, eval = F}
+lm_q <- lm(inc  ~ sex * age + I(age^2))
+```
++ Erstellen Sie mit `ggpredict` die vorhergesagten Werte
++ Erstellen Sie die passende graphische Darstellung!
+
+]
+---
+
+# Fälle hervorheben
+
+```{r, eval = F}
+install.packages("ggrepel")
+library(ggrepel)
+```
+.smallish[
+Beispiele gibt es bspw. [hier](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html)
+]
+
+---
+# Linksammlung 
+
++ das [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) bietet eine umfangreiche Sammlung an Beispielplots inkl. dazugehöriger Syntax 
++ das [ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) gibt eine Übersicht zu den wichtigsten Funktionen und Befehlen
++ [50 Beispiele](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html) von ggplot2-Graphiken
++ [R Graph Gallery](https://wwwr-graph-gallery.com) mit verschiedensten Darstellungsformen
++ [ggplot-Flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html#1) mit Beispielen
++ [Liste](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) aller Farben in R 
++ [Hex-Codefinder](https://www.color-hex.com/)
++ [ColorBrewer](http://colorbrewer2.org): Farbpaletten über `scale_..._brewer()` direkt abrufbar
++ Weitere Pakete:
+  + [`scico`](https://github.com/thomasp85/scico): weitere Farbpaletten über `scale_..._scico()`
+  + [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) weitere Themes
+  + [`patchwork`](https://github.com/thomasp85/patchwork) ggplots kombinieren
+  + [`gganimate`](https://github.com/thomasp85/gganimate) ggplots in gifs verwandeln    
+
+
+
+---
+# Einlesen der Beispieldatensätze 
+.smaller[
+```{r,eval=F}
+install.packages(c("readxl","dplyr"))
+```
+]
+
+**Weihnachtsbäume**
+
+.smaller[
+```{r, eval=F}
+library(dplyr)
+christmas_trees_file <- "Pfad/in/den/gewünschten/Ordner/christmas_trees.xlsx" # Dateiname anpassen
+url1 <- "https://github.com/EvaMaeRey/ggplot_flipbook/raw/refs/heads/master/raw_data/Christmas%20tree%20sales.xlsx" # Datenquelle
+# Daten herunterladen und speichern
+if (!file.exists(file)) { download.file(url = url1,mode = "wb", destfile = christmas_trees_file) }
+christmas_trees <- 
+  readxl::read_xlsx(christmas_trees_file) %>% 
+    rename(anz_baeume = `Number of trees sold`,
+           baumart = `Type of tree`,
+           jahr = Year)
+```
+]
+
+**Inhaftierungszahlen**
+
+.smaller[
+```{r, eval =F }
+prison_file <- "Pfad/in/den/gewünschten/Ordner/prison_summary.csv" # Dateiname anpassen
+url2 <- "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-22/prison_summary.csv" # Datenquelle
+# Daten herunterladen und speichern
+if (!file.exists(file)) { download.file(url = url2,mode = "wb", destfile = prison_file) }
+df2 <- readr::read_csv(prison_file) %>%  filter(!(pop_category %in% c("Female", "Male", "Total", "Other"))) 
+```
+]
+
+---
+# Einlesen der Allbus-Datensätze 
+
+Die Daten der "**All**gemeinen **B**evölkerungs**u**mfrage der **S**ozialwissenschaften" (ALLBUS) können für Forschung und Lehre [hier](https://www.gesis.org/allbus) beantragt werden.
+
+#### Allbus 2016
+Für die Beispiele werden nur die Vollzeit erwerbstätigen Befragten (`work == 1`) mit abgeschlossenem Bildungsabschluss (`educ`) verwendet, die auch unter 65 Jahre alt sind:
+```{r a16, eval = F}
+library(tidyverse)
+a16_ft <- readr::read_delim("ZA5250_v2-0-0.csv",delim = ";") %>% 
+  filter(work == 1, age <= 64, educ %in%  1:5) %>% 
+  mutate(across(everything(),~ifelse(.x<0,NA,.)),
+         across(c(educ,sex,eastwest,gkpol),~factor(.x)),
+         sex = factor(sex, levels = c(1,2), labels = c("m","w")) ) %>% 
+  filter(complete.cases(sex, age , educ , eastwest , gkpol))
+```
+
+
+
+
