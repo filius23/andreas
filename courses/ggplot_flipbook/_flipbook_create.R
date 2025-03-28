@@ -11,7 +11,7 @@ rmarkdown::render(input = "./courses/ggplot_flipbook/_preview.Rmd",
 pagedown::chrome_print(input = "./courses/ggplot_flipbook/preview.html")
 # then create gif as follows
 magick::image_read_pdf(path = "./courses/ggplot_flipbook/preview.pdf", density = 100) %>% # create images
-  magick::image_write_gif(path = "./courses/ggplot_flipbook/preview.gif", delay = .9) # images to gif
+  magick::image_write_gif(path = "./courses/ggplot_flipbook/preview.gif", delay = .7) # images to gif
 
 
 # https://github.com/quarto-dev/quarto-cli/discussions/1840

@@ -1,20 +1,60 @@
-- title: "Exporting Tables using Stata and `esttab`"
-  subtitle: "Tabellenexport mit Stata (In German)"
+# stata 
+- title: "Exporting Tables using Stata and `esttab` for researchers at BIBB"
+  subtitle: " German"
+  description: 'One-day intro on how to automate writing descriptions and model output tables into `.tex` or Word-files'
   date: 2023-10-21
   image: ./Stata_BIBB/thumbnail.png
   path: https://filius23.github.io/StataBIBB_tables2022
-# - title: "Test"
-#   subtitle: "A real test"
-#   author: "AnFi"
-#   image: ./02-xaringan/featured.gif
-#   path:  ./02-xaringan/index.html
-#   categories:
-#     - xaringan
-- title: "ggplot2 - Einführung"
-  subtitle: "A flipbook-based ggplot2 intro (German)"
+
+- title: "Programming with Postestimates, Macros, and Loops in Stata for researchers at BIBB"
+  subtitle: " German"
+  description: 'This one-day seminar covers Stata programming techniques, including macros, postestimates, efficient loops, variable labeling, running DoFiles, and automating data import and file organization.'
+  date: 2022-10-24
+  image: ./StataProg_BIBB/00_titel.png
+  path: https://filius23.github.io/StataProgBIBB_2022
+
+
+- title: "Gesis Methods Seminar 2020"
+  subtitle: " German"
+  date: 2020-09-18
+  image: ./Gesis_Methodensem_2020/thumbnail.png
+  path:  https://filius23.github.io/Stata_Skript/
+  description: 'This one-week online workshop covers foundational concepts in descriptive and inferential statistics, offering hands-on experience with Stata for data analysis and interpretation, including a [dedicated section on creating graphics in Stata.](https://filius23.github.io/Stata_Skript/dataviz.html#optionen)'
+  categories:
+    - xaringan
+
+
+# R
+- title: "ggplot2 - A flipbook-based introduction"
+  subtitle: " German"
   date: 2025-03-25
-  image: ./ggplot_flipbook/featured.gif
+  image: ./ggplot_flipbook/preview.gif
   path:  ./ggplot_flipbook/index.html
+  description: 'Learn how to create descriptive plots and coefficient plots'
+  categories:
+    - xaringan
+- title: "A Hands-On Intro to R for researchers at BIBB"
+  subtitle: " German"
+  date: 2023-04-17
+  image: ./BIBB_R/thumbnail.png
+  path:  https://filius23.github.io/BIBB_R/
+  description: 'A four-day introduction to data preparation, statistical analyses, and graphics using  R and the tidyverse for interested members of the [BIBB](https://www.bibb.de/).'
+  categories:
+    - xaringan
+- title: "A Hands-On Intro to R for IAB Researchers"
+  subtitle: " German"
+  date: 2023-06-23
+  image: ./GradAB_R2024/thumbnail.png
+  path:  https://filius23.github.io/R_IAB/
+  description: 'A four-day R course for experienced researchers at IAB covering essential topics in data analysis, including data wrangling, visualization with {ggplot2}, regression, and the use of loops and functions, with practical sessions for hands-on learning and further exploration of advanced techniques.'
+  categories:
+    - xaringan
+- title: "A Hands-On Intro to R for GradAB Students"
+  subtitle: " German"
+  date: 2024-09-11
+  image: ./GradAB_R2024/thumbnail.png
+  path:  https://filius23.github.io/GradAB_R2024/
+  description: 'A two-day crash course introduction to R and the tidyverse for GradAB PhD students and other interested members of the IAB.'
   categories:
     - xaringan
 
