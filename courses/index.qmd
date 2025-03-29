@@ -1,6 +1,6 @@
 ---
 title: "Courses"
-subtitle: "I specialize in teaching applied statistics and programming using R and Stata for social scientists at the undergraduate, masters, and doctoral level - both in German and in English. <br> <br> In this gallery, I'm compiling a selection of educational materials I've created over the years. If you're looking for a dedicated instructor, feel free to reach out – I'd be happy to collaborate with you!"
+subtitle: "In this gallery, I'm compiling a selection of educational materials I've created over the years. <br> <br> I specialize in teaching applied statistics and programming using R and Stata for social scientists at the undergraduate, masters, and doctoral level - both in German and in English. If you're looking for a dedicated instructor, feel free to reach out – I'd be happy to collaborate with you!"
 listing:
   contents:
     - "metadata.yml"
