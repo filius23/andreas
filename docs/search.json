@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Courses",
-    "section": "",
-    "text": "ggplot2 - A flipbook-based introduction\n\n\n German\n\n\nLearn how to create descriptive plots and coefficient plots\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for GradAB Students\n\n\n German\n\n\nA two-day crash course introduction to R and the tidyverse for GradAB PhD students and other interested members of the IAB.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExporting Tables using Stata and esttab for researchers at BIBB\n\n\n German\n\n\nOne-day intro on how to automate writing descriptions and model output tables into .tex or Word-files\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for IAB Researchers\n\n\n German\n\n\nA four-day R course for experienced researchers at IAB covering essential topics in data analysis, including data wrangling, visualization with {ggplot2}, regression, and the use of loops and functions, with practical sessions for hands-on learning and further exploration of advanced techniques.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for researchers at BIBB\n\n\n German\n\n\nA four-day introduction to data preparation, statistical analyses, and graphics using R and the tidyverse for interested members of the BIBB.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming with Postestimates, Macros, and Loops in Stata for researchers at BIBB\n\n\n German\n\n\nThis one-day seminar covers Stata programming techniques, including macros, postestimates, efficient loops, variable labeling, running DoFiles, and automating data import and file organization.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGesis Methods Seminar 2020\n\n\n German\n\n\nThis one-week online workshop covers foundational concepts in descriptive and inferential statistics, offering hands-on experience with Stata for data analysis and interpretation, including a dedicated section on creating graphics in Stata.\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "publications/publication_list.html",
     "href": "publications/publication_list.html",
     "title": "Publication list",
@@ -63,6 +56,13 @@
     "text": "← Back to publication list"
   },
   {
+    "objectID": "courses/Stata_BIBB/index.html",
+    "href": "courses/Stata_BIBB/index.html",
+    "title": "Exporting Tables using Stata and esttab",
+    "section": "",
+    "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote - BIBB\n\n\n\nSlides\nGitHub Pages"
+  },
+  {
     "objectID": "about/index.html",
     "href": "about/index.html",
     "title": "Andreas Filser",
@@ -84,11 +84,18 @@
     "text": "Publications\n\n\nTeaching\n\n\nCV\n\n\nBlog (under construction)"
   },
   {
-    "objectID": "courses/Stata_BIBB/index.html",
-    "href": "courses/Stata_BIBB/index.html",
-    "title": "Exporting Tables using Stata and esttab",
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Courses",
     "section": "",
-    "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote - BIBB\n\n\n\nSlides\nGitHub Pages"
+    "text": "ggplot2 - A flipbook-based introduction\n\n\n German\n\n\nLearn how to create descriptive plots and coefficient plots\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for GradAB Students\n\n\n German\n\n\nA two-day crash course introduction to R and the tidyverse for GradAB PhD students and other interested members of the IAB.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExporting Tables using Stata and esttab for researchers at BIBB\n\n\n German\n\n\nOne-day intro on how to automate writing descriptions and model output tables into .tex or Word-files\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for IAB Researchers\n\n\n German\n\n\nA four-day R course for experienced researchers at IAB covering essential topics in data analysis, including data wrangling, visualization with {ggplot2}, regression, and the use of loops and functions, with practical sessions for hands-on learning and further exploration of advanced techniques.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for researchers at BIBB\n\n\n German\n\n\nA four-day introduction to data preparation, statistical analyses, and graphics using R and the tidyverse for interested members of the BIBB.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming with Postestimates, Macros, and Loops in Stata for researchers at BIBB\n\n\n German\n\n\nThis one-day seminar covers Stata programming techniques, including macros, postestimates, efficient loops, variable labeling, running DoFiles, and automating data import and file organization.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGesis Methods Seminar 2020\n\n\n German\n\n\nThis one-week online workshop covers foundational concepts in descriptive and inferential statistics, offering hands-on experience with Stata for data analysis and interpretation, including a dedicated section on creating graphics in Stata.\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Dr. Andreas Filser",
+    "section": "",
+    "text": "I am a sociologist enjoying conducting quantitative research and procuring data for others. My own research centres around family sociology, including relationship formation and parents in the labour market. I enjoy programming in R and Stata and teaching these skills.\nMore about me →"
   },
   {
     "objectID": "publications/2017_KRANKENKASSEN_IM_REGIONALEN/index.html",
