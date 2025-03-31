@@ -205,7 +205,8 @@ christmas_trees <-
     rename(
       anz_baeume = `Number of trees sold`,
       baumart = `Type of tree`,
-      jahr = Year)
+      jahr = Year) %>% 
+  mutate(anz_baeume= anz_baeume/100000) 
 rm(christmas_trees_file)
 ```
 
@@ -2470,16 +2471,17 @@ Beispiele gibt es bspw. [hier](https://cran.r-project.org/web/packages/ggrepel/v
 ---
 # Einlesen der Beispieldatensätze 
 .smaller[
+.smaller[
 ```{r,eval=F}
 install.packages(c("readxl","dplyr"))
+library(dplyr)
 ```
-]
+]]
 
 **Weihnachtsbäume**
 
 .smaller[
 ```{r, eval=F}
-library(dplyr)
 christmas_trees_file <- "Pfad/in/den/gewünschten/Ordner/christmas_trees.xlsx" # Dateiname anpassen
 url1 <- "https://github.com/EvaMaeRey/ggplot_flipbook/raw/refs/heads/master/raw_data/Christmas%20tree%20sales.xlsx" # Datenquelle
 # Daten herunterladen und speichern
@@ -2488,7 +2490,8 @@ christmas_trees <-
   readxl::read_xlsx(christmas_trees_file) %>% 
     rename(anz_baeume = `Number of trees sold`,
            baumart = `Type of tree`,
-           jahr = Year)
+           jahr = Year) %>% 
+  mutate(anz_baeume= anz_baeume/100000) 
 ```
 ]
 
