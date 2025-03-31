@@ -7,6 +7,7 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     css: [ninjutsu,xaringan-themer.css]
+    seal: false
     nature:
       ratio: 16:9
       highlightLines: true
@@ -29,7 +30,26 @@ library(ggeffects)
 library(flipbookr)
 library(modelsummary)
 library(flextable, exclude = c("as_image","footnote","compose"))
+xaringanExtra::use_share_again()
 ```
+class: title-slide, center, middle
+
+```{r, out.width="100px", echo=FALSE}
+hex_url <- "https://raw.githubusercontent.com/rstudio/hex-stickers/7847c8e8a5da57bacacb9fe8a11aef32dd98ab44/SVG/ggplot2.svg" 
+knitr::include_graphics(hex_url)
+```
+
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author`
+
+### `r rmarkdown::metadata$date`
+
+<!-- ### []() -->
+
 
 ```{r xaringan-themer, include=FALSE}
 # Colors for theming
@@ -74,6 +94,7 @@ a16_ft <- readr::read_delim("ZA5250_v2-0-0.csv",delim = ";") %>%
   filter(complete.cases(sex, age , educ , eastwest , gkpol))
 ```
 
+---
 # Datenvisualisierung - warum und wozu?
 
 
