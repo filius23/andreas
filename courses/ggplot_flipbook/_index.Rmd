@@ -48,7 +48,10 @@ knitr::include_graphics(hex_url)
 
 ### `r rmarkdown::metadata$date`
 
-<!-- ### []() -->
+#### [Source code auf github `r fontawesome::fa("github")`](https://github.com/filius23/andreas/tree/main/courses/ggplot_flipbook)
+[`r fontawesome::fa("creative-commons")` `r fontawesome::fa("creative-commons-by")` `r fontawesome::fa("creative-commons-nc")`](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
 
 ```{r xaringan-themer, include=FALSE}
 # Colors for theming
