@@ -51,6 +51,10 @@ CC Lizenz mit Namensnennung
 Du kannst dieses Tutorial gerne für **Lehrzwecke** verwenden und teilen.  
 Es ist unter einer **freien, nicht-kommerziellen Lizenz** [CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/) lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
 
+Es ist unter einer **freien, nicht-kommerziellen Lizenz** <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons.svg" alt="Creative Commons" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-by.svg" alt="Creative Commons By" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-nc.svg" alt="Creative Commons NC" style="width: 20px; height: 20px;"/> lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
+[CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
 Wenn du es hilfreich findest oder Fehler oder Verbesserungsvorschläge bemerkst, zögere bitte nicht, mich zu kontaktieren. Dein Feedback ist sehr willkommen!
 
 ## Was du lernen wirst:
