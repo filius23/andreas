@@ -1,6 +1,6 @@
 # Willkommen! 👋
 
-[Folien ansehen 👀](https://afilser.netlify.app/courses/ggplot_flipbook/#1)
+**[Folien ansehen 👀](https://afilser.netlify.app/courses/ggplot_flipbook/#1)**
 
 Willkommen zu diesem Projekt! Dies ist eine Einführung in die Erstellung von **deskriptiven Plots** und **Koeffizientenplots** mit `{ggplot2}` in R.  
 Es basiert auf einem Flipbook-Stil-Tutorial, das zeigt, wie jeder Zusatzbefehl in `{ggplot2}` ein weiteres Feature hinzufügt und das Diagramm schrittweise aufbaut.  
@@ -34,6 +34,8 @@ Viel Spaß beim Lernen und Plotten! 🎉
 
 ---
 # Welcome! 👋
+
+**[Slides (german) 👀](https://afilser.netlify.app/courses/ggplot_flipbook/#1)**
 
 Welcome to this project! This is an introduction to creating **descriptive plots** and **coefficient plots** using `ggplot2` in R.  
 It’s based on a flipbook-style tutorial that demonstrates how each layer in `{ggplot2}` adds another feature, gradually building up the plot.  
