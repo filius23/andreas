@@ -15,3 +15,6 @@ magick::image_read_pdf(path = "./courses/ggplot_flipbook/preview.pdf", density =
 
 
 # https://github.com/quarto-dev/quarto-cli/discussions/1840
+
+rmarkdown::render(input = "./courses/ggplot_flipbook/_title_test.Rmd",
+                  output_file =  "_test.html",output_dir = here::here("courses","ggplot_flipbook"))
