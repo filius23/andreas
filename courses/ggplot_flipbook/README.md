@@ -1,5 +1,7 @@
 # Willkommen! 👋
 
+[Folien ansehen 👀](https://afilser.netlify.app/courses/ggplot_flipbook/#1)
+
 Willkommen zu diesem Projekt! Dies ist eine Einführung in die Erstellung von **deskriptiven Plots** und **Koeffizientenplots** mit `{ggplot2}` in R.  
 Es basiert auf einem Flipbook-Stil-Tutorial, das zeigt, wie jeder Zusatzbefehl in `{ggplot2}` ein weiteres Feature hinzufügt und das Diagramm schrittweise aufbaut.  
 **Ein großes Dankeschön an [Gina Reynolds](https://github.com/EvaMaeRey) für das Erstellen des [`{flipbookr}`](https://evamaerey.github.io/flipbookr/index.html) Pakets!**
