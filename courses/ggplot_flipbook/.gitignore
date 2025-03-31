@@ -1,7 +1,5 @@
-_preview_cache/
-_index_cache/
-index_files/
-preview_files/
+*_cache/
+*_files/
 *.csv*
 *.csv
 ZA5250_v2-0-0.csv

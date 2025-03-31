@@ -1,0 +1,84 @@
+---
+title: "ggplot2"
+subtitle: "Ein Überblick"
+author: "Andreas Filser"
+date: "Zuletzt aktualisiert im Frühjahr 2025"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [ninjutsu,xaringan-themer.css]
+    seal: false
+    nature:
+      ratio: 16:9
+      highlightLines: true
+      highlightStyle: tomorrow-night-bright
+      countIncrementalSlides: false
+    self_contained: true      
+---
+```{r setup1, include = FALSE}
+knitr::opts_chunk$set(comment = "##", dpi = 500,
+                      fig.width  = 5.5, 
+                      fig.height = 5.5,
+                      message = FALSE, warning = FALSE, comment = "", cache = T)
+library(xaringanthemer)
+library(xaringanExtra)
+xaringanExtra::use_share_again()
+```
+class: title-slide, center, middle
+
+```{r, out.width="100px", echo=FALSE}
+hex_url <- "https://raw.githubusercontent.com/rstudio/hex-stickers/7847c8e8a5da57bacacb9fe8a11aef32dd98ab44/SVG/ggplot2.svg" 
+knitr::include_graphics(hex_url)
+```
+
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author`
+
+#### `r rmarkdown::metadata$date`
+
+
+
+```{r xaringan-themer, include=FALSE}
+# Colors for theming
+bg_color   <- "#141438" # code background
+highlight  <- "#ececf8" # highlight in code
+highlight2 <- "#E0E0E0" # highlight other text
+text_color1 <- "#51646B" # standard text color
+heading_color <- "#dc322f" # style_solarized default 
+bold_color    <- "#d33682" # style_solarized default
+# bold_color    <- "#4B6F9C" # "#42628A" # less red/purple "#404985" #
+link_col      <- "#b58900" 
+# update chunk_reveal function to avoid setting color every time
+chunk_reveal <- purrr::partial(flipbookr::chunk_reveal, widths = c(1,1), color=bg_color)
+
+
+
+source(list.files(pattern = "css_themer_2025.R",recursive = T,full.names = T))
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa-regular fa-clipboard\"></i>",
+    success_text = paste0("<i class=\"fa fa-check\" style=\"color:",highlight,"\"></i>"),
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+
+```
+```{css more_css_settings, echo=F}
+.remark-code{line-height: 1.5; font-size: 90%} /*font size for manual panels*/
+code, pre {
+  font-weight: 500;  /* Set font weight to normal */
+} 
+.blade1 {
+  font-size: "80%"; /* 80% of the parent's font size */
+}
+```
+
+---
+# test
+
+## [`r fontawesome::fa("github")`](https://github.com/filius23/andreas/tree/main/courses/ggplot_flipbook)
