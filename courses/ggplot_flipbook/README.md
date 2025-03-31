@@ -1,3 +1,36 @@
+# Willkommen! 👋
+
+Willkommen zu diesem Projekt! Dies ist eine Einführung in die Erstellung von **deskriptiven Plots** und **Koeffizientenplots** mit `{ggplot2}` in R.  
+Es basiert auf einem Flipbook-Stil-Tutorial, das zeigt, wie jeder Zusatzbefehl in `{ggplot2}` ein weiteres Feature hinzufügt und das Diagramm schrittweise aufbaut.  
+**Ein großes Dankeschön an [Gina Reynolds](https://github.com/EvaMaeRey) für das Erstellen des [`{flipbookr}`](https://evamaerey.github.io/flipbookr/index.html) Pakets!**
+
+Am Ende dieses Tutorials wirst du ein grundlegendes Verständnis dafür haben, wie man `{ggplot2}` verwendet und dessen zahlreiche Erweiterungen erkundet.
+
+Ich habe dieses Intro im **Frühling 2019** für B.A. & M.A. Studierende in Sozialwissenschaften für die Module  **Statistik** und **Data Science** an der Universität Oldenburg erstellt.
+Dies ist die aktualisierte Version (Frühjahr 2025 - 6 Jahre später 😱). 
+Die Einführung ist so gestaltet, dass es sowohl für Anfänger als auch für diejenigen, die ihr Wissen über `{ggplot2}` vertiefen möchten, zugänglich und nützlich ist.
+
+
+## Lizenz
+
+Du kannst dieses Tutorial gerne für Lehr- und Lernzwecke verwenden und teilen.  
+Es ist unter einer **freien, nicht-kommerziellen Lizenz** ([CC-BY-NC
+4.0](https://creativecommons.org/licenses/by-nc/4.0/)) lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
+Für Anpassungen starte mit der `_index.Rmd`.
+
+Wenn du es hilfreich findest oder Fehler oder Verbesserungsvorschläge bemerkst, zögere bitte nicht, mich zu kontaktieren. Dein Feedback ist sehr willkommen!
+
+## Was du lernen wirst:
+- Wie man deskriptive Plots mit `ggplot2` erstellt.
+- Wie man Koeffizientenplots erstellt und interpretiert.
+- Wie man Schichten anwendet und Plots in `ggplot2` anpasst.
+- Eine Einführung in die Erweiterungen von `ggplot2` und deren Anwendung.
+
+Falls du Fragen hast oder etwas unklar ist, kannst du dich gerne melden!
+
+Viel Spaß beim Lernen und Plotten! 🎉
+
+---
 # Welcome! 👋
 
 Welcome to this project! This is an introduction to creating **descriptive plots** and **coefficient plots** using `ggplot2` in R.  
@@ -25,35 +58,3 @@ If you have any questions, or if something is unclear, feel free to reach out!
 
 Enjoy learning and plotting! 🎉
 
----
-
-# Willkommen! 👋
-
-Willkommen zu diesem Projekt! Dies ist eine Einführung in die Erstellung von **deskriptiven Plots** und **Koeffizientenplots** mit `{ggplot2}` in R.  
-Es basiert auf einem Flipbook-Stil-Tutorial, das zeigt, wie jeder Zusatzbefehl in `{ggplot2}` ein weiteres Feature hinzufügt, welcher das Diagramm schrittweise aufbaut.  
-**Ein großes Dankeschön an [Gina Reynolds](https://github.com/EvaMaeRey) für das Erstellen des [`{flipbookr}`](https://evamaerey.github.io/flipbookr/index.html) Pakets!**
-
-Am Ende dieses Tutorials wirst du ein grundlegendes Verständnis dafür haben, wie man `{ggplot2}` verwendet und dessen zahlreiche Erweiterungen erkundet.
-
-Ich habe dieses Intro im **Frühling 2019** für B.A. & M.A. Studierende in Sozialwissenschaften für die Module  **Statistik** und **Data Science** an der Universität Oldenburg erstellt.
-Dies ist die aktualisierte Version (Frühjahr 2025 - 6 Jahre später 😱). 
-Die Einführung ist so gestaltet, dass es sowohl für Anfänger als auch für diejenigen, die ihr Wissen über `{ggplot2}` vertiefen möchten, zugänglich und nützlich ist.
-
-
-## Lizenz
-
-Du kannst dieses Tutorial gerne für **Lehrzwecke** verwenden und teilen.  
-Es ist unter einer **freien, nicht-kommerziellen Lizenz** ([CC-BY-NC
-4.0](https://creativecommons.org/licenses/by-nc/4.0/)) lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
-
-Wenn du es hilfreich findest oder Fehler oder Verbesserungsvorschläge bemerkst, zögere bitte nicht, mich zu kontaktieren. Dein Feedback ist sehr willkommen!
-
-## Was du lernen wirst:
-- Wie man deskriptive Plots mit `ggplot2` erstellt.
-- Wie man Koeffizientenplots erstellt und interpretiert.
-- Wie man Schichten anwendet und Plots in `ggplot2` anpasst.
-- Eine Einführung in die Erweiterungen von `ggplot2` und deren Anwendung.
-
-Falls du Fragen hast oder etwas unklar ist, kannst du dich gerne melden!
-
-Viel Spaß beim Lernen und Plotten! 🎉
