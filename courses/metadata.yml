@@ -50,11 +50,7 @@
   categories:
     - xaringan
 - title: "A Hands-On Intro to R for GradAB Students"
-<<<<<<< HEAD
   subtitle: " English"
-=======
-  subtitle: " German"
->>>>>>> fabf290bbb1048c9ad7b933d848fc6ca7b2f91a6
   date: 2024-09-11
   image: ./GradAB_R2024/thumbnail.png
   path:  https://filius23.github.io/GradAB_R2024/
