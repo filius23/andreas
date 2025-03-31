@@ -13,11 +13,6 @@ I created this intro in **Spring 2019** while teaching **Statistics** and **Data
 Feel free to use and share this tutorial for **teaching purposes**.  
 It’s licensed under a [free non-commercial share license](https://creativecommons.org/licenses/by-nc/4.0/) so please share it with others, but don’t use it for commercial purposes.  
 
-
-It’s licensed under a free non-commercial share license <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons.svg" alt="Creative Commons" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-by.svg" alt="Creative Commons By" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-nc.svg" alt="Creative Commons NC" style="width: 20px; height: 20px;"/> so please share it with others, but don’t use it for commercial purposes.  
-[CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/)
-
-
 If you find it helpful or notice any mistakes or areas for improvement, please don’t hesitate to reach out to me. Your feedback is greatly appreciated!
 
 ## What you'll learn:
@@ -44,16 +39,12 @@ Ich habe dieses Intro im **Frühling 2019** für B.A. & M.A. Studierende in Sozi
 Dies ist die aktualisierte Version (Frühjahr 2025 - 6 Jahre später 😱). 
 Die Einführung ist so gestaltet, dass es sowohl für Anfänger als auch für diejenigen, die ihr Wissen über `{ggplot2}` vertiefen möchten, zugänglich und nützlich ist.
 
-CC Lizenz mit Namensnennung 
 
 ## Lizenz
 
 Du kannst dieses Tutorial gerne für **Lehrzwecke** verwenden und teilen.  
-Es ist unter einer **freien, nicht-kommerziellen Lizenz** [CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/) lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
-
-Es ist unter einer **freien, nicht-kommerziellen Lizenz** <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons.svg" alt="Creative Commons" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-by.svg" alt="Creative Commons By" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-nc.svg" alt="Creative Commons NC" style="width: 20px; height: 20px;"/> lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
-[CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/)
-
+Es ist unter einer **freien, nicht-kommerziellen Lizenz** ([CC-BY-NC
+4.0](https://creativecommons.org/licenses/by-nc/4.0/)) lizenziert, also teile es gerne, aber verwende es nicht für kommerzielle Zwecke.  
 
 Wenn du es hilfreich findest oder Fehler oder Verbesserungsvorschläge bemerkst, zögere bitte nicht, mich zu kontaktieren. Dein Feedback ist sehr willkommen!
 
