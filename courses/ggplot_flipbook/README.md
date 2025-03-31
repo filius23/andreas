@@ -20,13 +20,13 @@ Für Anpassungen starte mit der `_index.Rmd`.
 
 Wenn du es hilfreich findest oder Fehler oder Verbesserungsvorschläge bemerkst, zögere bitte nicht, mich zu kontaktieren. Dein Feedback ist sehr willkommen!
 
-## Was du lernen wirst:
-- Wie man deskriptive Plots mit `ggplot2` erstellt.
-- Wie man Koeffizientenplots erstellt und interpretiert.
-- Wie man Schichten anwendet und Plots in `ggplot2` anpasst.
+## Inhalte:
+- Deskriptive Plots mit `ggplot2` erstellen
+- Koeffizientenplots und "Prediction plots" mit `ggplot2` erstellen
+- Arbeiten mit `ggplot2` - Anpassungen von Textgröße, ...
 - Eine Einführung in die Erweiterungen von `ggplot2` und deren Anwendung.
 
-Falls du Fragen hast oder etwas unklar ist, kannst du dich gerne melden!
+Falls du Fragen hast oder etwas unklar ist, melde du dich gerne!
 
 Viel Spaß beim Lernen und Plotten! 🎉
 
@@ -50,7 +50,7 @@ If you find it helpful or notice any mistakes or areas for improvement, please d
 
 ## What you'll learn:
 - How to create descriptive plots using `ggplot2`.
-- How to build coefficient plots and interpret them.
+- How to build coefficient plots and adjusted prediction plots.
 - How to apply layers and customize your plots in `ggplot2`.
 - An introduction to `ggplot2`'s extensions and their applications.
 
