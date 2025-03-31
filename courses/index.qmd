@@ -4,8 +4,12 @@ subtitle: "In this gallery, I'm compiling a selection of educational materials I
 listing:
   contents:
     - "metadata.yml"
+<<<<<<< HEAD
   type:  default #grid #
   image-align: left
+=======
+  type: default #grid
+>>>>>>> fabf290bbb1048c9ad7b933d848fc6ca7b2f91a6
   date-format: "DD MMMM YYYY"
   fields: [title, subtitle, image, description]
   sort: "date desc"

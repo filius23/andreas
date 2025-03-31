@@ -1,2 +1,6 @@
 *cache
+<<<<<<< HEAD
 *.csv*
+=======
+*.csv
+>>>>>>> fabf290bbb1048c9ad7b933d848fc6ca7b2f91a6

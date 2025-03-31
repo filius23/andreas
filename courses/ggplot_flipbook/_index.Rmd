@@ -50,7 +50,6 @@ knitr::include_graphics(hex_url)
 
 <!-- ### []() -->
 
-
 ```{r xaringan-themer, include=FALSE}
 # Colors for theming
 bg_color   <- "#141438" # code background
