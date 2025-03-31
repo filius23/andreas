@@ -13,6 +13,11 @@ I created this intro in **Spring 2019** while teaching **Statistics** and **Data
 Feel free to use and share this tutorial for **teaching purposes**.  
 It’s licensed under a [free non-commercial share license](https://creativecommons.org/licenses/by-nc/4.0/) so please share it with others, but don’t use it for commercial purposes.  
 
+
+It’s licensed under a free non-commercial share license <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons.svg" alt="Creative Commons" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-by.svg" alt="Creative Commons By" style="width: 20px; height: 20px;"/> <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/brands/creative-commons-nc.svg" alt="Creative Commons NC" style="width: 20px; height: 20px;"/> so please share it with others, but don’t use it for commercial purposes.  
+[CC Lizenz mit Namensnennung](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
 If you find it helpful or notice any mistakes or areas for improvement, please don’t hesitate to reach out to me. Your feedback is greatly appreciated!
 
 ## What you'll learn:
@@ -35,8 +40,11 @@ Es basiert auf einem Flipbook-Stil-Tutorial, das zeigt, wie jeder Zusatzbefehl i
 
 Am Ende dieses Tutorials wirst du ein grundlegendes Verständnis dafür haben, wie man `{ggplot2}` verwendet und dessen zahlreiche Erweiterungen erkundet.
 
-Ich habe dieses Intro im **Frühling 2019** für B.A. & M.A. Studierende in Sozialwissenschaften für die Module  **Statistik** und **Data Science** an der Universität Oldenburg unterrichtete, und dies ist die aktualisierte Version.
+Ich habe dieses Intro im **Frühling 2019** für B.A. & M.A. Studierende in Sozialwissenschaften für die Module  **Statistik** und **Data Science** an der Universität Oldenburg erstellt.
+Dies ist die aktualisierte Version (Frühjahr 2025 - 6 Jahre später 😱). 
 Die Einführung ist so gestaltet, dass es sowohl für Anfänger als auch für diejenigen, die ihr Wissen über `{ggplot2}` vertiefen möchten, zugänglich und nützlich ist.
+
+CC Lizenz mit Namensnennung 
 
 ## Lizenz
 
