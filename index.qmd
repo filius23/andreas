@@ -45,9 +45,7 @@ resources:
 ---
 
 <br><br>
-
-
-I am a sociologist enjoying conducting quantitative research and procuring data for others. My own research centres around family sociology, including relationship formation and parents in the labour market. I enjoy programming in R and Stata and teaching these skills.
+I am a sociologist who combines conducting quantitative research with making data accessible through data services and occasional record linkage. My own research focuses on family sociology, including relationship formation and parents’ experiences in the labour market. I also enjoy programming in R and Stata and sharing these skills through teaching.
 
 [More about me &rarr;](/about){.about-links .subtitle}
 

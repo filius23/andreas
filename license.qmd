@@ -1,0 +1,39 @@
+---
+title: "License & Credits"
+format:
+  html:
+    pagetitle: "License"       
+---
+
+# License for Teaching Materials
+
+All my teaching materials are released under a **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)**  
+
+
+<div class="cc-icons">
+  {{< fa creative-commons >}}  
+  {{< fa by >}}                
+  {{< fa nc >}}                
+  {{< fa sa >}}                
+</div>
+I would love to hear from you if you use them, find them helpful, have questions, or spot errors!  
+
+---
+
+# About this Website
+
+You can find the repository for this personal website [here](https://afilser.netlify.app/) – welcome! 👋  
+
+I keep this repository public so that everyone can learn how to create their own site. This is how I did it.  
+
+**Special thanks to:**  
+- [Alison Hill](https://www.apreshill.com) for creating the Hugo Apéro theme  
+- [Silvia Canelón](https://www.silviacanelon.com/), [Isabella Velásquez](https://ivelasq.rbind.io/), and [Shazia Ruybal-Pesántez](https://shaziaruybal.com/) for publicly providing the code for their pages  
+- Special shoutout to [Silvia Canelón's blog post](https://silviacanelon.com/blog/2023-09-29-hello-quarto/) on how to convert a website from Hugo Apéro to Quarto!  
+
+My website was made with [Quarto](https://quarto.org), [{{< fa brands r-project >}}](https://cran.r-project.org/) and {{< fa heart >}}
+
+Please **avoid simply duplicating my site** – your site deserves its own unique style. You can find excellent documentation on how to create and customize your own Quarto site at [www.quarto.org](https://quarto.org/docs/websites/website-about.html).  
+
+
+Feel free to contact me if you have questions! I can't promise I'll be able to help, but I will try.

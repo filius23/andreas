@@ -1,1 +1,57 @@
 /* css styles */
+
+/* Kontakt-Grid */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;               
+  justify-content: center;       
+  gap: 30px;                     
+  margin: 2em 0;
+}
+
+/* Buttons mit Icon + Name */
+.contact-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;              
+  min-width: 120px;              
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+/* Abstand zwischen Icon und Text */
+.contact-grid a i {
+  margin-right: 0.5em;
+}
+
+.contact-grid a:hover {
+  color: #00A2C2;                
+  transform: scale(1.1);         
+}
+
+/* Mobile-Anpassung */
+@media (max-width: 600px) {
+  .contact-grid a {
+    min-width: 100px;             /* kleinere Breite auf Handys */
+    font-size: 1.4em;             /* kleinere Icons/Text auf kleineren Bildschirmen */
+  }
+}
+
+.cc-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 1em 0 2em 0;
+  font-size: 2em;           /* Icons größer darstellen */
+  color: #007bff;
+}
+
+.cc-icons span.fa,
+.cc-icons span.fab,
+.cc-icons span.ai {
+  margin-right: 0.3em;
+}
+

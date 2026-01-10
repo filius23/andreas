@@ -35,7 +35,7 @@ website:
   
   page-footer:  
     left: >-
-     &#169; 2025 Andreas Filser &#8729; Made with [Quarto](https://quarto.org), [{{< fa brands r-project >}}](https://cran.r-project.org/) and {{< fa heart >}}
+     &#169; 2026 Andreas Filser &#8729; Made with [Quarto](https://quarto.org), [{{< fa brands r-project >}}](https://cran.r-project.org/) and {{< fa heart >}}
     center: |
       <a class="link-dark me-1" href="https://bsky.app/profile/filsa.bsky.social" title="Bluesky" target="_blank" rel="noopener">{{< fa brands bluesky >}}</a>
       <a class="link-dark me-1" href="https://iab.de/mitarbeiter/?id=5370712" title="Employer Website (IAB)" target="_blank" rel="noopener">{{< fa link >}}</a>
@@ -63,6 +63,35 @@ format:
     code-link: true
     pagetitle: "{{< meta title >}}"
     lightbox: true
+    meta:
+      - name: robots
+        content: index, follow
+      - name: author
+        content: "Andreas Filser"
+      - name: description
+        content: "Personal website of Andreas Filser: publications, projects, and research."
+      - name: keywords
+        content: "Andreas Filser, publications, research, evolutionary psychology, sociology"
+      - property: og:type
+        content: website
+      - property: og:title
+        content: "Andreas Filser – Research & Publications"
+      - property: og:url
+        content: "https://afilser.netlify.app/"
+      - property: og:image
+        content: "https://afilser.netlify.app/assets/og-image.png"
+      - property: og:description
+        content: "Personal website of Andreas Filser featuring publications, projects, and research."
+      - property: twitter:card
+        content: summary_large_image
+      - property: twitter:site
+        content: "@yourTwitterHandle"  # optional
+      - property: twitter:title
+        content: "Andreas Filser – Research & Publications"
+      - property: twitter:description
+        content: "Personal website of Andreas Filser featuring publications, projects, and research."
+      - property: twitter:image
+        content: "https://afilser.netlify.app/assets/og-image.png"
 
 execute: 
   freeze: auto

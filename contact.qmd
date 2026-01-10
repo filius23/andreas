@@ -1,0 +1,30 @@
+---
+title: "Contact"
+description: "You can reach me via the following channels:"
+---
+
+
+
+<div class="contact-grid">
+  <a href="https://iab.de/mitarbeiter/?id=5370712" title="Employer Website (IAB)" target="_blank" rel="noopener">
+    {{< fa link >}} IAB
+  </a>
+  <a href="https://bsky.app/profile/filsa.bsky.social" title="Bluesky" target="_blank" rel="noopener">
+    {{< fa brands bluesky >}} Bluesky
+  </a>
+  <a href="https://scholar.google.de/citations?user=vP7topAAAAAJ" title="Google Scholar" target="_blank" rel="noopener">
+    {{< ai google-scholar >}} Google Scholar
+  </a>
+  <a href="https://github.com/filius23" title="GitHub" target="_blank" rel="noopener">
+    {{< fa brands github >}} GitHub
+  </a>
+  <a href="https://orcid.org/0000-0001-5530-3621" title="ORCID" target="_blank" rel="noopener">
+    {{< ai orcid >}} ORCID
+  </a>
+  <a href="https://www.linkedin.com/in/andreas-filser-85919450/" title="LinkedIn" target="_blank" rel="noopener">
+    {{< fa brands linkedin >}} LinkedIn
+  </a>
+  <a href="https://osf.io/m7nec/" title="OSF" target="_blank" rel="noopener">
+    {{< ai osf >}} OSF
+  </a>
+</div>
