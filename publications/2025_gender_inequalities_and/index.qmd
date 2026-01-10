@@ -1,0 +1,27 @@
+---
+author:
+  - Sander Wagner
+  - Andreas Filser
+  - Pascal Achard
+  - Inga Marie Amend
+title: 'Gender Inequalities and Motherhood Penalties across French and German Local Labor Markets'
+date: '2025-10-15'
+publishDate: '2025-10-15'
+publication_types: 
+- "2"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://journals.sagepub.com/doi/10.1177/23780231251374110'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.1177/23780231251374110'
+publication: '*Socius* 11'
+subtitle: 'Socius'
+---
+#### Abstract
+This data visualization examines the relationship between motherhood earnings penalties and gender earnings gaps across local labor markets in France and Germany. Drawing on harmonized administrative data, the authors document a strong positive association: regions with larger motherhood penalties tend to exhibit wider gender earnings gaps. This pattern holds across all Nomenclature of Territorial Units for Statistics second-division regions, where a 1,percent increase in the motherhood penalty corresponds to a 0.3,percent higher gender earnings gap. The relationship is even stronger within countries, with the average association rising to 0.7,percent. These findings suggest that regional differences in gender earnings inequality are strongly associated with the magnitude of motherhood penalties.
+ 
+**[Back to publication list](/publication)**

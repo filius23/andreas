@@ -1,0 +1,31 @@
+---
+author:
+  - Sebastian Schnettler
+  - Andreas Filser
+title: 'Demographische Maskulinisierung und Gewalt'
+date: '2015-03-15'
+publishDate: '2015-03-15'
+publication_types: 
+- "6"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://link.springer.com/chapter/10.1007/978-3-658-07410-4_10'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.1007/978-3-658-07410-4_10'
+
+tags:
+- Anthropology
+- Ethics
+- Philosophy Of Man
+- Sociological Theory
+publication: 'In Gerald Hartung & Matthias Herrgen: *Interdisziplinäre Anthropologie*. (pp.130--142). Springer VS'
+subtitle: 'Interdisziplinäre Anthropologie'
+---
+#### Abstract
+Vor dem Hintergrund des demographischen Ungleichgewichts von Männern und Frauen in Asien beschäftigen sich diverse Autoren mit möglichen Konsequenzen eines Frauen- oder Männermangels, unter anderem auf die Gewaltinzidenz in den betroffenen Gesellschaften oder Regionen. Allerdings präsentieren sich die bisherigen theoretischen Ansätze wie auch die empirische Evidenz als uneinheitlich. Der Beitrag gibt einen Überblick über sozialwissenschaftliche und evolutionstheoretische Perspektiven auf die Fragestellung und versucht, diese zu integrieren. Darüber hinaus werden empirische Befunde dargestellt und eingeordnet sowie eigene Projekte vorgestellt und Forschungsdesiderata formuliert.
+ 
+**[Back to publication list](/publication)**

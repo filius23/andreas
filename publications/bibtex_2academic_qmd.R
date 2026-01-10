@@ -1,5 +1,27 @@
-## function to create entries
-create_qmd <- function(ex) {
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(RefManageR, dplyr, stringr, anytime, tidyr, stringi)
+options(encoding="UTF-8")
+  
+  # avoid umlaut problems -----
+  uml_fix <- function(x) {
+    stringi::stri_replace_all_fixed(
+      x, 
+      c("â€™","Ã¤","Ã¶","Ã¼","â›”","Â©","â€“","Ãœ"), 
+      c( "'", "ä", "ö", "ü",   "",  "©", "-" ,"Ü"), 
+      vectorize_all = FALSE
+    )}
+
+  uml_repl <- function(x) {
+  stringi::stri_replace_all_fixed(
+    x, 
+    c("ä", "ö", "ü", "Ä", "Ö", "Ü"), 
+    c("ae", "oe", "ue", "Ae", "Oe", "Ue"), 
+    vectorize_all = FALSE
+  )}
+
+
+# function to create entries --------------
+create_qmd <- function(ex,overwrite=T,out_fold) {
   
   # create directory & file name from date and title (first 3 words)
   if (is.na(ex[["year"]]))  ex[["year"]] <- format(Sys.Date(), '%Y') # replace missing date with current year
@@ -8,15 +30,10 @@ create_qmd <- function(ex) {
     ex[["year"]],
     ex[["title"]] %>% stringr::word(.,start = 1,end = 3) %>% # first 3 words of title
       str_remove_all(.,pattern = "[:punct:]") %>% 
-      toupper(.) %>% 
+      tolower(.) %>% 
       gsub(.,pattern = "\\s",replacement = "_"),
     sep = "_") %>% 
-    stringi::stri_replace_all_fixed(
-      ., 
-      c("ä", "ö", "ü", "Ä", "Ö", "Ü"), 
-      c("ae", "oe", "ue", "Ae", "Oe", "Ue"), 
-      vectorize_all = FALSE
-    )
+    uml_repl()
   
   # full file name --> now qmd file!
   filename <- here::here(out_fold,pub_name,"index.qmd")
@@ -26,28 +43,30 @@ create_qmd <- function(ex) {
     dir.create( here::here(out_fold,pub_name) )
   }
   
-  # export in md File ------
+  # write file ------
   if (!file.exists(filename) | overwrite) {
     fileConn <-  filename
     write("---", fileConn)
     
-    # Authors-----
-    # collapse into single string
-    auth_hugo <- str_split(ex["author"], " and ") %>% 
+    ## Authors-----
+    ## collapse into single string
+    auth_qmd <- 
+      str_split(ex["author"], " and ") %>% 
       unlist(.) %>% 
-      paste0(.,collapse = ", ")
-    write(paste0("author: \"",auth_hugo,"\""), fileConn, append = T)
+      paste0("  - ", .) |> 
+      paste0(collapse = "\n")
+    write(paste0("author:\n",auth_qmd), fileConn, append = T)
     
-    # Title -----
+    ## Title -----
     ex[["title"]] <- gsub(ex[["title"]],pattern = "'",replacement =  "''")
     write(paste0("title: \'", ex[["title"]],"\'"), fileConn, append = T)
     
-    # Date ----
+    ## Date ----
     date_hugo <- anydate(paste0(ex[["year"]],ex[["month"]],"15",collapse = "-")) 
     write(paste0("date: ",        "\'", date_hugo, "\'" ), fileConn, append = T)
     write(paste0("publishDate: ", "\'", date_hugo, "\'" ), fileConn, append = T)
     
-    # Publication type. -------
+    ## Publication type. -------
     # 0 = Uncategorized, 1 = Conference paper, 2 = Journal article
     # 3 = Manuscript, 4 = Report, 5 = Book,  6 = Book section
     write("publication_types: ", fileConn, append = T)
@@ -60,13 +79,13 @@ create_qmd <- function(ex) {
       note_url <- F
     }
     
-    #  links
+    ##  links --------------
     if (!is.na(ex[["doi"]]) | !is.na(ex[["url"]]) | note_url  ) {
       write("links:", fileConn, append = T)
     }
     
     
-    # pdf link -----
+    ### pdf link -----
     if (!is.na(ex[["url"]])){
       write(" - icon: file-pdf", fileConn, append = T)
       write("   icon_pack: fas", fileConn, append = T)
@@ -74,7 +93,7 @@ create_qmd <- function(ex) {
       write(paste0("   url:  \'", ex[["url"]],"\'"), fileConn, append = T)
     }  
     
-    # doi -----
+    ### doi -----
     if (!is.na(ex[["doi"]])){
       write(" - icon: doi", fileConn, append = T)
       write("   icon_pack: ai", fileConn, append = T)
@@ -83,7 +102,7 @@ create_qmd <- function(ex) {
     }  
     
     
-    # Code / Replication repo -> saved as note in zotero -----
+    ### Code / Replication repo -> saved as note in zotero -----
     if ( note_url ) {
       url_pattern <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
       code_url <- str_extract(ex[["note"]],url_pattern)
@@ -93,7 +112,7 @@ create_qmd <- function(ex) {
       write(paste0("   url: ", code_url), fileConn, append = T)
     }  
     
-    # tags ----
+    ## tags ----
     tags_hugo <- 
       str_split(ex[["keywords"]], "\\,") %>% 
       unlist(.) %>% 
@@ -103,7 +122,7 @@ create_qmd <- function(ex) {
     if (!is.na(ex[["keywords"]]))   write(c("","tags:",tags_hugo), fileConn, append = T,  sep = "\n")
     
     
-    # Publication details -----------
+    ## Publication details -----------
     # add Editor, Booktitle etc. if applicable
     ## Journal Article: Use Journal Name -----
     if (!is.na(ex[["journal"]])) {
@@ -133,41 +152,34 @@ create_qmd <- function(ex) {
                                                            " ", ex[["publisher"]],"\'")
     }
     
+    if(!exists("publication") & is.na(ex$journal)) publication <- paste0("publication: \'",ex$publisher,"\'")
+    
     write(publication, fileConn, append = T)
     
-    
-    # Excerpt ----
-    # to display authors and journal details in publication list
-    publication_excerpt <- str_remove_all(publication,"publication\\:|\\*|\\'")
-    
-    excerp <- paste0("excerpt: \"",auth_hugo,"<br>", publication_excerpt,"\"")
-    write(excerp, fileConn, append = T)
-    
-    
-    # Subtitle -----
+    ## Subtitle -----
     # to highlight journal etc on publication page 
-    pu_subtitle <- paste0(auth_hugo," ", publication_excerpt)
-    write(paste0("subtitle: \'", pu_subtitle,"\'"), fileConn, append = T)
+    publication_clean <- coalesce(ex$journal,ex$booktitle,ex$publisher)
+    write(paste0("subtitle: \'", publication_clean,"\'"), fileConn, append = T)
     
     # generate further fields (empty) ------
     # other possible fields are kept empty. They can be customized later by
     # editing the created md
     
     # write("url_code: ", fileConn, append = T)
-    write("image_preview: ", fileConn, append = T)
-    write("selected: false", fileConn, append = T)
-    write("projects: []", fileConn, append = T)
+    # write("image_preview: ", fileConn, append = T)
+    # write("selected: false", fileConn, append = T)
+    # write("projects: []", fileConn, append = T)
     
     #links
-    write("url_preprint: \"\"", fileConn, append = T)
-    write("url_dataset: ", fileConn, append = T)
-    write("url_project: ", fileConn, append = T)
-    write("url_slides: ", fileConn, append = T)
-    write("url_video: ", fileConn, append = T)
-    write("url_poster: ", fileConn, append = T)
+    # write("url_preprint: \"\"", fileConn, append = T)
+    # write("url_dataset: ", fileConn, append = T)
+    # write("url_project: ", fileConn, append = T)
+    # write("url_slides: ", fileConn, append = T)
+    # write("url_video: ", fileConn, append = T)
+    # write("url_poster: ", fileConn, append = T)
     
     #other stuff
-    write("math: true", fileConn, append = T)
+    # write("math: true", fileConn, append = T)
     # write("highlight: true", fileConn, append = T)
     # Featured image
     # write("[header]", fileConn, append = T)
@@ -196,120 +208,55 @@ create_qmd <- function(ex) {
   }
 }
 
-# apply the function: bibtex_2academic ------------------
-bibtex_2academic <- function(bibfile,
-                             outfold,
-                             abstract = TRUE,
-                             overwrite = FALSE) {
+# prep bibtex file ------------------
   
-  if (!require("pacman")) install.packages("pacman")
-  pacman::p_load(RefManageR, dplyr, stringr, anytime, tidyr, stringi)
-  
-  options(encoding="UTF-8")
-  # avoid umlaut probelms -----
-    uml_repl <- function(x) {
-      stringi::stri_replace_all_fixed(
-        x, 
-        c("â€™","Ã¤","Ã¶","Ã¼","â›”","Â©","â€“","Ãœ"), 
-        c( "'", "ä", "ö", "ü",   "",  "©", "-" ,"Ü"), 
-        vectorize_all = FALSE
-      )
-    }
-  
-  
+  my_bibfile <- "publications/eigene.bib"
   # Import the bibtex file and convert to data.frame- ------
-  mypubs_o <- ReadBib(bibfile, check = "warn", .Encoding = "UTF-8")
-  
-  mypubs <- mypubs_o %>%
+  mypubs <- 
+    ReadBib(my_bibfile, check = "warn", .Encoding = "UTF-8") |> 
     as_tibble() %>%
-    mutate(across(everything(),~uml_repl(.x)),
+    mutate(across(everything(),~uml_fix(.x)),
            across(everything(),~stringr::str_squish(.x)),
-           rnames = mypubs_o %>% as.data.frame() %>% rownames() )
-  
-  
-  mypubs <- mypubs  %>% 
-    mutate(mainref = journal)
-  mypubs$mainref <- mypubs$mainref %>% replace_na('') #otherwise it appears "NA" in post
-  
-  mypubs$abstract <- mypubs$abstract %>% replace_na('(Abstract not available)') #otherwise it appears "NA" in post
-  #  mypubs$annotation <- mypubs$annotation %>% replace_na('image_preview = ""') #otherwise
-  # Customize Zotero extra field (here "annotation") in order to leave there the additional information for the md file
-  
-  #clean backslashes generated by conversion of underline characters in links (_)
-  # mypubs$annotation<- gsub(
-  #   pattern = ('\\\\'),
-  #   replacement = '',
-  #   x = mypubs$annotation
-  # )
-  
-  mypubs$abstract<- gsub(
-    pattern = ('\\\\'),
-    replacement = '',
-    x = mypubs$abstract
-  )
-  
-  mypubs$mainref<- gsub(
-    pattern = ('\\\\'),
-    replacement = '',
-    x = mypubs$mainref
-  )
-  
-  # Customize for more than one editor
-  
-  mypubs$editor<- gsub(
-    pattern = (' and '),
-    replacement = ', ',
-    x = mypubs$editor
-  )
-  
-  mypubs$editor<- stri_replace_last_fixed(mypubs$editor, ',', ' &')
+           rnames   = names(names(RefManageR::ReadBib(my_bibfile,.Encoding = "UTF-8"))),
+           mainref  = journal,
+           mainref  = mainref %>% replace_na(''), #otherwise it appears "NA" in post
+           abstract = abstract %>% replace_na('(Abstract not available)'), #otherwise it appears "NA" in post
+           abstract = gsub(x = abstract,pattern = ('\\\\'),replacement = ''),
+            mainref = gsub( x = mainref,pattern = ('\\\\'),replacement = '' ),
+          # Customize for more than one editor
+          editor = gsub(x = editor,pattern = (' and '),replacement = ', '),
+          editor = stri_replace_last_fixed(editor, ',', ' &'),
+          # add characters between tags for properly render
+          keywords = gsub(x = keywords, pattern = (','), replacement = '","'),
+          # assign "categories" to the different types of publications
+          pubtype = dplyr::case_when(bibtype == "Article" ~ "2",
+                                     bibtype == "Article in Press" ~ "2",
+                                     bibtype == "InProceedings" ~ "1",
+                                     bibtype == "Proceedings" ~ "1",
+                                     bibtype == "Conference" ~ "1",
+                                     bibtype == "Conference Paper" ~ "1",
+                                     bibtype == "MastersThesis" ~ "3",
+                                     bibtype == "PhdThesis" ~ "3",
+                                     bibtype == "Manual" ~ "4",
+                                     bibtype == "TechReport" ~ "4",
+                                     bibtype == "Book" ~ "5",
+                                     bibtype == "InCollection" ~ "6",
+                                     bibtype == "InBook" ~ "6",
+                                     bibtype == "Misc" ~ "0",
+                                     TRUE ~ "0")
+          )
   
   
   
   
-  # add characters between tags for properly render
-  mypubs$keywords<- gsub(
-    pattern = (','),
-    replacement = '","',
-    x = mypubs$keywords
-  )
-  
-  #add line breaks for the different entries
-  # mypubs$annotation<-cat(stri_wrap(mypubs$annotation, whitespace_only = TRUE))
-  
-  # assign "categories" to the different types of publications
-  mypubs   <- mypubs %>%
-    dplyr::mutate(
-      pubtype = dplyr::case_when(bibtype == "Article" ~ "2",
-                                 bibtype == "Article in Press" ~ "2",
-                                 bibtype == "InProceedings" ~ "1",
-                                 bibtype == "Proceedings" ~ "1",
-                                 bibtype == "Conference" ~ "1",
-                                 bibtype == "Conference Paper" ~ "1",
-                                 bibtype == "MastersThesis" ~ "3",
-                                 bibtype == "PhdThesis" ~ "3",
-                                 bibtype == "Manual" ~ "4",
-                                 bibtype == "TechReport" ~ "4",
-                                 bibtype == "Book" ~ "5",
-                                 bibtype == "InCollection" ~ "6",
-                                 bibtype == "InBook" ~ "6",
-                                 bibtype == "Misc" ~ "0",
-                                 TRUE ~ "0"))
-  #   ex <- mypubs[1,]
-  
-  # create a function which populates the md template based on the info
-  # about a publication
-  
-  # apply the "create_md" function to the publications list to generate
-  apply(mypubs, FUN = function(x) create_qmd(ex = x), MARGIN = 1)
-}
+# create a function which populates the md template based on the info
+# about a publication
+# apply the "create_md" function to the publications list to generate
+purrr::walk(seq_len(nrow(mypubs)), ~create_qmd(ex = mypubs[.x, , drop = FALSE],
+                                               out_fold = "publications",
+                                               overwrite = T))
 
-# Run the function --------------
-my_bibfile <- "publications/eigene.bib"
-out_fold   <- "publications"
-bibfile  = my_bibfile;outfold   = out_fold;abstract  = TRUE;overwrite = T
 
-bibtex_2academic(bibfile   = my_bibfile,
-                 outfold   = out_fold,
-                 abstract  = TRUE,
-                 overwrite = T)
+create_qmd(ex = mypubs[19, , drop = FALSE],
+           out_fold = "publications",
+           overwrite = T)

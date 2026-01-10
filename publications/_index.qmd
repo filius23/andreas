@@ -1,0 +1,18 @@
+---
+title: "Publications"
+description: >
+  Click on the title to read the abstract.<br>
+  You can find a full condensed publications list 
+  <a href="/publications/publication_list.html">here</a> and find my profile on 
+  <a class="ai ai-google-scholar" href="https://scholar.google.de/citations?user=vP7topAAAAAJ"></a>
+layout: list
+show_post_thumbnail: false
+show_author_byline: false
+show_button_links: true
+show_post_date: true
+
+cascade:
+  # Standard-Frontmatter für alle Unterseiten
+  author: Andreas Filser
+  show_post_date: true
+---

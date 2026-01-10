@@ -76,11 +76,10 @@ bibtex_2list <- function(bibfile) {
   
   mypubs$authors <- 
     map_chr(mypubs$author, function(x){
-      
-      str_split(x, "\\sand\\s") %>% unlist(.) %>% 
-        map(.,~auth_fun(.x)) %>% unlist(.) %>% 
-        paste0(.,collapse = ", ") 
-      
+      authors <-  str_split(x, "\\sand\\s") %>% unlist(.) 
+      if(length(authors) == 2) paste0(authors,collapse = " & ") 
+      else paste0(authors,collapse = ", ") 
+        # map(.,~auth_fun(.x)) %>% unlist(.) 
     }) 
   
   # prepare Links 
@@ -98,19 +97,23 @@ bibtex_2list <- function(bibfile) {
       group_nest(row_number()) %>% 
       pull(data) %>% 
       map_chr(function(x){
-        # templat1 <- ifelse(x$pubtype %in% 6,
-        #                    "{authors} ({year}). [{title}]({link}). In {editor}: {booktitle}. {pages}, {publisher}.\n\n",
-        #                    "{authors} ({year}). [{title}]({link}). {journal}, ({volume}){number}, {pages}.\n\n"
-        #                    )
+
         templat1 <- case_when(
-          x$pubtype %in% 6 ~                  "[{title}]({link}). {authors}. ({year}) In {editor}: {booktitle}. {pages}, {publisher}.\n\n",
-          x$pubtype %in% 0 ~                  "[{title}]({link}). {authors}. ({year}) {journal} [working paper].\n\n",   # add [working paper] to title for preprints
-          is.na(x$number) & is.na(x$volume) ~ "[{title}]({link}). {authors}. ({year}) {journal}, {pages}.\n\n",
-          is.na(x$number) | is.na(x$volume) ~ "[{title}]({link}). {authors}. ({year}) {journal}, {vol_num}, {pages}.\n\n",
-          TRUE ~                              "[{title}]({link}). {authors}. ({year}) {journal}, ({volume}){number}, {pages}.\n\n"
-                           )
+          x$pubtype %in% 6 ~                  "[**{title}**]({link}). \n\n {authors}. ({year}) In {editor}: {booktitle}. {pages}, {publisher}.\n\n",
+          x$pubtype %in% 0 ~                  "[**{title}**]({link}). \n\n {authors}. ({year}) {journal} [working paper].\n\n",   # add [working paper] to title for preprints
+          is.na(x$number) & is.na(x$volume) ~ "[**{title}**]({link}). \n\n {authors}. ({year}) {journal}, {pages}.\n\n",
+          is.na(x$number) | is.na(x$volume) ~ "[**{title}**]({link}). \n\n {authors}. ({year}) {journal}, {vol_num}, {pages}.\n\n",
+          TRUE ~                              "[**{title}**]({link}). \n\n {authors}. ({year}) {journal}, ({volume}) {number}, {pages}.\n\n"
+          )
+        templat2 <- case_when(
+          x$pubtype %in% 6 ~                  "[**{title}**]({link}). \n\n {authors} \n\n In {editor}: {booktitle}. {pages}. ({year}) \n\n",
+          x$pubtype %in% 0 ~                  "[**{title}**]({link}). \n\n {authors} \n\n {journal} [working paper] ({year}) \n\n",   # add [working paper] to title for preprints
+          is.na(x$number) & is.na(x$volume) ~ "[**{title}**]({link}). \n\n {authors} \n\n {journal} ({year}) \n\n",
+          is.na(x$number) | is.na(x$volume) ~ "[**{title}**]({link}). \n\n {authors} \n\n {journal} ({year}) \n\n",
+          TRUE ~                              "[**{title}**]({link}). \n\n {authors} \n\n {journal} ({year}) \n\n"
+          )
         
-        glue::glue_data(x, templat1)
+        glue::glue_data(x, templat2)
       }) %>% 
       str_remove_all(.,"NA, ")
   

@@ -1,0 +1,27 @@
+---
+author:
+  - Florian Zimmermann
+  - Andreas Filser
+  - Georg-Christoph Haas
+  - Sebastian Bähr
+title: 'The IAB-SMART-Mobility Module: An Innovative Research Dataset with Mobility Indicators Based on Raw Geodata'
+date: '2023-08-15'
+publishDate: '2023-08-15'
+publication_types: 
+- "2"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://www.degruyter.com/document/doi/10.1515/jbnst-2023-0051/html'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.1515/jbnst-2023-0051'
+publication: '*Jahrbücher für Nationalökonomie und Statistik* 244(5-6), 685--698'
+subtitle: 'Jahrbücher für Nationalökonomie und Statistik'
+---
+#### Abstract
+The ubiquity of smartphones has enabled the collection of novel data through their built-in sensors, including geolocation data which can be used to understand mobility behavior. In this project, we leveraged longitudinal geolocation data collected from participants in the 2018 German app study IAB-SMART to develop a set of mobility indicators, such as visited unique locations and traveled distance. The indicators can be linked to the Panel Study Labour Market and Social Security (PASS) survey and administrative employment histories. The resulting novel dataset offers a unique opportunity to study the relationship between mobility and labor market outcomes. This article provides an overview of the study, outlines the data preparation process, and the socio-demographic characteristics of the 398 participants of the IAB-SMART-Mobility module. We present the mobility indicators generated from the geolocation data and provide guidance for accessing the Institute for Employment Research’s (IAB) data.
+ 
+**[Back to publication list](/publication)**

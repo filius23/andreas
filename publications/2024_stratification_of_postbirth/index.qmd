@@ -1,0 +1,36 @@
+---
+author:
+  - Andreas Filser
+  - Pascal Achard
+  - Corinna Frodermann
+  - Dana Müller
+  - Sander Wagner
+title: 'Stratification of Post-Birth Labour Supply in a High- and Low- Maternal Employment Regime'
+date: '2024-12-15'
+publishDate: '2024-12-15'
+publication_types: 
+- "0"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://osf.io/tn5v7'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.31235/osf.io/tn5v7'
+
+tags:
+- Administrative Data
+- France
+- Germany
+- Maternal Employment
+- Motherhood Penalty
+- Stratificiation
+publication: 'SocArXiv'
+subtitle: 'SocArXiv'
+---
+#### Abstract
+This study compares the size and stratification of motherhood penalties in labour market participation between France and Germany- two countries with contrasting policy regimes regarding maternal employment. France encourages a swift return of mothers to the labour market, whereas Germany does not. Using harmonized administrative data, we analyse labour market trajectories of 24,112 French and 74,258 German women who were employed prior to birth and had their first child between 1997 and 2014. Our results reveal that women with higher pre-birth income, education, and employment in higher-wage firms experience less employment loss in both countries. Among these dimensions, pre-birth income emerges as the strongest stratifying factor when analysed jointly. Motherhood penalties are significantly smaller in France, predicting less than a third of the overall employment reduction found in Germany during the five years after birth. However French penalties are more stratified than across all three dimensions of stratification. For instance, in France, a mother from the lowest income quintile faces a participation reduction that is 3.14 times greater than that of a mother from the highest quintile, whereas in Germany, this ratio is 1.17. Within Germany, East Germany exhibits smaller but more stratified penalties. Finally, we test if the observed macro-level patterns - where bigger penalties correspond to less stratification - generalize to local labour markets. An analysis of 65 NUTS-2 regions in both countries rejects this hypothesis. These findings suggest that in regimes promoting rapid labour market reintegration, mothers from lower socio-economic backgrounds may face greater challenges.
+ 
+**[Back to publication list](/publication)**

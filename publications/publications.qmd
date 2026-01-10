@@ -5,14 +5,12 @@ description: |
 listing: 
   contents: 
     - "**/index.qmd"
-    - "**/index.markdown"
-    - "**/index.md"
   sort: "date desc"
   type: default
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [title, author, categories, date]
+  fields: [title, subtitle, author, date]
   image-align: left
   # image-height: 10em
   page-size: 5

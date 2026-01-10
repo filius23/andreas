@@ -1,0 +1,35 @@
+---
+author:
+  - Ann-Christin Bächmann
+  - Andreas Filser
+  - Corinna Frodermann
+title: 'Väter, die länger in Elternzeit sind, arbeiten auch längerfristig weniger'
+date: '2025-04-15'
+publishDate: '2025-04-15'
+publication_types: 
+- "2"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://www.iab-forum.de/vaeter-die-laenger-in-elternzeit-sind-arbeiten-auch-laengerfristig-weniger/'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.48720/IAB.FOO.20250407.01'
+
+tags:
+- Arbeitszeit
+- Elternzeit
+- Erwerbsarbeit
+- Rollenverteilung
+- Sorgearbeit
+- Väter
+- Verdienst
+publication: '*IAB-Forum*'
+subtitle: 'IAB-Forum'
+---
+#### Abstract
+Die Verdienste von Vätern, die nach der Geburt ihres ersten Kindes Elternzeit nehmen, steigen in den darauffolgenden Jahren im Schnitt etwas langsamer als die Verdienste von Vätern, die auf Elternzeit verzichten. Dies hängt stark damit zusammen, dass insbesondere Väter, die mehr als zwei Monate in Elternzeit gehen, danach zum Beispiel häufiger in Teilzeit arbeiten.
+ 
+**[Back to publication list](/publication)**

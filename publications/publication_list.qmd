@@ -29,6 +29,7 @@ or find me on [Google Scholar `r icon_style(icons::academicons("google-scholar")
 
 ```{r loadimportfun,echo=F,warning=FALSE,message=F}
 # rstudioapi::navigateToFile("./publications/bibtex_2publist.R") 
+# rstudioapi::navigateToFile("./publications/bibtex_2publist.R") 
 source("bibtex_2publist.R") 
 ```
 

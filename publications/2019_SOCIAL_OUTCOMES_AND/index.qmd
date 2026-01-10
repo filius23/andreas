@@ -1,5 +1,7 @@
 ---
-author: "Sebastian Schnettler, Andreas Filser"
+author:
+  - Sebastian Schnettler
+  - Andreas Filser
 title: 'Social Outcomes And Sex Ratio'
 date: '2019-11-15'
 publishDate: '2019-11-15'
@@ -15,19 +17,7 @@ links:
    name: Publication
    url:  'https://doi.org/10.1007/978-3-319-16999-6_2022-1'
 publication: 'In Todd K. Shackelford & Viviana A. Weekes-Shackelford: *Encyclopedia of Evolutionary Psychological Science*. Springer'
-excerpt: "Sebastian Schnettler, Andreas Filser<br> In Todd K. Shackelford & Viviana A. Weekes-Shackelford: Encyclopedia of Evolutionary Psychological Science. Springer"
-subtitle: 'Sebastian Schnettler, Andreas Filser  In Todd K. Shackelford & Viviana A. Weekes-Shackelford: Encyclopedia of Evolutionary Psychological Science. Springer'
-image_preview: 
-selected: false
-projects: []
-url_preprint: ""
-url_dataset: 
-url_project: 
-url_slides: 
-url_video: 
-url_poster: 
-math: true
-highlight: true
+subtitle: 'Encyclopedia of Evolutionary Psychological Science'
 ---
 #### Abstract
 (Abstract not available)
