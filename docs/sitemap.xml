@@ -2,54 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://afilser.netlify.app/publications/publication_list.html</loc>
-    <lastmod>2025-01-04T22:48:38.027Z</lastmod>
+    <lastmod>2025-10-15T06:52:53.886Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2024_ARE_LOCAL_SEX/index.html</loc>
-    <lastmod>2025-01-04T10:01:30.434Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2025_vaeter_die_laenger/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.212Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2022_SEX_RATIOS_AND/index.html</loc>
-    <lastmod>2022-06-09T13:44:36.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2024_stratification_of_postbirth/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.659Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2021_LONGITUDINAL_CHANGES_IN/index.html</loc>
-    <lastmod>2022-06-07T06:58:39.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2023_the_iabsmartmobility_module/index.html</loc>
+    <lastmod>2026-01-10T00:10:04.566Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2021_BLEIBT_ALLES_ANDERS/index.html</loc>
-    <lastmod>2022-05-17T09:50:39.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2022_update_identifying_mothers/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.696Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2019_SOCIAL_OUTCOMES_AND/index.html</loc>
-    <lastmod>2022-06-07T06:59:06.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2022_moving_back_to/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.753Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2018_MEHR_MAeNNER_MEHR/index.html</loc>
-    <lastmod>2022-05-17T09:50:27.000Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2021_longitudinal_changes_in/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.733Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/publications/2015_DEMOGRAPHISCHE_MASKULINISIERUNG_UND/index.html</loc>
-    <lastmod>2025-01-03T23:38:27.514Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2021_bleibt_alles_anders/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.714Z</lastmod>
   </url>
   <url>
-    <loc>https://afilser.netlify.app/courses/Stata_BIBB/index.html</loc>
-    <lastmod>2025-01-05T00:35:34.244Z</lastmod>
+    <loc>https://afilser.netlify.app/publications/2019_social_outcomes_and/index.html</loc>
+    <lastmod>2026-01-10T00:10:04.100Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2018_mehr_maenner_mehr/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.309Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2015_demographische_maskulinisierung_und/index.html</loc>
+    <lastmod>2026-01-10T00:10:04.082Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2017_krankenkassen_im_regionalen/index.html</loc>
+    <lastmod>2026-01-10T00:10:04.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2019_sex_ratio_and/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.621Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2021_are_skewed_sex/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.273Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2021_do_local_sex/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2022_adolescent_school_injuries/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2022_sex_ratios_and/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.640Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2023_parental_leave_of/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.678Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2024_are_local_sex/index.html</loc>
+    <lastmod>2026-01-10T00:10:03.254Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2025_gender_inequalities_and/index.html</loc>
+    <lastmod>2026-01-10T00:10:04.508Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/publications.html</loc>
+    <lastmod>2026-01-09T23:48:15.769Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/about/index.html</loc>
     <lastmod>2025-01-05T12:09:02.286Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/title_test.html</loc>
-    <lastmod>2025-03-31T09:14:25.790Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/courses/index.html</loc>
-    <lastmod>2025-03-31T09:56:40.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://afilser.netlify.app/index.html</loc>
-    <lastmod>2025-01-07T07:57:01.348Z</lastmod>
   </url>
 </urlset>

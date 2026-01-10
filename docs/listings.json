@@ -1,24 +1,26 @@
 [
   {
-    "listing": "/courses/index.html",
-    "items": []
-  },
-  {
     "listing": "/publications/publications.html",
     "items": [
-      "/publications/2024_ARE_LOCAL_SEX/index.html",
-      "/publications/2022_SEX_RATIOS_AND/index.html",
-      "/publications/2022_ADOLESCENT_SCHOOL_INJURIES/index.html",
-      "/publications/2022_UPDATE_IDENTIFYING_MOTHERS/index.html",
-      "/publications/2021_BLEIBT_ALLES_ANDERS/index.html",
-      "/publications/2021_LONGITUDINAL_CHANGES_IN/index.html",
-      "/publications/2021_DO_LOCAL_SEX/index.html",
-      "/publications/2021_ARE_SKEWED_SEX/index.html",
-      "/publications/2019_SOCIAL_OUTCOMES_AND/index.html",
-      "/publications/2019_SEX_RATIO_AND/index.html",
-      "/publications/2018_MEHR_MAeNNER_MEHR/index.html",
-      "/publications/2017_KRANKENKASSEN_IM_REGIONALEN/index.html",
-      "/publications/2015_DEMOGRAPHISCHE_MASKULINISIERUNG_UND/index.html"
+      "/publications/2025_gender_inequalities_and/index.html",
+      "/publications/2025_vaeter_die_laenger/index.html",
+      "/publications/2024_stratification_of_postbirth/index.html",
+      "/publications/2024_are_local_sex/index.html",
+      "/publications/2023_the_iabsmartmobility_module/index.html",
+      "/publications/2023_parental_leave_of/index.html",
+      "/publications/2022_sex_ratios_and/index.html",
+      "/publications/2022_adolescent_school_injuries/index.html",
+      "/publications/2022_moving_back_to/index.html",
+      "/publications/2022_update_identifying_mothers/index.html",
+      "/publications/2021_bleibt_alles_anders/index.html",
+      "/publications/2021_longitudinal_changes_in/index.html",
+      "/publications/2021_do_local_sex/index.html",
+      "/publications/2021_are_skewed_sex/index.html",
+      "/publications/2019_social_outcomes_and/index.html",
+      "/publications/2019_sex_ratio_and/index.html",
+      "/publications/2018_mehr_maenner_mehr/index.html",
+      "/publications/2017_krankenkassen_im_regionalen/index.html",
+      "/publications/2015_demographische_maskulinisierung_und/index.html"
     ]
   }
 ]
