@@ -24,7 +24,8 @@ bibtex_2list <- function(bibfile) {
     as_tibble() %>%
     mutate(across(everything(),~uml_repl(.x)),
            across(everything(),~stringr::str_squish(.x)),
-           rnames = mypubs %>% as.data.frame() %>% rownames() )
+           rnames = mypubs %>% as.data.frame() %>% rownames(),
+           month = coalesce(month,"dec"))
   
   
   # Customize for more than one editor
