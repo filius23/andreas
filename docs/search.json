@@ -77,6 +77,62 @@
     "text": "Abstract\nVor dem Hintergrund des demographischen Ungleichgewichts von Männern und Frauen in Asien beschäftigen sich diverse Autoren mit möglichen Konsequenzen eines Frauen- oder Männermangels, unter anderem auf die Gewaltinzidenz in den betroffenen Gesellschaften oder Regionen. Allerdings präsentieren sich die bisherigen theoretischen Ansätze wie auch die empirische Evidenz als uneinheitlich. Der Beitrag gibt einen Überblick über sozialwissenschaftliche und evolutionstheoretische Perspektiven auf die Fragestellung und versucht, diese zu integrieren. Darüber hinaus werden empirische Befunde dargestellt und eingeordnet sowie eigene Projekte vorgestellt und Forschungsdesiderata formuliert.\nBack to publication list"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Dr. Andreas Filser",
+    "section": "",
+    "text": "I am a sociologist who combines conducting quantitative research with providing access to datasets and record linkage services. My own research focuses on family sociology, including relationship formation and parents’ experiences in the labour market. I also enjoy programming in R and Stata, teaching statistics, and sharing these skills with others.\nMore about me →"
+  },
+  {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Courses",
+    "section": "",
+    "text": "ggplot2 - A flipbook-based introduction\n\n\nGerman\n\n\nLearn how to create descriptive plots and coefficient plots\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for GradAB Students\n\n\nEnglish\n\n\nA two-day crash course introduction to R and the tidyverse for GradAB PhD students and other interested members of the IAB.\n\n\n\n\n\n\n\n\n\n\n\n\nExporting Tables using Stata and esttab for researchers at BIBB\n\n\nGerman\n\n\nOne-day intro on how to automate writing descriptions and model output tables into .tex or Word-files\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for IAB Researchers\n\n\nGerman\n\n\nA four-day R course for experienced researchers at IAB covering essential topics in data analysis, including data wrangling, visualization with {ggplot2}, regression, and…\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for researchers at BIBB\n\n\nGerman\n\n\nA four-day introduction to data preparation, statistical analyses, and graphics using R and the tidyverse for interested members of the BIBB.\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming with Postestimates, Macros, and Loops in Stata for researchers at BIBB\n\n\nGerman\n\n\nThis one-day seminar covers Stata programming techniques, including macros, postestimates, efficient loops, variable labeling, running DoFiles, and automating data import…\n\n\n\n\n\n\n\n\n\n\n\n\nGesis Methods Seminar 2020\n\n\nGerman\n\n\nThis one-week online workshop covers foundational concepts in descriptive and inferential statistics, offering hands-on experience with Stata for data analysis and…\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "Andreas Filser",
+    "section": "",
+    "text": "Hello and Willkommen! 👋\nI am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research (FDZ-IAB) in Nuremberg (Germany).\nMy research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers’ parental leave.\nI enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent paper, we updated the identification process of mothers in the labour market data at the IAB. Another paper provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an R-shiny dashboard to streamline data applications at the FDZ-IAB.\nMoreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.\nBeyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials here."
+  },
+  {
+    "objectID": "about/index.html#about-me",
+    "href": "about/index.html#about-me",
+    "title": "Andreas Filser",
+    "section": "About me",
+    "text": "About me\n\n\nI enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with  and Stata.\n\n\n PhD in Social Sciences (Dr. phil.) \n\nUniversity of Oldenburg ∙ 2022\n\n M.Sc. in Socioeconomics \n\nFriedrich-Alexander-University Erlangen-Nuremberg ∙ 2016\n\n B.A. in Sociology & Economics \n\nUniversity of Konstanz ∙ 2012"
+  },
+  {
+    "objectID": "about/index.html#section",
+    "href": "about/index.html#section",
+    "title": "Andreas Filser",
+    "section": "",
+    "text": "Publications\n\n\nTeaching\n\n\nCV\n\n\nBlog (under construction)"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "IAB \n \nBluesky \n \nLinkedIn \n \nGitHub \n \nORCID"
+  },
+  {
+    "objectID": "courses/Stata_BIBB/index.html",
+    "href": "courses/Stata_BIBB/index.html",
+    "title": "Exporting Tables using Stata and esttab",
+    "section": "",
+    "text": "Abstract\nUsing Stata to create Word and Latex tables\n\n\n\nDate\n21 October 2022\n\n\n\nTime\n08:30 AM CET\n\n\n\nLocation\nRemote - BIBB\n\n\n\nSlides\nGitHub Pages"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License & Credits",
+    "section": "",
+    "text": "License for Teaching Materials\nAll my teaching materials are released under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)\n\n\n\n\n\n\nI would love to hear from you if you use them, find them helpful, have questions, or spot errors!\n\n\n\nAbout this Website\nYou can find the repository for this personal website here – welcome! 👋\nI keep this repository public so that everyone can learn how to create their own site. This is how I did it.\nSpecial thanks to:\n- Alison Hill for creating the Hugo Apéro theme\n- Silvia Canelón, Isabella Velásquez, and Shazia Ruybal-Pesántez for publicly providing the code for their pages\n- Special shoutout to Silvia Canelón’s blog post on how to convert a website from Hugo Apéro to Quarto!\nMy website was made with Quarto,  and \nPlease avoid simply duplicating my site – your site deserves its own unique style. You can find excellent documentation on how to create and customize your own Quarto site at www.quarto.org.\nFeel free to contact me if you have questions! I can’t promise I’ll be able to help, but I will try."
+  },
+  {
     "objectID": "publications/2017_krankenkassen_im_regionalen/index.html",
     "href": "publications/2017_krankenkassen_im_regionalen/index.html",
     "title": "Krankenkassen im regionalen Vergleich",
@@ -145,54 +201,5 @@
     "title": "Publications",
     "section": "",
     "text": "Gender Inequalities and Motherhood Penalties across French and German Local Labor Markets\n\n\nSocius\n\n\n\n\n\nOct 15, 2025\n\n\nSander Wagner, Andreas Filser, Pascal Achard, Inga Marie Amend\n\n\n\n\n\n\n\nVäter, die länger in Elternzeit sind, arbeiten auch längerfristig weniger\n\n\nIAB-Forum\n\n\n\n\n\nApr 15, 2025\n\n\nAnn-Christin Bächmann, Andreas Filser, Corinna Frodermann\n\n\n\n\n\n\n\nStratification of Post-Birth Labour Supply in a High- and Low- Maternal Employment Regime\n\n\nSocArXiv\n\n\n\n\n\nDec 15, 2024\n\n\nAndreas Filser, Pascal Achard, Corinna Frodermann, Dana Müller, Sander Wagner\n\n\n\n\n\n\n\nAre Local Sex Ratios Associated with Transition into First Cohabiting Union? Evidence from Finnish Register Data\n\n\nSRRD - Stockholm Research Reports in Demography\n\n\n\n\n\nMay 15, 2024\n\n\nAndreas Filser, Caroline Uggla\n\n\n\n\n\n\n\nThe IAB-SMART-Mobility Module: An Innovative Research Dataset with Mobility Indicators Based on Raw Geodata\n\n\nJahrbücher für Nationalökonomie und Statistik\n\n\n\n\n\nAug 15, 2023\n\n\nFlorian Zimmermann, Andreas Filser, Georg-Christoph Haas, Sebastian Bähr\n\n\n\n\n\n\n\nParental leave of married couples: Mothers tend to return to the labour market faster when their partners take parental leave [Elternzeiten von verheirateten Paaren: Mütter kehren meist schneller auf den Arbeitsmarkt zurück, wenn ihre Partner Elternzeit nehmen]\n\n\nIAB-Kurzbericht\n\n\n\n\n\nFeb 15, 2023\n\n\nCorinna Frodermann, Andreas Filser, Ann-Christin Bächmann\n\n\n\n\n\n\n\nSex Ratios and Union Formation in the Historical Population of the St. Lawrence Valley\n\n\nPLOS ONE\n\n\n\n\n\nJun 15, 2022\n\n\nAndreas Filser, Kai P. Willführ\n\n\n\n\n\n\n\nAdolescent School Injuries and Classroom Sex Compositions in German Secondary Schools\n\n\nBMC Public Health\n\n\n\n\n\nJan 15, 2022\n\n\nAndreas Filser, Sven Stadtmüller, Robert Lipp, Richard Preetz\n\n\n\n\n\n\n\nMoving Back to the Parental Home in Times of COVID-19: Consequences for Students’ Life Satisfaction\n\n\nInternational Journal of Environmental Research and Public Health\n\n\n\n\n\nJan 15, 2022\n\n\nRichard Preetz, Julius Greifenberg, Julika Hülsemann, Andreas Filser\n\n\n\n\n\n\n\nUpdate: Identifying Mothers in Administrative Data\n\n\nFDZ-Methodenreport\n\n\n\n\n\nJan 15, 2022\n\n\nDana Müller, Andreas Filser, Corinna Frodermann\n\n\n\n\n\n\n\nBleibt Alles Anders?! Zur Akzeptanz Hybrider Lehr- Und Lernformate Während Der COVID-19-Pandemie\n\n\nForschungsimpulse Für Die Hochschulentwicklung Im Kontext Hybrider Lehre\n\n\n\n\n\nOct 15, 2021\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus\n\n\n\n\n\n\n\nLongitudinal Changes in Life Satisfaction and Mental Health in Emerging Adulthood During the COVID-19 Pandemic. Risk and Protective Factors\n\n\nEmerging Adulthood\n\n\n\n\n\nOct 15, 2021\n\n\nRichard Preetz, Andreas Filser, Ana Brömmelhaus, Tim Baalmann, Michael Feldhaus\n\n\n\n\n\n\n\nDo Local Sex Ratios Approximate Subjective Partner Markets? Evidence from the German Family Panel\n\n\nHuman Nature\n\n\n\n\n\nJun 15, 2021\n\n\nAndreas Filser, Richard Preetz\n\n\n\n\n\n\n\nAre Skewed Sex Ratios Associated with Violent Crime? A Longitudinal Analysis Using Swedish Register Data\n\n\nEvolution and Human Behavior\n\n\n\n\n\nMay 15, 2021\n\n\nAndreas Filser, Kieron Barclay, Amber Beckley, Caroline Uggla, Sebastian Schnettler\n\n\n\n\n\n\n\nSocial Outcomes And Sex Ratio\n\n\nEncyclopedia of Evolutionary Psychological Science\n\n\n\n\n\nNov 15, 2019\n\n\nSebastian Schnettler, Andreas Filser\n\n\n\n\n\n\n\nSex Ratio and Men’s Long-Term Mating\n\n\nEncyclopedia of Evolutionary Psychological Science\n\n\n\n\n\nAug 15, 2019\n\n\nAndreas Filser, Sebastian Schnettler\n\n\n\n\n\n\n\nMehr Männer, Mehr Gewalt? Eine Präzisierung Möglicher Kausalmechanismen\n\n\nGeschlecht Und Verhalten Aus Evolutionärer Perspektive\n\n\n\n\n\nJan 15, 2018\n\n\nAndreas Filser, Sebastian Schnettler\n\n\n\n\n\n\n\nKrankenkassen im regionalen Vergleich\n\n\nKrankenversicherung im Rating\n\n\n\n\n\nFeb 15, 2017\n\n\nAmelie Wuppermann, Sebastian Bauhoff, Andreas Filser, Manfred Antoni\n\n\n\n\n\n\n\nDemographische Maskulinisierung und Gewalt\n\n\nInterdisziplinäre Anthropologie\n\n\n\n\n\nMar 15, 2015\n\n\nSebastian Schnettler, Andreas Filser\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about/index.html",
-    "href": "about/index.html",
-    "title": "Andreas Filser",
-    "section": "",
-    "text": "Hello and Willkommen! 👋\nI am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research (FDZ-IAB) in Nuremberg (Germany).\nMy research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers’ parental leave.\nI enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent paper, we updated the identification process of mothers in the labour market data at the IAB. Another paper provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an R-shiny dashboard to streamline data applications at the FDZ-IAB.\nMoreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.\nBeyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials here."
-  },
-  {
-    "objectID": "about/index.html#about-me",
-    "href": "about/index.html#about-me",
-    "title": "Andreas Filser",
-    "section": "About me",
-    "text": "About me\n\n\nI enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with  and Stata.\n\n\n PhD in Social Sciences (Dr. phil.) \n\nUniversity of Oldenburg ∙ 2022\n\n M.Sc. in Socioeconomics \n\nFriedrich-Alexander-University Erlangen-Nuremberg ∙ 2016\n\n B.A. in Sociology & Economics \n\nUniversity of Konstanz ∙ 2012"
-  },
-  {
-    "objectID": "about/index.html#section",
-    "href": "about/index.html#section",
-    "title": "Andreas Filser",
-    "section": "",
-    "text": "Publications\n\n\nTeaching\n\n\nCV\n\n\nBlog (under construction)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Dr. Andreas Filser",
-    "section": "",
-    "text": "I am a sociologist who combines conducting quantitative research with providing access to datasets and record linkage services. My own research focuses on family sociology, including relationship formation and parents’ experiences in the labour market. I also enjoy programming in R and Stata, teaching statistics, and sharing these skills with others.\nMore about me →"
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "IAB \n \nBluesky \n \nLinkedIn \n \nGitHub \n \nORCID"
-  },
-  {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Courses",
-    "section": "",
-    "text": "ggplot2 - A flipbook-based introduction\n\n\nGerman\n\n\nLearn how to create descriptive plots and coefficient plots\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for GradAB Students\n\n\nEnglish\n\n\nA two-day crash course introduction to R and the tidyverse for GradAB PhD students and other interested members of the IAB.\n\n\n\n\n\n\n\n\n\n\n\n\nExporting Tables using Stata and esttab for researchers at BIBB\n\n\nGerman\n\n\nOne-day intro on how to automate writing descriptions and model output tables into .tex or Word-files\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for IAB Researchers\n\n\nGerman\n\n\nA four-day R course for experienced researchers at IAB covering essential topics in data analysis, including data wrangling, visualization with {ggplot2}, regression, and…\n\n\n\n\n\n\n\n\n\n\n\n\nA Hands-On Intro to R for researchers at BIBB\n\n\nGerman\n\n\nA four-day introduction to data preparation, statistical analyses, and graphics using R and the tidyverse for interested members of the BIBB.\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming with Postestimates, Macros, and Loops in Stata for researchers at BIBB\n\n\nGerman\n\n\nThis one-day seminar covers Stata programming techniques, including macros, postestimates, efficient loops, variable labeling, running DoFiles, and automating data import…\n\n\n\n\n\n\n\n\n\n\n\n\nGesis Methods Seminar 2020\n\n\nGerman\n\n\nThis one-week online workshop covers foundational concepts in descriptive and inferential statistics, offering hands-on experience with Stata for data analysis and…\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License & Credits",
-    "section": "",
-    "text": "License for Teaching Materials\nAll my teaching materials are released under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)\n\n\n\n\n\n\nI would love to hear from you if you use them, find them helpful, have questions, or spot errors!\n\n\n\nAbout this Website\nYou can find the repository for this personal website here – welcome! 👋\nI keep this repository public so that everyone can learn how to create their own site. This is how I did it.\nSpecial thanks to:\n- Alison Hill for creating the Hugo Apéro theme\n- Silvia Canelón, Isabella Velásquez, and Shazia Ruybal-Pesántez for publicly providing the code for their pages\n- Special shoutout to Silvia Canelón’s blog post on how to convert a website from Hugo Apéro to Quarto!\nMy website was made with Quarto,  and \nPlease avoid simply duplicating my site – your site deserves its own unique style. You can find excellent documentation on how to create and customize your own Quarto site at www.quarto.org.\nFeel free to contact me if you have questions! I can’t promise I’ll be able to help, but I will try."
   }
 ]

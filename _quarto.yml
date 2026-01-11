@@ -71,7 +71,7 @@ format:
       - name: description
         content: "Personal website of Andreas Filser: publications, projects, and research."
       - name: keywords
-        content: "Andreas Filser, publications, research, evolutionary psychology, sociology"
+        content: "Andreas, Filser, publications, research, family, sociology, parenthood, motherhood penalty, father, labor market, parental leave, paternal leave, demography, IAB, institute for employment research, Arbeitsmarkt- und Berufsforschung, FDZ, Forschungsdatenzentrum"
       - property: og:type
         content: website
       - property: og:title

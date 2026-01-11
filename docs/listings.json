@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/courses/index.html",
+    "items": []
+  },
+  {
     "listing": "/publications/publications.html",
     "items": [
       "/publications/2025_gender_inequalities_and/index.html",
@@ -22,9 +26,5 @@
       "/publications/2017_krankenkassen_im_regionalen/index.html",
       "/publications/2015_demographische_maskulinisierung_und/index.html"
     ]
-  },
-  {
-    "listing": "/courses/index.html",
-    "items": []
   }
 ]
