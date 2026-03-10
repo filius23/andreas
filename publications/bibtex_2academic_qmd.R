@@ -254,9 +254,9 @@ create_qmd <- function(ex,overwrite=T,out_fold) {
 # apply the "create_md" function to the publications list to generate
 purrr::walk(seq_len(nrow(mypubs)), ~create_qmd(ex = mypubs[.x, , drop = FALSE],
                                                out_fold = "publications",
-                                               overwrite = T))
+                                               overwrite = F))
 
-
-create_qmd(ex = mypubs[19, , drop = FALSE],
-           out_fold = "publications",
-           overwrite = T)
+# 
+# create_qmd(ex = mypubs[2, , drop = FALSE],
+#            out_fold = "publications",
+#            overwrite = T)

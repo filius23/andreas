@@ -1,0 +1,38 @@
+---
+author:
+  - Sandra Dummert
+  - Andreas Filser
+  - Philipp Grunau
+  - Kevin Ruf
+title: 'Erwerbschancen nach Ausbildung langfristig deutlich verbessert – trotz Finanzkrise und Pandemie'
+date: 'NA'
+publishDate: '2023-12-08'
+publication_types: 
+- "2"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://www.iab-forum.de/erwerbschancen-nach-ausbildung-langfristig-deutlich-verbessert-trotz-finanzkrise-und-pandemie/'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.48720/IAB.FOO.20231208.01'
+
+tags:
+- Ausbildung
+- Betriebe
+- Coronakrise
+- Covid19krise
+- Covid19pandemie
+- Duale Ausbildung
+- Erwerbschancen
+- Fachkräftesicherung
+- Finanzkrise
+publication: '*IAB-Forum*'
+subtitle: 'IAB-Forum'
+---
+#### Abstract
+Die Zahl der Ausbildungsabsolvent*innen ist nach dem deutlichen Rückgang zwischen 2010 und 2018 auf einem niedrigeren Niveau stabil. Sie könnte jedoch aufgrund der rückläufigen Vertragsabschlüsse während der Pandemie in den nächsten Jahren sinken. Der Anteil derer, die ein Jahr nach Ausbildungsabschluss sozialversicherungspflichtig beschäftigt sind, ist seit Mitte der 2000er Jahre von gut 70 auf über 85 Prozent gestiegen. Allerdings brach die Beschäftigungsquote bei bestimmten Berufsgruppen während der Wirtschafts- und Finanzkrise 2008/2009 vorübergehend deutlich ein. Die Pandemie wirkte sich weniger stark aus.
+ 
+**[Back to publication list](/publication)**
