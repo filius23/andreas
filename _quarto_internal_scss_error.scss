@@ -1698,7 +1698,7 @@ $btn-code-copy-color-active: #4758AB !default;
 // quarto-scss-analysis-annotation { "origin": "Defaults from Quarto's SCSS" }
 
 $code-copy-selector: "div.code-copy-outer-scaffold:hover > " !default;
-$code-white-space: pre-wrap !default;
+$code-white-space: pre !default;
 $tbl-cap-location: top !default;
 $sidebar-bg: if(variable-exists(body-bg), $body-bg, #fff) !default;
 // Default the theme name
