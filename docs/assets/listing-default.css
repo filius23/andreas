@@ -31,7 +31,7 @@
 /* listing cards  */
 .card {
   background: transparent;
-  color: orange;
+  color: #D68951;
   border: none;
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);

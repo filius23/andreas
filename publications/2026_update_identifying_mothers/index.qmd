@@ -1,0 +1,32 @@
+---
+author:
+  - Dana Müller
+  - Andreas Filser
+  - Corinna Frodermann
+  - Arnim Seidlitz
+title: 'Update: Identifying Mothers in Administrative Data'
+date: '2026-03-15'
+publishDate: '2026-03-15'
+publication_types: 
+- "4"
+links:
+ - icon: file-pdf
+   icon_pack: fas
+   name: PDF
+   url:  'https://fdz.iab.de/en/publication/?id=15602530'
+ - icon: doi
+   icon_pack: ai
+   name: Publication
+   url:  'https://doi.org/10.5164/IAB.FDZM.2601.EN.V1'
+
+tags:
+- Administrative Data
+- Childbirth
+- Mothers
+publication: '*FDZ-Methodenreport 1-2026*'
+subtitle: 'FDZ-Methodenreport 1-2026'
+---
+#### Abstract
+Administrative data of the Federal Employment Agency provide an important data base for labour market research. However, the Federal Employment Agency’s tasks define what kind of information is recorded. Therefore, some information is missing that is relevant for various research purposes. One example is information on childbirth, which can be important when analysing female employment biographies. It is still mainly mothers who interrupt their employment to care for their children. These employment interruptions could have different effects on the career of mothers, e.g. wage reductions, reduced career opportunities or an increase in part-time employment. The FDZ-Methodenreports 13/2017 and 02/2022 (Müller/Strauch 2017; Müller et al. 2022) presented a way to identify family-related employment breaks using indirect identifiers in the administrative data. In this FDZ-Methodenreport, we updated the identification strategy and adapted it to new dataset versions. We use official statistics on births to validate our identification strategy. We provide our program code as an appendix for use by the research community. Users can adapt when necessary.
+ 
+**[Back to publication list](/publication)**

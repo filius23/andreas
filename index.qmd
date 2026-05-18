@@ -1,6 +1,6 @@
 ---
 title: "Dr. Andreas Filser"
-pagetitle: "My page"
+pagetitle: "Andreas Filser – Sociologist, Demographer & Data Scientist"
 subtitle: "Sociologist | Demographer | Data Scientist<br><br>Research Data Centre<br>Institute for Employment Research (FDZ-IAB)"
 image: assets/round3.png
 # image-alt: "Me, smiling on our balcony"

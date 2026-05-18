@@ -1,5 +1,6 @@
 ---
 title: "Andreas Filser"
+pagetitle: "About"
 subtitle: Sociologist & Data Scientist<br>FDZ-IAB
 image: ../assets/avatar.jpg
 about:
@@ -42,60 +43,85 @@ resources:
 ::: {#hero-heading}
 <span class="h1">Hello and Willkommen! 👋</span>
 
-I am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx)) in Nuremberg (Germany). 
-  
-My research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers' parental leave.
-  
-I enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent [paper](/publication/2022_update_identifying_mothers/), we updated the identification process of mothers in the labour market data at the IAB. Another [paper]() provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an [R-shiny](https://shiny.posit.co/) dashboard to streamline data applications at the FDZ-IAB.
-  
-Moreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence.
-  
-Beyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials [here](/courses).
+I am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx)) in Nuremberg. 
 
+My research agenda spans two broader areas: the gendered consequences of parenthood for labour market outcomes, specifically, a comparative France-Germany project on mothers' employment trajectories and ongoing work on fathers' parental leave. Additonally, rooted in my dissertation, I am interested the social consequences of imbalanced sex ratios for relationship formation, risk-taking, and violence.
+
+I also regularly teach [courses](/courses) on applied statistics and programming in R and Stata – for social scientists across all levels, from undergraduate students to PhD researchers and beyond, in German and English.
+My teaching is informed by hands-on experience with reproducible research workflows – including version control, clean code, and documented pipelines – gained through my work with large-scale administrative data at the FDZ-IAB.
+
+
+<!-- I am a sociologist and demographer at the Research Data Centre of the Institute for Employment Research ([FDZ-IAB](https://fdz.iab.de/en.aspx)) in Nuremberg (Germany).  -->
+  
+<!-- My research focuses upon how couples navigate the labour market when transitioning into parenthood. Currently, I am part of an international project where we analyse the employment trajectories of mothers in France and Germany. Another current project explores the determinants and consequences of fathers' parental leave. -->
+
+<!-- I enjoy the linkage, procurement, and analysis of data using R and Stata. In a recent [paper](/publication/2022_update_identifying_mothers/), we updated the identification process of mothers in the labour market data at the IAB. Another [paper]() provides smartphone-based mobility indicators for PASS participations. Currently, I am developing an [R-shiny](https://shiny.posit.co/) dashboard to streamline data applications at the FDZ-IAB. -->
+
+<!-- Moreover, I am interested in consequences of imbalanced numbers of women and men in groups or regions, i.e. imbalanced sex ratios. In my dissertation project, I analysed how skewed sex ratios are associated with the formation of relationships, risk-taking, and violence. -->
+
+<!-- Beyond research, I enjoy teaching applied statistics and programming using R and Stata. Find a collection of course materials [here](/courses). -->
 :::
-
 ## About me
-
 ::: {.grid}
-
 ::: {.g-col-6 #about-me-1}
+<!-- I enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with {{< fa brands r-project >}}  and Stata. -->
 
-I enjoy all things data - from teaching undergraduate and PhD-level statistics and programming courses to provisioning data and tinkering with {{< fa brands r-project >}}  and Stata.
+I design and deliver courses on applied statistics and programming for social scientists – covering everything from data wrangling and visualization to regression and reproducible workflows. If you are looking for a dedicated instructor, feel free to [reach out](/contact) – I'd be happy to collaborate!
 
 :::
-
 ::: {.g-col-6 #about-me-2}
-
-
-
-{{< fa graduation-cap >}} PhD in Social Sciences (Dr. phil.) <br><p class="indented">University of Oldenburg &#8729; 2022</p>
-{{< fa graduation-cap >}} M.Sc. in Socioeconomics  <br><p class="indented"> Friedrich-Alexander-University Erlangen-Nuremberg &#8729;  2016</p>
-{{< fa graduation-cap >}} B.A. in Sociology & Economics   <br><p class="indented"> University of Konstanz  &#8729;  2012</p>
-
-
+::: {.edu-item}
+::: {.edu-icon}
+{{< fa graduation-cap >}}
 :::
+::: {.edu-text}
+PhD in Social Sciences (Dr. phil.)
 
+::: {.edu-detail}
+University of Oldenburg · 2022
 :::
+:::
+:::
+::: {.edu-item}
+::: {.edu-icon}
+{{< fa graduation-cap >}}
+:::
+::: {.edu-text}
+M.Sc. in Socioeconomics
 
+::: {.edu-detail}
+Friedrich-Alexander-University Erlangen-Nuremberg · 2016
+:::
+:::
+:::
+::: {.edu-item}
+::: {.edu-icon}
+{{< fa graduation-cap >}}
+:::
+::: {.edu-text}
+B.A. in Sociology & Economics
+
+::: {.edu-detail}
+University of Konstanz · 2012
+:::
+:::
+:::
+:::
+:::
 <!-- end grid -->
 
 ## 
-
 :::: {.grid}
-
 ::: {.g-col-3}
 #### [Publications](../publications){.about-links .subtitle}
 :::
-
-
 ::: {.g-col-3}
 #### [Teaching](../teaching){.about-links .subtitle}
 :::
-
 ::: {.g-col-3}
 #### [CV](../cv){.about-links .subtitle}
-::::
-
+:::
 ::: {.g-col-3}
 #### [Blog (under construction)](../blog){.about-links .subtitle}
 :::
+::::

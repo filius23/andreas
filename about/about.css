@@ -74,3 +74,27 @@
     margin: 0em 0em 0em 0em;
   }
 }
+
+/* education alignment of unis ---------------------------------------------- */
+.edu-item {
+  display: flex;
+  gap: 0.75em;
+  align-items: flex-start;
+  margin-bottom: 0.75em;
+}
+
+.edu-icon {
+  flex-shrink: 0;
+  margin-top: 0.0em;
+}
+
+.edu-text {
+  line-height: .5;    
+  margin: 0;
+}
+
+.edu-detail {
+  color: #00A2C2;
+  font-size: 0.9em;
+  margin-top: 0em;   /* degree uni spacing */
+}

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://afilser.netlify.app/publications/publication_list.html</loc>
-    <lastmod>2025-10-15T06:52:53.886Z</lastmod>
+    <lastmod>2026-05-18T20:14:24.410Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/publications/2026_stratification_of_postbirth/index.html</loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://afilser.netlify.app/index.html</loc>
-    <lastmod>2026-03-10T23:18:22.459Z</lastmod>
+    <lastmod>2026-05-18T13:51:55.525Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/courses/index.html</loc>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://afilser.netlify.app/about/index.html</loc>
-    <lastmod>2025-01-05T12:09:02.286Z</lastmod>
+    <lastmod>2026-05-18T20:37:00.647Z</lastmod>
   </url>
   <url>
     <loc>https://afilser.netlify.app/contact.html</loc>
@@ -115,5 +115,13 @@
   <url>
     <loc>https://afilser.netlify.app/publications/publications.html</loc>
     <lastmod>2026-01-09T23:48:15.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/publications/2026_update_identifying_mothers/index.html</loc>
+    <lastmod>2026-05-18T20:07:27.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://afilser.netlify.app/docs/publications/2026_update_identifying_mothers/index.html</loc>
+    <lastmod>2026-05-18T20:07:27.512Z</lastmod>
   </url>
 </urlset>
