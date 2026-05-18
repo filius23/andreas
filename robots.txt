@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+  
+Sitemap: https://afilser.netlify.app/sitemap.xml
