@@ -63,6 +63,9 @@ format:
     code-link: true
     pagetitle: "{{< meta title >}}"
     lightbox: true
+    include-in-header:        # ← das hier neu hinzufügen
+      text: |
+        <meta name="google-site-verification" content="F2KsYwCeUveRBxxpKOnwtE71t0cTATHa2nficrComYc" />
     meta:
       - name: robots
         content: index, follow
